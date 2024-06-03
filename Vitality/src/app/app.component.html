@@ -1,0 +1,70 @@
+<mat-toolbar>
+  <mat-icon>menu</mat-icon>
+  <button mat-button [matMenuTriggerFor]="menuUsers">Usuarios</button>
+  <button mat-button [matMenuTriggerFor]="menuCategory">Categorias</button>
+  <button mat-button [matMenuTriggerFor]="menuRole">Roles</button>
+  <button mat-button [matMenuTriggerFor]="menuProduct">Productos</button>
+  <button mat-button [matMenuTriggerFor]="menuSpeciality">Especialidad</button>
+  <button mat-button [matMenuTriggerFor]="menuHealthObjective">Objetivos de Salud</button>
+  <button mat-button [matMenuTriggerFor]="menuMonitoring">Seguimiento</button>
+  <button mat-button [matMenuTriggerFor]="menuShopping">Compras</button>
+  <button mat-button [matMenuTriggerFor]="menuShoppingDetail">Detalles de Compras</button>
+  <button mat-button [matMenuTriggerFor]="menuReview">Reseñas</button>
+  <button mat-button [matMenuTriggerFor]="menuQuestion">Preguntas</button>
+  <button mat-button [matMenuTriggerFor]="menuAnswer">Respuestas</button>
+  <button mat-button [matMenuTriggerFor]="menuRecommendation">Recomendaciones</button>
+</mat-toolbar>
+<mat-menu #menuUsers="matMenu">
+  <button mat-menu-item routerLink="/usuarios">Listar Usuarios </button>
+  <button mat-menu-item routerLink="/usuarios/nuevo">Registrar Usuarios</button>
+</mat-menu>
+<mat-menu #menuCategory="matMenu">
+  <button mat-menu-item routerLink="/categorias">Listar Categorias</button>
+  <button mat-menu-item routerLink="/categorias/nuevo">Registrar Categorias</button>
+</mat-menu>
+<mat-menu #menuRole="matMenu">
+  <button mat-menu-item routerLink="/roles">Listar Roles</button>
+  <button mat-menu-item routerLink="/roles/nuevo">Registrar Roles</button>
+</mat-menu>
+<mat-menu #menuProduct="matMenu">
+  <button mat-menu-item routerLink="/productos">Listar Productos</button>
+  <button mat-menu-item routerLink="/productos/nuevo">Registrar Productos</button>
+</mat-menu>
+<mat-menu #menuSpeciality="matMenu">
+  <button mat-menu-item routerLink="/especialidades">Listar Especialidad</button>
+  <button mat-menu-item routerLink="/especialidades/nuevo">Registrar Especialidad</button>
+</mat-menu>
+<mat-menu #menuHealthObjective="matMenu">
+  <button mat-menu-item routerLink="/Objetivo-de-salud">Listar Objetivos de Salud</button>
+  <button mat-menu-item routerLink="/Objetivo-de-salud/nuevo">Registrar Objetivos de Salud</button>
+</mat-menu>
+<mat-menu #menuMonitoring="matMenu">
+  <button mat-menu-item routerLink="/seguimiento">Listar Seguimiento</button>
+  <button mat-menu-item routerLink="/seguimiento/nuevo">Registrar Seguimiento</button>
+</mat-menu>
+<mat-menu #menuShopping="matMenu">
+  <button mat-menu-item routerLink="/compras">Listar Compras</button>
+  <button mat-menu-item routerLink="/compras/nuevo">Registrar Compras </button>
+</mat-menu>
+<mat-menu #menuShoppingDetail="matMenu">
+  <button mat-menu-item routerLink="/detallesCompra">Listar Detalles de Compras</button>
+  <button mat-menu-item routerLink="/detallesCompra/nuevo">Registrar Detalles de Compras</button>
+</mat-menu>
+<mat-menu #menuReview="matMenu">
+  <button mat-menu-item routerLink="/resenias">Listar Reseñas</button>
+  <button mat-menu-item routerLink="/resenias/nuevo">Registrar Reseñas</button>
+</mat-menu>
+<mat-menu #menuRecommendation="matMenu">
+  <button mat-menu-item routerLink="/recomendaciones">Listar Recomendaciones</button>
+  <button mat-menu-item routerLink="/recomendaciones/nuevo">Registrar Recomendaciones</button>
+</mat-menu>
+<mat-menu #menuQuestion="matMenu">
+  <button mat-menu-item routerLink="/preguntas">Listar Preguntas</button>
+  <button mat-menu-item routerLink="/preguntas/nuevo">Registrar Preguntas</button>
+</mat-menu>
+<mat-menu #menuAnswer="matMenu">
+  <button mat-menu-item routerLink="/Respuesta">Listar Respuestas</button>
+  <button mat-menu-item routerLink="/Respuesta/nuevo">Registrar Respuestas</button>
+</mat-menu>
+<router-outlet></router-outlet>
+

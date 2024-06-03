@@ -1,0 +1,29 @@
+<h1 class="title-container">Registrar Recomendaciones</h1>
+<div class="container">
+  <br />
+  <form [formGroup]="form" (submit)="aceptar()">
+    <mat-form-field>
+      <mat-label>Recomendacion</mat-label>
+      <input matInput formControlName="descripcion" />
+      <mat-error *ngIf="form.get('descripcion')?.hasError('required')"
+        >La recomendacion es obligatoria.</mat-error
+      >
+    </mat-form-field>
+
+    <br />
+    <mat-form-field>
+        <mat-select formControlName="usuario">
+            <mat-option *ngFor="let user of users" [value]="user.username">{{
+              user.username
+            }}</mat-option>
+          </mat-select>
+        <mat-error *ngIf="form.get('usuario')?.hasError('required')"
+          >EL usuario es obligatorio.</mat-error
+        >
+      </mat-form-field>
+   
+      <br />
+
+      <button mat-raised-button color="accent">Aceptar</button>
+  </form>
+</div>
