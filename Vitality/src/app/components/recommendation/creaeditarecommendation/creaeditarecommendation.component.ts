@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 import { RecommendationService } from '../../../services/recommendation.service';
 import { Recommendation } from '../../../models/recommendation';
 import { UsersService } from '../../../services/users.service';
+import { Users } from '../../../models/users';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -28,7 +30,7 @@ import { UsersService } from '../../../services/users.service';
 export class CreaeditarecommendationComponent implements OnInit{
   form: FormGroup = new FormGroup({});
   rec:Recommendation= new Recommendation();
-  users:any[]=[]
+  users!: Users[];
 
 
   constructor(private formBuilder: FormBuilder,
@@ -37,18 +39,20 @@ export class CreaeditarecommendationComponent implements OnInit{
     private uS:UsersService,
   ) {}
 
-
-
   ngOnInit(): void {
     this.form = this.formBuilder.group({
       descripcion: ['', Validators.required],
-      usuario: ['', Validators.required]
+      usuario: ['', Validators.required],
+      
+    });
 
+    this.uS.list().subscribe(a => {
+      this.users = a;
     });
-    this.uS.getList().subscribe((data: any[]) => {
-      this.users = data;
-    });
+
   }
+
+
   aceptar(): void {
     if (this.form.valid){
         this.rec.descriptionRecommendation=this.form.value.descripcion;
@@ -62,4 +66,8 @@ export class CreaeditarecommendationComponent implements OnInit{
 
     }
   }
+
+
+
+
 }
