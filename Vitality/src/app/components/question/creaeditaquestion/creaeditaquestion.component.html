@@ -1,1 +1,19 @@
-<p>creaeditaquestion works!</p>
+<div class="title-container"><h1>Registro de preguntas</h1></div>
+<div class="title-container" >
+    
+  <form [formGroup]="form" (submit)="aceptar()">
+    <mat-form-field>
+      <mat-label>Preguntas</mat-label>
+      <mat-select formControlName="consulta">
+        <mat-option *ngFor="let g of listaPreguntas" [value]="g.value">
+          {{ g.viewValue }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.get('consulta')?.hasError('required')"
+        >La pregunta es obligatoria.</mat-error
+      >
+    </mat-form-field>
+    
+    <div class="title-container"><button mat-raised-button color="primary">Aceptar</button></div>
+  </form>
+</div>
