@@ -17,8 +17,10 @@ export class UsersService {
     return this.http.get<Users[]>(this.url);
   }
 
-  insert(h:Users){
-    return this.http.post(this.url,h);
+  //para insertar
+
+  insert(u:Users){
+    return this.http.post(this.url,u);
   }
 
   setList(listaNueva:Users[]) {
@@ -27,5 +29,15 @@ export class UsersService {
 
   getList(){
     return this.listaCambio.asObservable();
+  
+  }
+
+  //para modificar
+  listid(id:number){
+    return this.http.get<Users>(`${this.url}/${id}`)
+  }
+
+  update(u:Users){
+    return this.http.put(this.url,u)
   }
 }

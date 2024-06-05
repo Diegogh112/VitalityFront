@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterOutlet } from '@angular/router';
 import { ListarroleComponent } from './listarrole/listarrole.component';
 
@@ -9,6 +9,9 @@ import { ListarroleComponent } from './listarrole/listarrole.component';
   templateUrl: './role.component.html',
   styleUrl: './role.component.css'
 })
-export class RoleComponent {
+export class RoleComponent implements OnInit {
   constructor(public route:ActivatedRoute){}
+  ngOnInit(): void {
+      
+  }
 }

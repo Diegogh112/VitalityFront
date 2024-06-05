@@ -1,1 +1,56 @@
-<p>creaeditaproduct works!</p>
+<div class="title-container"><h1 class="title">Registrar Productos</h1></div>
+<div class="container">
+  <br />
+  <form [formGroup]="form" (submit)="aceptar()">
+    <mat-form-field *ngIf="edicion">
+      <mat-label>Codigo</mat-label>
+      <input matInput readonly formControlName="codigo" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Producto</mat-label>
+      <input matInput formControlName="nombre" />
+      <mat-error *ngIf="form.get('nombre')?.hasError('required')"
+        >EL nombre del producto es obligatorio.</mat-error
+      >
+    </mat-form-field>
+    <br />
+    <mat-form-field>
+      <mat-label>Precio</mat-label>
+    <input matInput formControlName="precio" />
+    <mat-error *ngIf="form.get('precio')?.hasError('required')"
+    >EL precio es obligatorio.
+  </mat-error>
+  <mat-error *ngIf="form.get('precio')?.hasError('pattern')"
+  >EL precio no es valido.
+</mat-error>
+    </mat-form-field>
+    <br />
+    <mat-form-field>
+      <mat-label>Stock</mat-label>
+      <input matInput formControlName="stock" />
+      <mat-error *ngIf="form.get('stock')?.hasError('required')"
+        >El stock es obligatorio.
+      </mat-error>
+      <mat-error *ngIf="form.get('stock')?.hasError('pattern')"
+      >El stock no es valido.
+    </mat-error>
+    </mat-form-field>
+    <br />
+    <mat-form-field>
+      <mat-label>Selecciona una categoria</mat-label>
+      <mat-select formControlName="categoria">
+        <mat-option *ngFor="let category of categories"  [value]="category">
+          {{ category.typeCategory }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.get('categoria')?.hasError('required')"
+      >La categoria es obligatoria.
+    </mat-error>
+    </mat-form-field>
+
+      <br />
+
+      <button mat-raised-button color="accent">Aceptar</button>
+  </form>
+</div>

@@ -27,4 +27,12 @@ export class ProductService {
   getList(){
     return this.listaCambio.asObservable();
   }
+
+  listid(id:number){
+    return this.http.get<Product>(`${this.url}/${id}`)
+  }
+
+  update(p:Product){
+    return this.http.put(this.url,p)
+  }
 }

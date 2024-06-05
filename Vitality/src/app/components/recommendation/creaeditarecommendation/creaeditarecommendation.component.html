@@ -12,15 +12,17 @@
 
     <br />
     <mat-form-field>
-        <mat-select formControlName="usuario">
-            <mat-option *ngFor="let a of users" [value]="a.idUser">{{
-              a.idUser
-            }}</mat-option>
-          </mat-select>
-        <mat-error *ngIf="form.get('usuario')?.hasError('required')"
-          >EL usuario es obligatorio.</mat-error
-        >
-      </mat-form-field>
+
+      <mat-label>Selecciona un usuario</mat-label>
+      <mat-select formControlName="usuario">
+        <mat-option *ngFor="let u of users"  [value]="u">
+          {{ u.username }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.get('usuario')?.hasError('required')"
+      >El usuario es obligatorio.
+    </mat-error>
+    </mat-form-field>
    
       <br />
 

@@ -28,4 +28,12 @@ export class RecommendationService {
   getList(){
     return this.listaCambio.asObservable();
   }
+
+  listid(id:number){
+    return this.http.get<Recommendation>(`${this.url}/${id}`)
+  }
+
+  update(r:Recommendation){
+    return this.http.put(this.url,r)
+  }
 }

@@ -11,7 +11,6 @@ import { RecommendationService } from '../../../services/recommendation.service'
 import { Recommendation } from '../../../models/recommendation';
 import { UsersService } from '../../../services/users.service';
 import { Users } from '../../../models/users';
-import { Observable } from 'rxjs';
 
 
 @Component({
@@ -33,6 +32,7 @@ export class CreaeditarecommendationComponent implements OnInit{
   users!: Users[];
 
 
+
   constructor(private formBuilder: FormBuilder,
     private rS:RecommendationService,
     private router:Router,
@@ -49,7 +49,6 @@ export class CreaeditarecommendationComponent implements OnInit{
     this.uS.list().subscribe(a => {
       this.users = a;
     });
-
   }
 
 

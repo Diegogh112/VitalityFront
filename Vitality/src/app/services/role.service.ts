@@ -28,4 +28,11 @@ export class RoleService {
   getList(){
     return this.listaCambio.asObservable();
   }
+  listid(id:number){
+    return this.http.get<Role>(`${this.url}/${id}`)
+  }
+
+  update(r:Role){
+    return this.http.put(this.url,r)
+  }
 }

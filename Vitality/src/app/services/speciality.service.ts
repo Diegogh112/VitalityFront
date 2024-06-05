@@ -28,4 +28,12 @@ export class SpecialityService {
   getList(){
     return this.listaCambio.asObservable();
   }
+
+  listid(id:number){
+    return this.http.get<Speciality>(`${this.url}/${id}`)
+  }
+
+  update(s:Speciality){
+    return this.http.put(this.url,s)
+  }
 }
