@@ -1,1 +1,84 @@
-<p>creaeditausers works!</p>
+<div class="title-container"><h1 class="title">Registrar Usuarios</h1></div>
+<div class="container">
+  <br />
+  <form [formGroup]="form" (submit)="aceptar()">
+    <mat-form-field *ngIf="edicion">
+      <mat-label>Codigo</mat-label>
+      <input matInput readonly formControlName="codigo" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Nombre</mat-label>
+      <input matInput formControlName="nombre" />
+      <mat-error *ngIf="form.get('nombre')?.hasError('required')"
+        >EL nombre es obligatorio.</mat-error
+      >
+    </mat-form-field>
+    <br />
+    <mat-form-field>
+      <mat-label>Correo</mat-label>
+      <input matInput formControlName="correo" />
+      <mat-error *ngIf="form.get('correo')?.hasError('required')"
+        >EL correo es obligatorio.</mat-error
+      >
+      <mat-error *ngIf="form.get('correo')?.hasError('email')"
+        >EL correo no es valido.
+      </mat-error>
+    </mat-form-field>
+    <br />
+    <mat-form-field>
+      <mat-label>Contraseña</mat-label>
+      <input matInput type="password" formControlName="contrasenia" />
+      <mat-error *ngIf="form.get('contrasenia')?.hasError('required')"
+        >La contraseña es obligatoria.
+      </mat-error>
+    </mat-form-field>
+    <br />
+
+    <mat-form-field>
+      <mat-label>Direccion</mat-label>
+      <textarea matInput formControlName="direccion"></textarea>
+      <mat-error *ngIf="form.get('direccion')?.hasError('required')"
+        >La direccion es obligatoria.
+      </mat-error>
+    </mat-form-field>
+    <br />
+    <mat-form-field>
+      <mat-label>Peso</mat-label>
+      <input matInput formControlName="peso" />
+      <mat-error *ngIf="form.get('peso')?.hasError('required')"
+        >El peso es obligatorio.
+      </mat-error>
+      <mat-error *ngIf="form.get('peso')?.hasError('pattern')"
+      >El peso no es valido.
+    </mat-error>
+    </mat-form-field>
+    <br />
+
+    <mat-form-field>
+      <mat-label>Altura</mat-label>
+      <input matInput formControlName="altura" />
+       <mat-error *ngIf="form.get('correo')?.hasError('required')"
+        >La altura es obligatoria.
+      </mat-error>
+      <mat-error *ngIf="form.get('correo')?.hasError('pattern')"
+      >La altura no es valida.
+    </mat-error>
+    </mat-form-field>
+    <br />
+        <section>
+            <mat-label class="subtitle">Suscripción</mat-label>
+            <mat-checkbox formControlName="suscripcion"></mat-checkbox>
+          </section>
+    
+          <section>
+            <mat-label class="subtitle">Usuario Profesional</mat-label>
+            <mat-checkbox  formControlName="esprofesional"></mat-checkbox>
+          </section>
+      
+
+    <br />
+
+    <button mat-raised-button color="accent">Aceptar</button>
+  </form>
+</div>

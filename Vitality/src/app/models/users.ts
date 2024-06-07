@@ -6,6 +6,6 @@ export class Users {
     address:string=''
     weight:number=0
     height:number=0
-    subscription:Boolean=false
-    healthProfessional:Boolean=false
+    subscription:boolean=false
+    healthProfessional:boolean=false
 }
