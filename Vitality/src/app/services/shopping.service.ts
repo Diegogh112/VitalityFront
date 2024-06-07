@@ -28,4 +28,14 @@ export class ShoppingService {
   getList(){
     return this.listaCambio.asObservable();
   }
+  listid(id:number){
+    return this.http.get<Shopping>(`${this.url}/${id}`)
+  }
+
+  update(s:Shopping){
+    return this.http.put(this.url,s)
+  }
+  eliminar(id: number) {
+    return this.http.delete(`${this.url}/${id}`);
+  }
 }

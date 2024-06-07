@@ -1,7 +1,12 @@
-<h1 class="title-container">Registrar Recomendaciones</h1>
+<div class="title-container"><h1 class="title " >Registrar Recomendaciones</h1></div>
 <div class="container">
   <br />
   <form [formGroup]="form" (submit)="aceptar()">
+    <mat-form-field *ngIf="edicion">
+      <mat-label>Codigo</mat-label>
+      <input matInput readonly formControlName="codigo" />
+    </mat-form-field>
+
     <mat-form-field>
       <mat-label>Recomendacion</mat-label>
       <input matInput formControlName="descripcion" />
@@ -15,8 +20,8 @@
 
       <mat-label>Selecciona un usuario</mat-label>
       <mat-select formControlName="usuario">
-        <mat-option *ngFor="let u of users"  [value]="u">
-          {{ u.username }}
+        <mat-option *ngFor="let u of users" [value]="u">
+          {{ u.username}}
         </mat-option>
       </mat-select>
       <mat-error *ngIf="form.get('usuario')?.hasError('required')"
@@ -26,6 +31,9 @@
    
       <br />
 
-      <button mat-raised-button color="accent">Aceptar</button>
-  </form>
+      <button class="boton" mat-raised-button color="accent">Aceptar</button>
+      <button class="boton" mat-raised-button color="warn" (click)="cancelar()">
+        Cancelar
+      </button>
+      </form>
 </div>

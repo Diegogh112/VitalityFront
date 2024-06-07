@@ -22,3 +22,13 @@
   
     background-color: fuchsia;
    }
+
+   .boton {
+    margin-left: 200px;
+}
+
+mat-form-field {
+  
+    width: 70%;
+  
+   }

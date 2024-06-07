@@ -35,6 +35,10 @@ export const routes: Routes = [
         path: 'nuevo',
         component: CreaeditacategoryComponent,
       },
+      {
+        path: 'ediciones/:id',
+        component: CreaeditacategoryComponent,
+      }
     ],
   },
 
@@ -46,6 +50,10 @@ export const routes: Routes = [
           path: 'nuevo',
           component: CreaeditarecommendationComponent,
         },
+        {
+          path: 'ediciones/:id',
+          component: CreaeditarecommendationComponent,
+        }
       ],
     },
 
@@ -58,6 +66,10 @@ export const routes: Routes = [
             path: 'nuevo',
             component: CreaeditaanswerComponent,
           },
+          {
+            path: 'ediciones/:id',
+            component: CreaeditaanswerComponent,
+          }
         ],
     },
 
@@ -71,6 +83,10 @@ export const routes: Routes = [
             path: 'nuevo',
             component: CreaeditahealthobjectiveComponent,
           },
+          {
+            path: 'ediciones/:id',
+            component: CreaeditahealthobjectiveComponent,
+          }
         ],
     },
 
@@ -84,6 +100,10 @@ export const routes: Routes = [
             path: 'nuevo',
             component: CreaeditamonitoringComponent,
           },
+          {
+            path: 'ediciones/:id',
+            component: CreaeditamonitoringComponent,
+          }
         ],
     },
 
@@ -97,6 +117,10 @@ export const routes: Routes = [
             path: 'nuevo',
             component: CreaeditaproductComponent,
           },
+          {
+            path: 'ediciones/:id',
+            component: CreaeditaproductComponent,
+          }
         ],
     },
 
@@ -110,6 +134,10 @@ export const routes: Routes = [
             path: 'nuevo',
             component: CreaeditaquestionComponent,
           },
+          {
+            path: 'ediciones/:id',
+            component: CreaeditaquestionComponent,
+          }
         ],
     },
 
@@ -123,6 +151,10 @@ export const routes: Routes = [
             path: 'nuevo',
             component: CreaeditareviewComponent,
           },
+          {
+            path: 'ediciones/:id',
+            component: CreaeditareviewComponent,
+          }
         ],
     },
 
@@ -136,6 +168,10 @@ export const routes: Routes = [
             path: 'nuevo',
             component: CreaeditaroleComponent,
           },
+          {
+            path: 'ediciones/:id',
+            component: CreaeditaroleComponent,
+          }
         ],
     },
 
@@ -149,6 +185,10 @@ export const routes: Routes = [
             path: 'nuevo',
             component: CreaeditashoppingComponent,
           },
+          {
+            path: 'ediciones/:id',
+            component: CreaeditashoppingComponent,
+          }
         ],
     },
 
@@ -162,6 +202,10 @@ export const routes: Routes = [
             path: 'nuevo',
             component: CreaeditashoppingdetailComponent,
           },
+          {
+            path: 'ediciones/:id',
+            component: CreaeditashoppingdetailComponent,
+          }
         ],
     },
 
@@ -175,6 +219,10 @@ export const routes: Routes = [
             path: 'nuevo',
             component: CreaeditaspecialityComponent,
           },
+          {
+            path: 'ediciones/:id',
+            component: CreaeditaspecialityComponent,
+          }
         ],
     },
 
@@ -188,6 +236,10 @@ export const routes: Routes = [
             path: 'nuevo',
             component: CreaeditausersComponent,
           },
+          {
+            path: 'ediciones/:id',
+            component: CreaeditausersComponent,
+          }
         ],
     },
 

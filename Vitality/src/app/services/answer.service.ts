@@ -28,4 +28,15 @@ export class AnswerService {
   getList(){
     return this.listaCambio.asObservable();
   }
+  listid(id:number){
+    return this.http.get<Answer>(`${this.url}/${id}`)
+  }
+
+  update(a:Answer){
+    return this.http.put(this.url,a)
+  }
+
+  eliminar(id: number) {
+    return this.http.delete(`${this.url}/${id}`);
+  }
 }

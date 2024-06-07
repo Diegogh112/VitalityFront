@@ -35,4 +35,7 @@ export class RoleService {
   update(r:Role){
     return this.http.put(this.url,r)
   }
+  eliminar(id: number) {
+    return this.http.delete(`${this.url}/${id}`);
+  }
 }

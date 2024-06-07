@@ -40,4 +40,7 @@ export class UsersService {
   update(u:Users){
     return this.http.put(this.url,u)
   }
+  eliminar(id: number) {
+    return this.http.delete(`${this.url}/${id}`);
+  }
 }

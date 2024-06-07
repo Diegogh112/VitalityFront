@@ -36,4 +36,8 @@ export class SpecialityService {
   update(s:Speciality){
     return this.http.put(this.url,s)
   }
+
+  eliminar(id: number) {
+    return this.http.delete(`${this.url}/${id}`);
+  }
 }

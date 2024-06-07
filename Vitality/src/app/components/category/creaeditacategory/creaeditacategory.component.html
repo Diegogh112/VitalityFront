@@ -1,4 +1,4 @@
-<div class="title-container"><h1 class="title">Registrar Categorias</h1></div>
+<div class="title-container"><h1 class="title " >Registrar Categorias</h1></div>
 <div class="container">
   <br />
   <form [formGroup]="form" (submit)="aceptar()">
@@ -25,6 +25,9 @@
 
       <br />
 
-      <button mat-raised-button color="accent">Aceptar</button>
+      <button class="boton" mat-raised-button color="accent">Aceptar</button>
+      <button class="boton" mat-raised-button color="warn" (click)="cancelar()">
+        Cancelar
+      </button>
   </form>
 </div>

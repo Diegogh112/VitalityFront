@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { CategoryService } from '../../../services/category.service';
@@ -23,7 +23,7 @@ import { MatButtonModule } from '@angular/material/button';
   templateUrl: './creaeditacategory.component.html',
   styleUrl: './creaeditacategory.component.css'
 })
-export class CreaeditacategoryComponent {
+export class CreaeditacategoryComponent implements OnInit{
   form: FormGroup = new FormGroup({});
   category:Category= new Category();
   id:number=0;
@@ -61,17 +61,22 @@ this.route.params.subscribe((data:Params) =>{
             this.cS.list().subscribe((data)=>{
               this.cS.setList(data);
             })
+            this.router.navigate(['categorias']);
           })
-          this.router.navigate(['categorias']);
         }else{
         this.cS.insert(this.category).subscribe(data=>{
           this.cS.list().subscribe((data)=>{
             this.cS.setList(data)
           })
+          this.router.navigate(['categorias']);
         })
-        this.router.navigate(['categorias']);
+
       }
     }
+  }
+
+  cancelar():void {
+    this.router.navigate(['categorias']);
   }
 
   init(){

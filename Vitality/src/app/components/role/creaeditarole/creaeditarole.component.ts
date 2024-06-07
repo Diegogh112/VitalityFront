@@ -30,7 +30,7 @@ export class CreaeditaroleComponent implements OnInit {
   role:Role= new Role();
   id:number=0;
   edicion:boolean=false;
-  users!:Users[];
+  users:Users[]=[];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -82,6 +82,9 @@ export class CreaeditaroleComponent implements OnInit {
     }
   }
 
+  cancelar():void{
+    this.router.navigate(['roles']);
+  }
   init(){
     if (this.edicion){
       this.rS.listid(this.id).subscribe((data)=>{

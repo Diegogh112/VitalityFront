@@ -28,4 +28,15 @@ export class QuestionService {
   getList(){
     return this.listaCambio.asObservable();
   }
+  listid(id:number){
+    return this.http.get<Question>(`${this.url}/${id}`)
+  }
+
+  update(q:Question){
+    return this.http.put(this.url,q)
+  }
+
+  eliminar(id: number) {
+    return this.http.delete(`${this.url}/${id}`);
+  }
 }
