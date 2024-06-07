@@ -2,11 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { Recommendation } from '../../../models/recommendation';
 import { RecommendationService } from '../../../services/recommendation.service';
+import { MatIconModule } from '@angular/material/icon';
+import { RouterLink } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-listarrecommendation',
   standalone: true,
-  imports: [MatTableModule],
+  imports: [MatTableModule,MatIconModule,RouterLink,MatButtonModule],
   templateUrl: './listarrecommendation.component.html',
   styleUrl: './listarrecommendation.component.css'
 })
@@ -15,6 +18,7 @@ export class ListarrecommendationComponent implements OnInit{
     'codigo',
     'descripcion',
     'usuario',
+    'acciones'
   ];
 
   dataSource:MatTableDataSource<Recommendation>=new MatTableDataSource();
@@ -26,6 +30,14 @@ export class ListarrecommendationComponent implements OnInit{
       this.rS.getList().subscribe((data)=>{
         this.dataSource = new MatTableDataSource(data)
       })
+  }
+
+  eliminar(id: number) {
+    this.rS.eliminar(id).subscribe((data) => {
+      this.rS.list().subscribe((data) => {
+        this.rS.setList(data);
+      });
+    });
   }
 
 }

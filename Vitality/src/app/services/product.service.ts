@@ -35,4 +35,8 @@ export class ProductService {
   update(p:Product){
     return this.http.put(this.url,p)
   }
+
+  eliminar(id: number) {
+    return this.http.delete(`${this.url}/${id}`);
+  }
 }

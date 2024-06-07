@@ -36,4 +36,8 @@ export class RecommendationService {
   update(r:Recommendation){
     return this.http.put(this.url,r)
   }
+
+  eliminar(id: number) {
+    return this.http.delete(`${this.url}/${id}`);
+  }
 }

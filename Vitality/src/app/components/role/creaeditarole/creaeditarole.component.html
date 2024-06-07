@@ -23,13 +23,15 @@
         </mat-option>
       </mat-select>
       <mat-error *ngIf="form.get('usuario')?.hasError('required')"
-      >El usuario es obligatoria.
+      >El usuario es obligatorio.
     </mat-error>
     </mat-form-field>
   
 
       <br />
-
-      <button mat-raised-button color="accent">Aceptar</button>
+      <button class="boton" mat-raised-button color="accent">Aceptar</button>
+      <button class="boton" mat-raised-button color="warn" (click)="cancelar()">
+        Cancelar
+      </button>
   </form>
 </div>

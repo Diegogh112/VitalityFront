@@ -28,4 +28,15 @@ export class ReviewService {
   getList(){
     return this.listaCambio.asObservable();
   }
+  listid(id:number){
+    return this.http.get<Review>(`${this.url}/${id}`)
+  }
+
+  update(r:Review){
+    return this.http.put(this.url,r)
+  }
+
+  eliminar(id: number) {
+    return this.http.delete(`${this.url}/${id}`);
+  }
 }
