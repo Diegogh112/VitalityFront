@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatOptionModule } from '@angular/material/core';
 import {MatInputModule} from '@angular/material/input';
@@ -22,7 +22,10 @@ import { Users } from '../../../models/users';
     MatOptionModule,
     MatInputModule,
     CommonModule,
-    MatButtonModule],
+    MatButtonModule,
+    FormsModule
+  
+  ],
   templateUrl: './creaeditarecommendation.component.html',
   styleUrl: './creaeditarecommendation.component.css'
 })
@@ -32,6 +35,7 @@ export class CreaeditarecommendationComponent implements OnInit{
   users!:Users[]
   edicion:boolean=false
   id:number=0;
+
 
   constructor(private formBuilder: FormBuilder,
     private rS:RecommendationService,
@@ -90,15 +94,20 @@ export class CreaeditarecommendationComponent implements OnInit{
     this.router.navigate(['recomendaciones']);
   }
   init(){
+    
     if (this.edicion){
+
       this.rS.listid(this.id).subscribe((data)=>{
         this.form=new FormGroup({
             codigo:new FormControl(data.idRecommendation),
             descripcion:new FormControl(data.descriptionRecommendation),
-            usuario:new FormControl(data.user),
-        })
+            usuario:new FormControl(data.user)
+            
+          })
+          
       })
     }
+    
   }
 
 }
