@@ -35,8 +35,7 @@ export class CreaeditarecommendationComponent implements OnInit{
   users!:Users[]
   edicion:boolean=false
   id:number=0;
-
-
+  selected:number=0
   constructor(private formBuilder: FormBuilder,
     private rS:RecommendationService,
     private router:Router,
@@ -69,7 +68,8 @@ export class CreaeditarecommendationComponent implements OnInit{
     if (this.form.valid){
         this.rec.idRecommendation=this.form.value.codigo;
         this.rec.descriptionRecommendation=this.form.value.descripcion;
-        this.rec.user=this.form.value.usuario;
+        this.rec.user.idUser=this.form.value.usuario;
+        
 
         if (this.edicion){
           this.rS.update(this.rec).subscribe((data)=>{
@@ -96,12 +96,12 @@ export class CreaeditarecommendationComponent implements OnInit{
   init(){
     
     if (this.edicion){
-
+  
       this.rS.listid(this.id).subscribe((data)=>{
         this.form=new FormGroup({
             codigo:new FormControl(data.idRecommendation),
             descripcion:new FormControl(data.descriptionRecommendation),
-            usuario:new FormControl(data.user)
+            usuario:new FormControl(data.user.idUser)
             
           })
           
