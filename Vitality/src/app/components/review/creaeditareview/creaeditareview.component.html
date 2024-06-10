@@ -1,1 +1,39 @@
-<p>creaeditareview works!</p>
+<div class="title-container"><h1 class="title">Registrar Comentario</h1></div>
+<div class="container">
+  <br />
+  <form [formGroup]="form" (submit)="aceptar()">
+    <mat-form-field *ngIf="edicion">
+      <mat-label>Codigo</mat-label>
+      <input matInput readonly formControlName="codigo" />
+      <mat-error *ngIf="form.get('codigo')?.hasError('required')"
+      >EL Codigo es obligatorio.</mat-error>
+  </mat-form-field>
+  <br />
+
+    <mat-form-field>
+      <mat-label>Puntuacion</mat-label>
+      <input matInput formControlName="puntuacion" />
+      <mat-error *ngIf="form.get('puntuacion')?.hasError('required')"
+        >La Puntuacion es obligatorio.</mat-error>
+    </mat-form-field>
+    <br />
+
+    <mat-form-field>
+      <mat-label>Comentario</mat-label>
+      <input matInput formControlName="comentario" />
+      <mat-error *ngIf="form.get('comentario')?.hasError('required')"
+        >El comentario es obligatorio.</mat-error>
+    </mat-form-field>
+    <br />
+
+    <mat-form-field>
+      <mat-label>Usuario</mat-label>
+      <input matInput formControlName="user" />
+      <mat-error *ngIf="form.get('user')?.hasError('required')"
+        >El usuario es obligatorio.</mat-error>
+    </mat-form-field>
+    <br />
+
+    <button mat-raised-button color="accent">Aceptar</button>
+  </form>
+</div>

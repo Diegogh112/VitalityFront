@@ -5,5 +5,4 @@ export class Shopping {
     dateShopping:Date = new Date(0,0,0)
     totalShopping:number=0
     user:Users=new Users()
-
 }
