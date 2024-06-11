@@ -35,7 +35,6 @@ export class CreaeditarecommendationComponent implements OnInit{
   users!:Users[]
   edicion:boolean=false
   id:number=0;
-  selected:number=0
   constructor(private formBuilder: FormBuilder,
     private rS:RecommendationService,
     private router:Router,
