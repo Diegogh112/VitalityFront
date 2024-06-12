@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -6,7 +6,7 @@ import { MatOptionModule } from '@angular/material/core';
 import {MatInputModule} from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute, Params, Router, RouterLink } from '@angular/router';
 import { RecommendationService } from '../../../services/recommendation.service';
 import { Recommendation } from '../../../models/recommendation';
 import { UsersService } from '../../../services/users.service';
@@ -23,7 +23,8 @@ import { Users } from '../../../models/users';
     MatInputModule,
     CommonModule,
     MatButtonModule,
-    FormsModule
+    FormsModule,
+    NgIf,RouterLink
   
   ],
   templateUrl: './creaeditarecommendation.component.html',
@@ -32,8 +33,8 @@ import { Users } from '../../../models/users';
 export class CreaeditarecommendationComponent implements OnInit{
   form: FormGroup = new FormGroup({});
   rec:Recommendation= new Recommendation();
-  users!:Users[]
-  edicion:boolean=false
+  users:Users[]=[];
+  edicion:boolean=false;
   id:number=0;
   constructor(private formBuilder: FormBuilder,
     private rS:RecommendationService,
@@ -58,9 +59,9 @@ export class CreaeditarecommendationComponent implements OnInit{
       usuario: ['', Validators.required]
 
     });
-    this.uS.list().subscribe(users=>{
-      this.users=users;
-    })
+    this.uS.list().subscribe((data) =>{
+      this.users=data;
+    });
   }
   
   aceptar(): void {
@@ -74,18 +75,16 @@ export class CreaeditarecommendationComponent implements OnInit{
           this.rS.update(this.rec).subscribe((data)=>{
             this.rS.list().subscribe((data)=>{
               this.rS.setList(data);
-            })
-            this.router.navigate(['recomendaciones']);
-          })
+            });
+          });
         }else{
         this.rS.insert(this.rec).subscribe(data=>{
           this.rS.list().subscribe((data)=>{
             this.rS.setList(data)
-          })
-          this.router.navigate(['recomendaciones']);
-        })
-
+          });
+        });
       }
+      this.router.navigate(['recomendaciones']);
     }
   }
 
