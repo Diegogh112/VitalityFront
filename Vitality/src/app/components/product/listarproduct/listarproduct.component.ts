@@ -4,11 +4,12 @@ import { Product } from '../../../models/product';
 import { ProductService } from '../../../services/product.service';
 import { RouterLink } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-listarproduct',
   standalone: true,
-  imports: [MatTableModule,RouterLink,MatIconModule],
+  imports: [MatTableModule,RouterLink,MatIconModule,MatPaginatorModule],
   templateUrl: './listarproduct.component.html',
   styleUrl: './listarproduct.component.css'
 })
