@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterOutlet } from '@angular/router';
 import { ListaranswerComponent } from '../answer/listaranswer/listaranswer.component';
 import { ListarhealthobjectiveComponent } from './listarhealthobjective/listarhealthobjective.component';
@@ -10,8 +10,11 @@ import { ListarhealthobjectiveComponent } from './listarhealthobjective/listarhe
   templateUrl: './healthobjective.component.html',
   styleUrl: './healthobjective.component.css'
 })
-export class HealthobjectiveComponent {
+export class HealthobjectiveComponent implements OnInit{
   constructor(public route:ActivatedRoute){
+    
+  }
+  ngOnInit(): void {
     
   }
 }

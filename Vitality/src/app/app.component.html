@@ -1,16 +1,17 @@
-<mat-toolbar>
+<mat-toolbar **ngIf="verificar()"> 
   <mat-icon>menu</mat-icon>
+  <button mat-button [routerLink]="['/homes']"><mat-icon>home</mat-icon>Home</button>
   <button mat-button [matMenuTriggerFor]="menuUsers">Usuarios</button>
   <button mat-button [matMenuTriggerFor]="menuCategory">Categorias</button>
   <button mat-button [matMenuTriggerFor]="menuRole">Roles</button>
   <button mat-button [matMenuTriggerFor]="menuProduct">Productos</button>
   <button mat-button [matMenuTriggerFor]="menuSpeciality">Especialidad</button>
-  <button mat-button [matMenuTriggerFor]="menuHealthObjective">Objetivos de Salud</button>
+  <button mat-button [matMenuTriggerFor]="menuHealthObjective" *ngIf="isAdmin()||isUser()||isProfesional()">Objetivos de Salud</button>
   <button mat-button [matMenuTriggerFor]="menuMonitoring">Seguimiento</button>
   <button mat-button [matMenuTriggerFor]="menuShopping">Compras</button>
   <button mat-button [matMenuTriggerFor]="menuShoppingDetail">Detalles de Compras</button>
   <button mat-button [matMenuTriggerFor]="menuReview">Reseñas</button>
-  <button mat-button [matMenuTriggerFor]="menuQuestion">Preguntas</button>
+  <button mat-button [matMenuTriggerFor]="menuQuestion" *ngIf="isAdmin()||isUser()">Preguntas</button>
   <button mat-button [matMenuTriggerFor]="menuAnswer">Respuestas</button>
   <button mat-button [matMenuTriggerFor]="menuRecommendation">Recomendaciones</button>
 </mat-toolbar>
@@ -66,5 +67,14 @@
   <button mat-menu-item routerLink="/Respuesta">Listar Respuestas</button>
   <button mat-menu-item routerLink="/Respuesta/nuevo">Registrar Respuestas</button>
 </mat-menu>
+<mat-menu #menuSalir="matMenu">
+  <button mat-menu-item routerLink="/login" (click)="cerrar()">
+    <mat-icon>logout</mat-icon>
+    <span>Cerrar sesión</span>
+  </button>
+  <button mat-menu-item>
+    Rol:
+    <span>{{ role }}</span>
+  </button>
+</mat-menu>
 <router-outlet></router-outlet>
-
