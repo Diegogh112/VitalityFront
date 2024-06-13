@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute, RouterOutlet } from '@angular/router';
 import { ListarspecialityComponent } from './listarspeciality/listarspeciality.component';
+import { ActivatedRoute, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-speciality',

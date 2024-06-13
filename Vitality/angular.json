@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Vitality": {
+    "demoFrontSI61": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/vitality",
+            "outputPath": "dist/demo-front-si61",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -63,10 +63,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "Vitality:build:production"
+              "buildTarget": "demoFrontSI61:build:production"
             },
             "development": {
-              "buildTarget": "Vitality:build:development"
+              "buildTarget": "demoFrontSI61:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -74,7 +74,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "Vitality:build"
+            "buildTarget": "demoFrontSI61:build"
           }
         },
         "test": {
@@ -100,6 +100,6 @@
     }
   },
   "cli": {
-    "analytics": "672cbdb6-0317-48e8-b635-dd7267e6727c"
+    "analytics": "a711dcba-4bb3-4aab-a585-8e7ff26f4f0d"
   }
 }
