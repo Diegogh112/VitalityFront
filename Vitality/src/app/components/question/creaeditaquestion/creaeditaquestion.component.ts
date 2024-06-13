@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Question } from '../../../models/question';
-import { ActivatedRoute, RouterLink, RouterOutlet } from '@angular/router';
+import { ActivatedRoute, Params, RouterLink, RouterOutlet } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -33,6 +33,9 @@ import { MatButtonModule } from '@angular/material/button';
 export class CreaeditaquestionComponent implements OnInit {
   form: FormGroup=new FormGroup({});
   question:Question=new Question();
+  mensaje:string="";
+  id:number=0;
+  edicion:boolean=false;
   listaPreguntas: { value: string; viewValue: string }[] = [
     { value: '¿Qué vitaminas son esenciales para mejorar mi sistema inmunológico?', viewValue: '¿Qué vitaminas son esenciales para mejorar mi sistema inmunológico?' },
     { value: '¿Qué suplementos recomiendan para aumentar la energía durante el día?', viewValue: '¿Qué suplementos recomiendan para aumentar la energía durante el día?' },
@@ -43,15 +46,36 @@ export class CreaeditaquestionComponent implements OnInit {
   ];
   constructor (private formBuilder:FormBuilder, private qS:QuestionService, private router: Router, private route:ActivatedRoute){}
   ngOnInit(): void {
+    this.route.params.subscribe((data: Params) => {
+      this.id = data['id'];
+      this.edicion = data['id'] != null;
+      this.init();
+    });
     this.form=this.formBuilder.group({
+      codigo:[''],
       consulta:['',Validators.required]
     })
   }
   aceptar():void{
-    if (this.form.valid){this.question.consulta=this.form.value.consulta;
-      this.qS.insert(this.question).subscribe((data)=>{
-        this.qS.list().subscribe((data)=>{this.qS.setList(data);})});
+    if (this.form.valid){this.question.idQuestion=this.form.value.codigo; this.question.consulta=this.form.value.consulta;
+      if (this.edicion){this.qS.update(this.question).subscribe(()=>{this.qS.list().subscribe((data)=>{this.qS.setList(data);});});}
+      else {this.qS.insert(this.question).subscribe((data) => {
+        this.qS.list().subscribe((data) => {
+          this.qS.setList(data);
+        });
+      });}
         this.router.navigate(['preguntas']);
+    }
+  }
+
+  init() {
+    if (this.edicion) {
+      this.qS.listId(this.id).subscribe((data) => {
+        this.form = new FormGroup({
+          //codigo: new FormControl(data.idQuestion),
+          //consulta: new FormControl(data.consulta),
+        });
+      });
     }
   }
 }

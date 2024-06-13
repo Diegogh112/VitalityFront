@@ -25,8 +25,26 @@ import { SpecialityComponent } from './components/speciality/speciality.componen
 import { CreaeditaspecialityComponent } from './components/speciality/creaeditaspeciality/creaeditaspeciality.component';
 import { UsersComponent } from './components/users/users.component';
 import { CreaeditausersComponent } from './components/users/creaeditausers/creaeditausers.component';
+import { LoginComponent } from './components/login/login/login.component';
+import { segGuard } from './guard/seguridad.guard';
+import { HomeComponent } from './components/home/home/home.component';
 
 export const routes: Routes = [
+  {
+    path:'',
+    redirectTo:'login',
+    pathMatch:'full',
+  },
+  {
+    path: 'homes',
+    component: HomeComponent,
+    canActivate: [segGuard],
+  },
+  {
+    path:'login',
+    component:LoginComponent,
+  },
+
   {
     path: 'categorias',
     component: CategoryComponent,
@@ -71,7 +89,12 @@ export const routes: Routes = [
             path: 'nuevo',
             component: CreaeditahealthobjectiveComponent,
           },
+          {
+            path: 'ediciones/:id',
+            component: CreaeditaquestionComponent,
+          },
         ],
+        canActivate:[segGuard],
     },
 
 
@@ -110,7 +133,12 @@ export const routes: Routes = [
             path: 'nuevo',
             component: CreaeditaquestionComponent,
           },
+          {
+            path: 'ediciones/:id',
+            component: CreaeditaquestionComponent,
+          },
         ],
+        canActivate:[segGuard],
     },
 
 
