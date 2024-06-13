@@ -1,1 +1,65 @@
-<p>creaeditashoppingdetail works!</p>
+<div class="title-container"><h1 class="title">Registrar Detalles de Compra</h1></div>
+<div class="container">
+  <br />
+  <form [formGroup]="form" (submit)="aceptar()">
+    <mat-form-field *ngIf="edicion">
+      <mat-label>Codigo</mat-label>
+      <input matInput readonly formControlName="codigo" />
+    </mat-form-field>
+    <br />
+    
+    <mat-form-field>
+      <mat-label>Cantidad</mat-label>
+    <input matInput formControlName="cantidad" />
+    <mat-error *ngIf="form.get('cantidad')?.hasError('required')"
+    >La cantidad es obligatoria.
+  </mat-error>
+  <mat-error *ngIf="form.get('cantidad')?.hasError('pattern')"
+  >La cantidad no es valida.
+</mat-error>
+    </mat-form-field>
+    <br />
+    <mat-form-field>
+      <mat-label>Subtotal</mat-label>
+      <input matInput formControlName="subtotal" />
+      <mat-error *ngIf="form.get('subtotal')?.hasError('required')"
+        >El subtotal es obligatorio.
+      </mat-error>
+      <mat-error *ngIf="form.get('subtotal')?.hasError('pattern')"
+      >El subtotal no es valido.
+    </mat-error>
+    </mat-form-field>
+    <br />
+    <mat-form-field>
+      <mat-label>Selecciona un producto</mat-label>
+      <mat-select formControlName="producto">
+        <mat-option *ngFor="let product of products"  [value]="product.idProduct">
+          {{ product.name }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.get('producto')?.hasError('required')"
+      >El producto es obligatorio.
+    </mat-error>
+    </mat-form-field>
+        <br />
+    <mat-form-field>
+        <mat-label>Selecciona una compra</mat-label>
+        <mat-select formControlName="compra">
+          <mat-option *ngFor="let s of shoppings"  [value]="s.idShopping">
+            {{ s.idShopping }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('compra')?.hasError('required')"
+        >La compra es obligatoria.
+      </mat-error>
+      </mat-form-field>
+
+      <br />
+
+      <button class="boton" mat-raised-button color="accent">Aceptar</button>
+      <button class="boton" mat-raised-button color="warn" (click)="cancelar()">
+        Cancelar
+      </button>
+
+  </form>
+</div>

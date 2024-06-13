@@ -1,4 +1,4 @@
-<div class="title-container"><h1 class="title">Registrar Comentario</h1></div>
+<div class="title-container"><h1 class="title">Registrar Reseña</h1></div>
 <div class="container">
   <br />
   <form [formGroup]="form" (submit)="aceptar()">
@@ -14,7 +14,9 @@
       <mat-label>Puntuacion</mat-label>
       <input matInput formControlName="puntuacion" />
       <mat-error *ngIf="form.get('puntuacion')?.hasError('required')"
-        >La Puntuacion es obligatorio.</mat-error>
+        >La Puntuacion es obligatoria.</mat-error>
+        <mat-error *ngIf="form.get('puntuacion')?.hasError('pattern')"
+        >La Puntuacion no es valida.</mat-error>
     </mat-form-field>
     <br />
 
@@ -28,12 +30,19 @@
 
     <mat-form-field>
       <mat-label>Usuario</mat-label>
-      <input matInput formControlName="user" />
-      <mat-error *ngIf="form.get('user')?.hasError('required')"
+      <mat-select formControlName="usuario">
+        <mat-option  *ngFor="let u of users" [value]="u.idUser" >
+          {{ u.username}}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.get('usuario')?.hasError('required')"
         >El usuario es obligatorio.</mat-error>
     </mat-form-field>
     <br />
 
-    <button mat-raised-button color="accent">Aceptar</button>
+    <button class="boton" mat-raised-button color="accent">Aceptar</button>
+    <button class="boton" mat-raised-button color="warn" (click)="cancelar()">
+      Cancelar
+    </button>
   </form>
 </div>

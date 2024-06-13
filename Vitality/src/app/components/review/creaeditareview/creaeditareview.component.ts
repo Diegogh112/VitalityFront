@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatOptionModule } from '@angular/material/core';
@@ -10,6 +10,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { Review } from '../../../models/review';
 import { ReviewService } from '../../../services/review.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Users } from '../../../models/users';
+import { UsersService } from '../../../services/users.service';
 
 @Component({
   selector: 'app-creaeditareview',
@@ -30,15 +32,21 @@ export class CreaeditareviewComponent {
   form: FormGroup = new FormGroup({});
   review:Review= new Review();
   id:number=0;
-  edicion:boolean=false
+  edicion:boolean=false;
+  users:Users[]=[];
 
   constructor(
     private formBuilder: FormBuilder,
     private rS:ReviewService,
     private router:Router,
-    private route:ActivatedRoute
+    private route:ActivatedRoute,
+    private uS:UsersService
   ) {}
   ngOnInit(): void {
+
+    this.uS.list().subscribe(users=>{
+      this.users=users;
+    })
 
 this.route.params.subscribe((data:Params) =>{
   this.id=data['id'];
@@ -48,9 +56,9 @@ this.route.params.subscribe((data:Params) =>{
 
     this.form = this.formBuilder.group({
       codigo:[''],
-      puntuacion: [''],
-      comentario: [''],
-      usuario: [''],
+      puntuacion:['',[Validators.required,Validators.pattern('^[0-9]*$')]],
+      comentario: ['',Validators.required],
+      usuario: ['',Validators.required],
     });
   }
   aceptar(): void {
@@ -58,7 +66,7 @@ this.route.params.subscribe((data:Params) =>{
         this.review.idReview=this.form.value.codigo;
         this.review.punctuation=this.form.value.puntuacion;
         this.review.comment=this.form.value.comentario;
-        this.review.user=this.form.value.usuario;
+        this.review.user.idUser=this.form.value.usuario;
 
         if (this.edicion){
           this.rS.update(this.review).subscribe((data)=>{
@@ -78,6 +86,11 @@ this.route.params.subscribe((data:Params) =>{
     }
   }
 
+
+  cancelar():void{
+    this.router.navigate(['resenias']);
+  }
+
   init(){
     if (this.edicion){
       this.rS.listid(this.id).subscribe((data)=>{
@@ -85,7 +98,7 @@ this.route.params.subscribe((data:Params) =>{
             codigo:new FormControl(data.idReview),
             puntuacion:new FormControl(data.punctuation),
             comentario:new FormControl(data.comment),
-            usuario:new FormControl(data.user),
+            usuario:new FormControl(data.user.idUser),
         })
       })
     }

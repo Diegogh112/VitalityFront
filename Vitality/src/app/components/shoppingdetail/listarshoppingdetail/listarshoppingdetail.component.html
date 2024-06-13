@@ -1,1 +1,54 @@
-<p>listarshoppingdetail works!</p>
+<div class="container">
+    <br/>
+    <div class="title-container"><h1 class="title">Listar Detalles de Compra</h1></div>
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  
+
+      <ng-container matColumnDef="codigo">
+        <th mat-header-cell *matHeaderCellDef> Codigo </th>
+        <td mat-cell *matCellDef="let element"> {{element.idShoppingDetail}} </td>
+      </ng-container>
+    
+      <ng-container matColumnDef="cantidad">
+        <th mat-header-cell *matHeaderCellDef> Cantidad </th>
+        <td mat-cell *matCellDef="let element"> {{element.quantityShoppingDetail}} </td>
+      </ng-container>
+    
+      <ng-container matColumnDef="subtotal">
+        <th mat-header-cell *matHeaderCellDef> Subtotal </th>
+        <td mat-cell *matCellDef="let element"> {{element.subtotalShoppingDetail}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="producto">
+        <th mat-header-cell *matHeaderCellDef> Producto </th>
+        <td mat-cell *matCellDef="let element"> {{element.product.name}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="compra">
+        <th mat-header-cell *matHeaderCellDef> Compra </th>
+        <td mat-cell *matCellDef="let element"> {{element.shopping.idShopping}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="acciones">
+        <th mat-header-cell *matHeaderCellDef> Acciones </th>
+        <td mat-cell *matCellDef="let element">
+              <button class="boton" mat-icon-button color="primary" [routerLink]="['ediciones',element.idShoppingDetail]"> 
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button class="boton" mat-icon-button  (click)="deletes(element.idShoppingDetail)" color="warn"> 
+                <mat-icon>delete</mat-icon>
+              </button>
+        </td>
+      </ng-container>
+
+    
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    
+    <mat-paginator
+      [pageSizeOptions]="[5, 10, 25, 100]"
+      showFirstLastButtons
+    ></mat-paginator>
+    </div>
+  

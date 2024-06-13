@@ -4,6 +4,7 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { RouterLink } from '@angular/router';
 import { Review } from '../../../models/review';
 import { ReviewService } from '../../../services/review.service';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-listarreview',
@@ -11,7 +12,7 @@ import { ReviewService } from '../../../services/review.service';
   imports: [
     MatTableModule,
   RouterLink,
-  MatButtonModule
+  MatButtonModule,MatIconModule
 ],
   templateUrl: './listarreview.component.html',
   styleUrl: './listarreview.component.css'
@@ -22,6 +23,7 @@ export class ListarreviewComponent implements OnInit{
     'puntuacion',
     'comentario',
    'usuario',
+   'acciones',
   ];
 
   dataSource:MatTableDataSource <Review>=new MatTableDataSource();
@@ -33,5 +35,12 @@ export class ListarreviewComponent implements OnInit{
       this.rS.getList().subscribe((data)=>{
         this.dataSource = new MatTableDataSource(data)
       })
+  }
+  deletes(id: number) {
+    this.rS.eliminar(id).subscribe((data) => {
+      this.rS.list().subscribe((data) => {
+        this.rS.setList(data);
+      });
+    });
   }
 }

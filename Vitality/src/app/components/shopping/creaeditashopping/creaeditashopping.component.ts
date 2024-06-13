@@ -57,7 +57,7 @@ this.route.params.subscribe((data:Params) =>{
   }
   aceptar(): void {
     if (this.form.valid){
-        this.shopping.numOrderShopping=this.form.value.codigo;
+        this.shopping.idShopping=this.form.value.codigo;
         this.shopping.dateShopping=this.form.value.fecha;
         this.shopping.totalShopping=this.form.value.total;
         this.shopping.user=this.form.value.usuario;
@@ -84,7 +84,7 @@ this.route.params.subscribe((data:Params) =>{
     if (this.edicion){
       this.sS.listid(this.id).subscribe((data)=>{
         this.form=new FormGroup({
-            codigo:new FormControl(data.numOrderShopping),
+            codigo:new FormControl(data.idShopping),
             fecha:new FormControl(data.dateShopping),
             total:new FormControl(data.totalShopping),
             usuario:new FormControl(data.user),
