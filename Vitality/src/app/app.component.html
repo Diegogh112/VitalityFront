@@ -1,4 +1,4 @@
-<mat-toolbar **ngIf="verificar()"> 
+<mat-toolbar color = "primary" *ngIf="verificar()"> 
   <mat-icon>menu</mat-icon>
   <button mat-button [routerLink]="['/homes']"><mat-icon>home</mat-icon>Home</button>
   <button mat-button [matMenuTriggerFor]="menuUsers">Usuarios</button>
@@ -11,7 +11,7 @@
   <button mat-button [matMenuTriggerFor]="menuShopping">Compras</button>
   <button mat-button [matMenuTriggerFor]="menuShoppingDetail">Detalles de Compras</button>
   <button mat-button [matMenuTriggerFor]="menuReview">Reseñas</button>
-  <button mat-button [matMenuTriggerFor]="menuQuestion" *ngIf="isAdmin()||isUser()">Preguntas</button>
+  <button mat-button [matMenuTriggerFor]="menuQuestion" *ngIf="isAdmin()">Preguntas</button>
   <button mat-button [matMenuTriggerFor]="menuAnswer">Respuestas</button>
   <button mat-button [matMenuTriggerFor]="menuRecommendation">Recomendaciones</button>
 </mat-toolbar>

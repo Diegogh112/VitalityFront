@@ -5,6 +5,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { LoginService } from './services/login.service';
+import { NgIf } from '@angular/common';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
@@ -17,6 +19,8 @@ import { LoginService } from './services/login.service';
     MatMenuModule,
     MatButtonModule,
     RouterLink,
+    NgIf,
+    CommonModule
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
