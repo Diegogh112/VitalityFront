@@ -1,7 +1,6 @@
 import { inject } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivateFn, RouterStateSnapshot } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivateFn, Router, RouterStateSnapshot } from '@angular/router';
 import { LoginService } from '../services/login.service';
-import { Router } from 'express';
 
 export const segGuard = (route:ActivatedRouteSnapshot, state:RouterStateSnapshot) => {
   const lService=inject(LoginService)
