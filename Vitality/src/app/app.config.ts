@@ -21,6 +21,6 @@ export const appConfig: ApplicationConfig = {
           disallowedRoutes: ['http://localhost:8080/login/forget'],
         },
       })
-    ), provideAnimationsAsync(),
+    ), provideAnimationsAsync(), provideAnimationsAsync(),
   ]
 };

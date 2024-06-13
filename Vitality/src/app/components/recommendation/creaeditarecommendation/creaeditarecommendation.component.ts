@@ -43,8 +43,6 @@ export class CreaeditarecommendationComponent implements OnInit{
     private route:ActivatedRoute
   ) {}
 
-
-
   ngOnInit(): void {
 
     this.route.params.subscribe((data:Params) =>{
@@ -56,14 +54,14 @@ export class CreaeditarecommendationComponent implements OnInit{
     this.form = this.formBuilder.group({
       codigo:[''],
       descripcion: ['', Validators.required],
-      usuario: ['', Validators.required]
-
+      usuario: ['', Validators.required],
+      
     });
-    this.uS.list().subscribe((data) =>{
-      this.users=data;
-    });
+    this.uS.list().subscribe(users=>{
+      this.users=users;
+    })
   }
-  
+
   aceptar(): void {
     if (this.form.valid){
         this.rec.idRecommendation=this.form.value.codigo;
@@ -107,5 +105,4 @@ export class CreaeditarecommendationComponent implements OnInit{
     }
     
   }
-
 }

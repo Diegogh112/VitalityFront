@@ -1,1 +1,39 @@
-<p>creaeditashopping works!</p>
+<div class="title-container"><h1 class="title">Registrar Compra</h1></div>
+<div class="container">
+  <br />
+  <form [formGroup]="form" (submit)="aceptar()">
+    <mat-form-field *ngIf="edicion">
+      <mat-label>Codigo</mat-label>
+      <input matInput readonly formControlName="codigo" />
+      <mat-error *ngIf="form.get('codigo')?.hasError('required')"
+      >EL Codigo es obligatorio.</mat-error>
+  </mat-form-field>
+  <br />
+
+    <mat-form-field>
+      <mat-label>Fecha</mat-label>
+      <input matInput formControlName="fecha" />
+      <mat-error *ngIf="form.get('nombre')?.hasError('required')"
+        >La fecha es obligatorio.</mat-error>
+    </mat-form-field>
+    <br />
+
+    <mat-form-field>
+      <mat-label>Total de compra</mat-label>
+      <input matInput formControlName="total" />
+      <mat-error *ngIf="form.get('total')?.hasError('required')"
+        >El total de compras es obligatorio.</mat-error>
+    </mat-form-field>
+    <br />
+
+    <mat-form-field>
+      <mat-label>Usuario</mat-label>
+      <input matInput formControlName="user" />
+      <mat-error *ngIf="form.get('user')?.hasError('required')"
+        >El usuario es obligatorio.</mat-error>
+    </mat-form-field>
+    <br />
+
+    <button mat-raised-button color="accent">Aceptar</button>
+  </form>
+</div>

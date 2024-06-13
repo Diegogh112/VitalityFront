@@ -1,12 +1,33 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { RouterLink } from '@angular/router';
+import { ShoppingService } from '../../../services/shopping.service';
+import { Shopping } from '../../../models/shopping';
 
 @Component({
   selector: 'app-listarshopping',
   standalone: true,
-  imports: [],
+  imports: [MatTableModule,RouterLink,MatButtonModule],
   templateUrl: './listarshopping.component.html',
   styleUrl: './listarshopping.component.css'
 })
-export class ListarshoppingComponent {
+export class ListarshoppingComponent implements OnInit{
+  displayedColumns: string[]=[
+    'codigo',
+    'usuario',
+    'fecha',
+   'total',
+  ];
 
+  dataSource:MatTableDataSource <Shopping>=new MatTableDataSource();
+  constructor(private sS:ShoppingService){}
+  ngOnInit(): void {
+      this.sS.list().subscribe((data)=>{
+        this.dataSource = new MatTableDataSource(data)
+      })
+      this.sS.getList().subscribe((data)=>{
+        this.dataSource = new MatTableDataSource(data)
+      })
+  }
 }

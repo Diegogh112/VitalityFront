@@ -11,6 +11,6 @@ import { ListaranswerComponent } from './listaranswer/listaranswer.component';
 })
 export class AnswerComponent {
   constructor(public route:ActivatedRoute){
-
+//aaaa
   }
 }

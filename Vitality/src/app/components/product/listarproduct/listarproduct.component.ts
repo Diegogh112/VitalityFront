@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-import { RouterLink } from '@angular/router';
 import { Product } from '../../../models/product';
 import { ProductService } from '../../../services/product.service';
 
