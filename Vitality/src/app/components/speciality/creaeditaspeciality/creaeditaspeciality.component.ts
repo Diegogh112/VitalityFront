@@ -74,6 +74,10 @@ this.route.params.subscribe((data:Params) =>{
     }
   }
 
+  cancelar():void {
+    this.router.navigate(['especialidades']);
+  }
+
   init(){
     if (this.edicion){
       this.sS.listid(this.id).subscribe((data)=>{
