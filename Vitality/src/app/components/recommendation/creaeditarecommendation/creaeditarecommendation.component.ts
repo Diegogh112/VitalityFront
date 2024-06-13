@@ -11,6 +11,8 @@ import { RecommendationService } from '../../../services/recommendation.service'
 import { Recommendation } from '../../../models/recommendation';
 import { UsersService } from '../../../services/users.service';
 import { Users } from '../../../models/users';
+import { CategoryService } from '../../../services/category.service';
+import { Category } from '../../../models/category';
 
 
 @Component({
@@ -36,14 +38,17 @@ export class CreaeditarecommendationComponent implements OnInit{
   users:Users[]=[];
   edicion:boolean=false;
   id:number=0;
+  categories!:Category[];
   constructor(private formBuilder: FormBuilder,
     private rS:RecommendationService,
     private router:Router,
     private uS:UsersService,
-    private route:ActivatedRoute
+    private route:ActivatedRoute,
+    private cS:CategoryService,
   ) {}
 
   ngOnInit(): void {
+
 
     this.route.params.subscribe((data:Params) =>{
       this.id=data['id'];

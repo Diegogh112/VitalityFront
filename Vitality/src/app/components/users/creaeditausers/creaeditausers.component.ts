@@ -90,6 +90,10 @@ this.route.params.subscribe((data:Params) =>{
     }
   }
 
+  cancelar():void {
+    this.router.navigate(['usuarios']);
+  }
+
   init(){
     if (this.edicion){
       this.uS.listid(this.id).subscribe((data)=>{

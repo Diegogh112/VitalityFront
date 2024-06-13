@@ -66,7 +66,7 @@ export class CreaeditaproductComponent implements OnInit{
         this.product.name=this.form.value.nombre;
         this.product.price=this.form.value.precio;
         this.product.stock=this.form.value.stock;
-        this.product.category=this.form.value.categoria;
+        this.product.category.idCategory=this.form.value.categoria;
 
         if (this.edicion){
           this.pS.update(this.product).subscribe((data)=>{
@@ -86,6 +86,10 @@ export class CreaeditaproductComponent implements OnInit{
     }
   }
 
+  cancelar():void{
+    this.router.navigate(['productos']);
+  }
+
   init(){
     if (this.edicion){
       this.pS.listid(this.id).subscribe((data)=>{
@@ -94,7 +98,7 @@ export class CreaeditaproductComponent implements OnInit{
             nombre:new FormControl(data.name),
             precio:new FormControl(data.price),
             stock:new FormControl(data.stock),
-            categoria:new FormControl(data.category),
+            categoria:new FormControl(data.category.idCategory),
         })
       })
     }

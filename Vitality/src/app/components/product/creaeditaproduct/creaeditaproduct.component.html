@@ -40,7 +40,7 @@
     <mat-form-field>
       <mat-label>Selecciona una categoria</mat-label>
       <mat-select formControlName="categoria">
-        <mat-option *ngFor="let category of categories"  [value]="category">
+        <mat-option *ngFor="let category of categories"  [value]="category.idCategory">
           {{ category.typeCategory }}
         </mat-option>
       </mat-select>
@@ -51,6 +51,10 @@
 
       <br />
 
-      <button mat-raised-button color="accent">Aceptar</button>
+      <button class="boton" mat-raised-button color="accent">Aceptar</button>
+      <button class="boton" mat-raised-button color="warn" (click)="cancelar()">
+        Cancelar
+      </button>
+
   </form>
 </div>
