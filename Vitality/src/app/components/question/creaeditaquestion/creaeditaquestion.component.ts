@@ -72,8 +72,8 @@ export class CreaeditaquestionComponent implements OnInit {
     if (this.edicion) {
       this.qS.listId(this.id).subscribe((data) => {
         this.form = new FormGroup({
-          //codigo: new FormControl(data.idQuestion),
-          //consulta: new FormControl(data.consulta),
+          codigo: new FormControl(data.idQuestion),
+          consulta: new FormControl(data.consulta),
         });
       });
     }

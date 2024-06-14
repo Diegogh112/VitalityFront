@@ -22,7 +22,7 @@ export class QuestionService {
   }
 
   listId(id: number) {
-    return this.httpClient.get<Question[]>(`${this.url}/${id}`);
+    return this.httpClient.get<Question>(`${this.url}/${id}`);
   }
 
   update(c: Question) {
