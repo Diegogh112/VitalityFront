@@ -11,9 +11,7 @@ import { ListarhealthobjectiveComponent } from './listarhealthobjective/listarhe
   styleUrl: './healthobjective.component.css'
 })
 export class HealthobjectiveComponent implements OnInit{
-  constructor(public route:ActivatedRoute){
-    
-  }
+  constructor(public route:ActivatedRoute){}
   ngOnInit(): void {
     
   }

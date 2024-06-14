@@ -21,7 +21,7 @@ export class HealthobjectiveService {
   }
 
   listId(id: number) {
-    return this.httpClient.get<HealthObjective[]>(`${this.url}/${id}`);
+    return this.httpClient.get<HealthObjective>(`${this.url}/${id}`);
   }
 
   update(c: HealthObjective) {
