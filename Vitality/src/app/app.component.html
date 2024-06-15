@@ -1,18 +1,63 @@
-<mat-toolbar>
-  <mat-icon>menu</mat-icon>
-  <button mat-button [matMenuTriggerFor]="menuUsers">Usuarios</button>
-  <button mat-button [matMenuTriggerFor]="menuCategory">Categorias</button>
-  <button mat-button [matMenuTriggerFor]="menuRole">Roles</button>
-  <button mat-button [matMenuTriggerFor]="menuProduct">Productos</button>
-  <button mat-button [matMenuTriggerFor]="menuSpeciality">Especialidad</button>
-  <button mat-button [matMenuTriggerFor]="menuHealthObjective">Objetivos de Salud</button>
-  <button mat-button [matMenuTriggerFor]="menuMonitoring">Seguimiento</button>
-  <button mat-button [matMenuTriggerFor]="menuShopping">Compras</button>
-  <button mat-button [matMenuTriggerFor]="menuShoppingDetail">Detalles de Compras</button>
-  <button mat-button [matMenuTriggerFor]="menuReview">Reseñas</button>
-  <button mat-button [matMenuTriggerFor]="menuQuestion">Preguntas</button>
-  <button mat-button [matMenuTriggerFor]="menuAnswer">Respuestas</button>
-  <button mat-button [matMenuTriggerFor]="menuRecommendation">Recomendaciones</button>
+<mat-toolbar color="primary" *ngIf="verificar()">
+
+  <button mat-button [routerLink]="['/homes']">
+    <mat-icon>home</mat-icon>Home
+  </button>
+
+  <button mat-button [matMenuTriggerFor]="menuUsers"  *ngIf="isAdmin()">
+    <mat-icon>user</mat-icon>Usuarios
+  </button>
+
+  <button mat-button [matMenuTriggerFor]="menuCategory" *ngIf="isAdmin()">
+    <mat-icon>category</mat-icon>Categorias
+
+  </button>
+  <button mat-button [matMenuTriggerFor]="menuRole" *ngIf="isAdmin()">
+  <mat-icon>rol</mat-icon>Roles
+  </button>
+
+  <button mat-button [matMenuTriggerFor]="menuProduct" *ngIf="isAdmin()">
+    <mat-icon>product</mat-icon>Productos
+
+  </button>
+  <button mat-button [matMenuTriggerFor]="menuSpeciality" *ngIf="isAdmin()">
+    <mat-icon>speciality</mat-icon>Especialidad
+
+  </button>
+  <button mat-button [matMenuTriggerFor]="menuHealthObjective" *ngIf="isCliente()">
+    <mat-icon>healthobjective</mat-icon>Objetivos de Salud
+
+  </button>
+  <button mat-button [matMenuTriggerFor]="menuMonitoring" *ngIf="isProfesional()">
+    <mat-icon>monitoring</mat-icon>Seguimiento
+
+  </button>
+  <button mat-button [matMenuTriggerFor]="menuShopping" *ngIf="isAdmin()">
+    <mat-icon>shopping</mat-icon>Compras
+
+  </button>
+  <button mat-button [matMenuTriggerFor]="menuShoppingDetail" *ngIf="isAdmin()">
+    <mat-icon>shoppingdetail</mat-icon>Detalles de Compras
+
+  </button>
+  <button mat-button [matMenuTriggerFor]="menuReview" *ngIf="isCliente()">
+    <mat-icon>review</mat-icon>Reseñas
+
+  </button>
+  <button mat-button [matMenuTriggerFor]="menuQuestion" *ngIf="isAdmin()">
+    <mat-icon>question</mat-icon>Preguntas
+
+  </button>
+  <button mat-button [matMenuTriggerFor]="menuAnswer" *ngIf="isCliente()">
+    <mat-icon>answer</mat-icon>Respuestas
+
+  </button>
+  <button mat-button [matMenuTriggerFor]="menuRecommendation" *ngIf="isCliente()">
+    <mat-icon>recommendation</mat-icon>Recomendaciones
+
+  </button>
+
+  <button mat-button [matMenuTriggerFor]="menuSalir">Usuario</button>
 </mat-toolbar>
 <mat-menu #menuUsers="matMenu">
   <button mat-menu-item routerLink="/usuarios">Listar Usuarios </button>
@@ -66,5 +111,16 @@
   <button mat-menu-item routerLink="/Respuesta">Listar Respuestas</button>
   <button mat-menu-item routerLink="/Respuesta/nuevo">Registrar Respuestas</button>
 </mat-menu>
+<mat-menu #menuSalir="matMenu">
+  <button mat-menu-item routerLink="/login" (click)="cerrar()">
+    <mat-icon>logout</mat-icon>
+    <span>Cerrar sesión</span>
+  </button>
+  <button mat-menu-item>
+    Rol:
+    <span>{{ role }}</span>
+  </button>
+</mat-menu>
+
 <router-outlet></router-outlet>
 
