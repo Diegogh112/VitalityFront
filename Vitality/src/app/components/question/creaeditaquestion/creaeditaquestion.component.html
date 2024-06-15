@@ -2,6 +2,11 @@
 <div class="title-container" >
     
   <form [formGroup]="form" (submit)="aceptar()">
+    <mat-form-field *ngIf="edicion">
+      <mat-label>Codigo</mat-label>
+      <input matInput readonly formControlName="codigo" />
+    </mat-form-field>
+
     <mat-form-field>
       <mat-label>Preguntas</mat-label>
       <mat-select formControlName="consulta">
