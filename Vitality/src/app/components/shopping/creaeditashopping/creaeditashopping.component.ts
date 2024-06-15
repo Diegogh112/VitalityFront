@@ -1,4 +1,3 @@
-/*Creaeditacompra */
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -11,6 +10,8 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { Shopping } from '../../../models/shopping';
 import { ShoppingService } from '../../../services/shopping.service';
+import { UsersService } from '../../../services/users.service';
+import { Users } from '../../../models/users';
 @Component({
   selector: 'app-creaeditashopping',
   standalone: true,
@@ -31,6 +32,7 @@ import { ShoppingService } from '../../../services/shopping.service';
 export class CreaeditashoppingComponent {
   form: FormGroup = new FormGroup({});
   shopping:Shopping= new Shopping();
+  users!:Users[]
   id:number=0;
   edicion:boolean=false
 
@@ -38,6 +40,7 @@ export class CreaeditashoppingComponent {
     private formBuilder: FormBuilder,
     private sS:ShoppingService,
     private router:Router,
+    private uS:UsersService,
     private route:ActivatedRoute
   ) {}
   ngOnInit(): void {
@@ -78,6 +81,9 @@ this.route.params.subscribe((data:Params) =>{
         this.router.navigate(['compras']);
       }
     }
+  }
+  cancelar():void {
+    this.router.navigate(['compras']);
   }
 
   init(){

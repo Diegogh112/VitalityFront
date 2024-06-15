@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatOptionModule } from '@angular/material/core';
@@ -10,6 +10,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { Review } from '../../../models/review';
 import { ReviewService } from '../../../services/review.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Users } from '../../../models/users';
+import { UsersService } from '../../../services/users.service';
 
 @Component({
   selector: 'app-creaeditareview',
@@ -29,15 +31,18 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 export class CreaeditareviewComponent {
   form: FormGroup = new FormGroup({});
   review:Review= new Review();
+  users!:Users[]
   id:number=0;
   edicion:boolean=false
 
   constructor(
     private formBuilder: FormBuilder,
-    private rS:ReviewService,
     private router:Router,
+    private rS:ReviewService,
+    private uS:UsersService,
     private route:ActivatedRoute
   ) {}
+
   ngOnInit(): void {
 
 this.route.params.subscribe((data:Params) =>{
@@ -48,11 +53,16 @@ this.route.params.subscribe((data:Params) =>{
 
     this.form = this.formBuilder.group({
       codigo:[''],
-      puntuacion: [''],
-      comentario: [''],
-      usuario: [''],
+      puntuacion: ['', Validators.required],
+      comentario: ['', Validators.required],
+      usuario: ['', Validators.required],
+    });
+
+    this.uS.list().subscribe(a => {
+      this.users = a;
     });
   }
+
   aceptar(): void {
     if (this.form.valid){
         this.review.idReview=this.form.value.codigo;
@@ -76,6 +86,9 @@ this.route.params.subscribe((data:Params) =>{
         this.router.navigate(['resenias']);
       }
     }
+  }
+  cancelar():void {
+    this.router.navigate(['resenias']);
   }
 
   init(){
