@@ -5,7 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { LoginService } from './services/login.service';
-import { NgIf } from '@angular/common';
+import { CommonModule, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -18,6 +18,7 @@ import { NgIf } from '@angular/common';
     MatButtonModule,
     RouterLink,
     NgIf,
+    CommonModule
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',

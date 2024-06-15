@@ -31,14 +31,20 @@ import { LoginComponent } from './components/login/login.component';
 
 export const routes: Routes = [
   {
-    path: '',
-    redirectTo: 'login',
-    pathMatch: 'full',
+    path:'',
+    redirectTo:'login',
+    pathMatch:'full',
   },
   {
-    path: 'login',
-    component: LoginComponent,
+    path: 'homes',
+    component: HomeComponent,
+    canActivate: [segGuard],
   },
+  {
+    path:'login',
+    component:LoginComponent,
+  },
+
   {
     path: 'categorias',
     component: CategoryComponent,
@@ -103,7 +109,9 @@ export const routes: Routes = [
             component: CreaeditahealthobjectiveComponent,
           }
         ],
+
         canActivate: [segGuard], 
+
     },
 
 
@@ -156,8 +164,10 @@ export const routes: Routes = [
             path: 'ediciones/:id',
             component: CreaeditaquestionComponent,
           }
+
         ],
         canActivate: [segGuard], 
+
     },
 
 

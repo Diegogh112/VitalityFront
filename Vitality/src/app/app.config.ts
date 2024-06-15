@@ -1,16 +1,17 @@
 import { ApplicationConfig, importProvidersFrom } from '@angular/core';
 import { provideRouter } from '@angular/router';
-
+import { } from '@auth0/angular-jwt';
 import { routes } from './app.routes';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideHttpClient, withFetch, withInterceptorsFromDi } from '@angular/common/http';
-import { JwtModule } from '@auth0/angular-jwt';
 import { provideClientHydration } from '@angular/platform-browser';
 export function tokenGetter() {
   return sessionStorage.getItem('token');
 }
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes),
+  providers: [
+    provideRouter(routes),
+    provideAnimationsAsync(),
     provideClientHydration(),
     provideHttpClient(withInterceptorsFromDi(),withFetch()),
     importProvidersFrom(

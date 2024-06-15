@@ -10,15 +10,28 @@ const base_url = environment.base;
 export class HealthobjectiveService {
   private url = `${base_url}/Objetivo-de-salud`
   private listaCambio = new Subject<HealthObjective[]>();
-  constructor(private http: HttpClient) {}
+  constructor(private httpClient: HttpClient) {}
 
   list() {
-    return this.http.get<HealthObjective[]>(this.url);
+    return this.httpClient.get<HealthObjective[]>(this.url);
   }
 
   insert(h:HealthObjective){
-    return this.http.post(this.url,h);
+    return this.httpClient.post(this.url,h);
   }
+
+  listId(id: number) {
+    return this.httpClient.get<HealthObjective[]>(`${this.url}/${id}`);
+  }
+
+  update(c: HealthObjective) {
+    return this.httpClient.put(this.url, c);
+  }
+
+  eliminar(id: number) {
+    return this.httpClient.delete(`${this.url}/${id}`);
+  }
+
 
   setList(listaNueva:HealthObjective[]) {
     this.listaCambio.next(listaNueva);
