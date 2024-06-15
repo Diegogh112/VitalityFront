@@ -36,7 +36,7 @@ export class ReviewService {
     return this.http.put(this.url,r)
   }
 
-  eliminar(id: number) {
+  delete(id: number) {
     return this.http.delete(`${this.url}/${id}`);
   }
 }

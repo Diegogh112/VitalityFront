@@ -23,8 +23,25 @@
         <th mat-header-cell *matHeaderCellDef> Usuario </th>
         <td mat-cell *matCellDef="let element"> {{element.user}} </td>
       </ng-container>
+
+      <ng-container matColumnDef="acciones">
+        <th mat-header-cell *matHeaderCellDef> Acciones </th>
+        <td mat-cell *matCellDef="let element">
+              <button mat-icon-button color="primary" [routerLink]="['ediciones',element.idReview]"> 
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button class="boton" mat-icon-button  (click)="deletes(element.idReview)" color="warn"> 
+                <mat-icon>delete</mat-icon>
+              </button>
+        </td>
+      </ng-container>
   
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
+
+    <mat-paginator
+      [pageSizeOptions]="[5, 10, 25, 100]"
+      showFirstLastButtons
+    ></mat-paginator>
     </div>
