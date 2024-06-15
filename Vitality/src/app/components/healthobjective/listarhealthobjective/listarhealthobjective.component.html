@@ -1,1 +1,44 @@
-<p>listarhealthobjective works!</p>
+<div class="container">
+    <br/>
+    <div class="title-container"><h1 class="title">Listar Objetivos de Salud</h1></div>
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  
+
+      <ng-container matColumnDef="codigo">
+        <th mat-header-cell *matHeaderCellDef> Codigo </th>
+        <td mat-cell *matCellDef="let element"> {{element.idHealthObjective}} </td>
+      </ng-container>
+    
+      <ng-container matColumnDef="tipo">
+        <th mat-header-cell *matHeaderCellDef> Tipo de Objetivo </th>
+        <td mat-cell *matCellDef="let element"> {{element.typeObjective}} </td>
+      </ng-container>
+    
+      <ng-container matColumnDef="usuario">
+        <th mat-header-cell *matHeaderCellDef> Usuario </th>
+        <td mat-cell *matCellDef="let element"> {{element.user.username}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="acciones">
+        <th mat-header-cell *matHeaderCellDef> Acciones </th>
+        <td mat-cell *matCellDef="let element">
+              <button mat-icon-button color="primary" [routerLink]="['ediciones',element.idHealthObjective]"> 
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button class="boton" mat-icon-button  (click)="deletes(element.idHealthObjective)" color="warn"> 
+                <mat-icon>delete</mat-icon>
+              </button>
+        </td>
+      </ng-container>
+
+    
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    
+    <mat-paginator
+      [pageSizeOptions]="[5, 10, 25, 100]"
+      showFirstLastButtons
+    ></mat-paginator>
+    </div>
+  

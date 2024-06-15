@@ -1,1 +1,42 @@
-<p>creaeditahealthobjective works!</p>
+<div class="title-container"><h1 class="title">Registrar Productos</h1></div>
+<div class="container">
+  <br />
+  <form [formGroup]="form" (submit)="aceptar()">
+    <mat-form-field *ngIf="edicion">
+      <mat-label>Codigo</mat-label>
+      <input matInput readonly formControlName="codigo" />
+    </mat-form-field>
+<br/>
+    <mat-form-field>
+        <mat-label>Selecciona un tipo de objetivo</mat-label>
+        <mat-select formControlName="tipo">
+          <mat-option *ngFor="let g of listaTipos"  [value]="g.value">
+            {{ g.viewValue }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('tipo')?.hasError('required')"
+        >El tipo es obligatorio.
+      </mat-error>
+      </mat-form-field>
+    <br />
+    <mat-form-field>
+      <mat-label>Selecciona un usuario</mat-label>
+      <mat-select formControlName="usuario">
+        <mat-option *ngFor="let u of users"  [value]="u.idUser">
+          {{ u.username }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.get('usuario')?.hasError('required')"
+      >La categoria es obligatoria.
+    </mat-error>
+    </mat-form-field>
+
+      <br />
+
+      <button class="boton" mat-raised-button color="accent">Aceptar</button>
+      <button class="boton" mat-raised-button color="warn" (click)="cancelar()">
+        Cancelar
+      </button>
+
+  </form>
+</div>

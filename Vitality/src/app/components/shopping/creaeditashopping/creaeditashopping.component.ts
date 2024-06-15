@@ -1,4 +1,3 @@
-/*Creaeditacompra */
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -11,9 +10,14 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { Shopping } from '../../../models/shopping';
 import { ShoppingService } from '../../../services/shopping.service';
+import { UsersService } from '../../../services/users.service';
+import { Users } from '../../../models/users';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {provideNativeDateAdapter} from '@angular/material/core';
 @Component({
   selector: 'app-creaeditashopping',
   standalone: true,
+  providers: [provideNativeDateAdapter()],
   imports: [
     MatFormFieldModule,
     ReactiveFormsModule,
@@ -22,7 +26,7 @@ import { ShoppingService } from '../../../services/shopping.service';
     MatInputModule,
     CommonModule,
     MatButtonModule,
-    MatCheckboxModule
+    MatCheckboxModule,MatDatepickerModule
   ],
   templateUrl: './creaeditashopping.component.html',
   styleUrl: './creaeditashopping.component.css'
@@ -31,6 +35,7 @@ import { ShoppingService } from '../../../services/shopping.service';
 export class CreaeditashoppingComponent {
   form: FormGroup = new FormGroup({});
   shopping:Shopping= new Shopping();
+  users!:Users[]
   id:number=0;
   edicion:boolean=false
 
@@ -38,9 +43,14 @@ export class CreaeditashoppingComponent {
     private formBuilder: FormBuilder,
     private sS:ShoppingService,
     private router:Router,
+    private uS:UsersService,
     private route:ActivatedRoute
   ) {}
   ngOnInit(): void {
+
+    this.uS.list().subscribe(a=>{
+      this.users=a;
+    })
 
 this.route.params.subscribe((data:Params) =>{
   this.id=data['id'];
@@ -50,9 +60,9 @@ this.route.params.subscribe((data:Params) =>{
 
     this.form = this.formBuilder.group({
       codigo:[''],
-      fecha: [''],
-      total: [''],
-      usuario: [''],
+      total: ['',[Validators.required,Validators.pattern('^[0-9]*$')]],
+      fecha: ['',Validators.required],
+      usuario: ['',Validators.required],
     });
   }
   aceptar(): void {
@@ -60,7 +70,7 @@ this.route.params.subscribe((data:Params) =>{
         this.shopping.idShopping=this.form.value.codigo;
         this.shopping.dateShopping=this.form.value.fecha;
         this.shopping.totalShopping=this.form.value.total;
-        this.shopping.user=this.form.value.usuario;
+        this.shopping.user.idUser=this.form.value.usuario;
 
         if (this.edicion){
           this.sS.update(this.shopping).subscribe((data)=>{
@@ -79,6 +89,9 @@ this.route.params.subscribe((data:Params) =>{
       }
     }
   }
+  cancelar():void {
+    this.router.navigate(['compras']);
+  }
 
   init(){
     if (this.edicion){
@@ -87,7 +100,7 @@ this.route.params.subscribe((data:Params) =>{
             codigo:new FormControl(data.idShopping),
             fecha:new FormControl(data.dateShopping),
             total:new FormControl(data.totalShopping),
-            usuario:new FormControl(data.user),
+            usuario:new FormControl(data.user.idUser),
         })
       })
     }

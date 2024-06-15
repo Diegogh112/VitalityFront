@@ -1,1 +1,72 @@
-<p>creaeditamonitoring works!</p>
+<div class="title-container"><h1 class="title " >Registrar Seguimientos</h1></div>
+<div class="container">
+  <br />
+  <form [formGroup]="form" (submit)="aceptar()">
+    <mat-form-field *ngIf="edicion">
+      <mat-label>Codigo</mat-label>
+      <input matInput readonly formControlName="codigo" />
+    </mat-form-field>
+    <br/>
+
+    <mat-form-field>
+        <mat-label>Ingresa las fechas</mat-label>
+        <mat-date-range-input [rangePicker]="picker">
+          <input matStartDate formControlName="start" placeholder="Inicio">
+          <input matEndDate formControlName="end" placeholder="Fin">
+        </mat-date-range-input>
+        <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+      </mat-form-field>
+
+      <br/>
+
+    <mat-form-field>
+      <mat-label>Estado de seguimiento</mat-label>
+      <input matInput formControlName="estado" />
+      <mat-error *ngIf="form.get('estado')?.hasError('required')"
+        >EL estado es obligatorio.</mat-error
+      >
+    </mat-form-field>
+    <br />
+    <mat-form-field>
+      <mat-label>Historial</mat-label>
+      <textarea matInput formControlName="historial"></textarea>
+      <mat-error *ngIf="form.get('historial')?.hasError('required')"
+        >El historial es obligatorio.
+      </mat-error>
+    </mat-form-field>
+
+      <br />
+
+      <mat-form-field>
+        <mat-label>Plan Nutricional</mat-label>
+        <textarea matInput formControlName="plan"></textarea>
+        <mat-error *ngIf="form.get('plan')?.hasError('required')"
+          >El plan es obligatorio.
+        </mat-error>
+      </mat-form-field>
+
+      <br />
+
+      <mat-form-field>
+        <mat-label>Selecciona un objetivo de salud</mat-label>
+        <mat-select formControlName="objetivo">
+          <mat-option *ngFor="let o of objetivos" [value]="o.idHealthObjective">
+            {{ o.idHealthObjective}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('objetivo')?.hasError('required')"
+        >El objetivo es obligatorio.
+      </mat-error>
+      </mat-form-field>
+
+      <br />
+
+
+      <button class="boton" mat-raised-button color="accent">Aceptar</button>
+      <button class="boton" mat-raised-button color="warn" (click)="cancelar()">
+        Cancelar
+      </button>
+  </form>
+</div>

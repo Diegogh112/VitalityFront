@@ -10,12 +10,24 @@
   </mat-form-field>
   <br />
 
-    <mat-form-field>
-      <mat-label>Fecha</mat-label>
-      <input matInput formControlName="fecha" />
-      <mat-error *ngIf="form.get('nombre')?.hasError('required')"
-        >La fecha es obligatorio.</mat-error>
-    </mat-form-field>
+  <mat-form-field appearance="fill" class="example-full-width">
+    <input
+      matInput
+      placeholder="Ingrese fecha"
+      [matDatepicker]="picker"
+      formControlName="fecha"
+    />
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle
+      matIconSuffix
+      [for]="picker"
+    ></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+    
+    <mat-error *ngIf="form.get('fecha')?.hasError('required')"
+      >La fecha es obligatoria.</mat-error
+    >
+  </mat-form-field>  
     <br />
 
     <mat-form-field>
@@ -23,17 +35,27 @@
       <input matInput formControlName="total" />
       <mat-error *ngIf="form.get('total')?.hasError('required')"
         >El total de compras es obligatorio.</mat-error>
-    </mat-form-field>
+    <mat-error *ngIf="form.get('total')?.hasError('pattern')"
+    >El total de compras no es valido.</mat-error>
+</mat-form-field>
     <br />
 
     <mat-form-field>
-      <mat-label>Usuario</mat-label>
-      <input matInput formControlName="user" />
-      <mat-error *ngIf="form.get('user')?.hasError('required')"
-        >El usuario es obligatorio.</mat-error>
+      <mat-label>Selecciona un usuario</mat-label>
+      <mat-select formControlName="usuario">
+        <mat-option *ngFor="let u of users" [value]="u.idUser">
+          {{ u.username}}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.get('usuario')?.hasError('required')"
+      >El usuario es obligatorio.
+    </mat-error>
     </mat-form-field>
     <br />
 
-    <button mat-raised-button color="accent">Aceptar</button>
-  </form>
+      <button class="boton" mat-raised-button color="accent">Aceptar</button>
+      <button class="boton" mat-raised-button color="warn" (click)="cancelar()">
+        Cancelar
+      </button>
+      </form>
 </div>

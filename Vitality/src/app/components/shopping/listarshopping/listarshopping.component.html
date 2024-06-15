@@ -1,3 +1,4 @@
+
 <div class="container">
   <br/>
   <div class="title-container"><h1 class="title">Lista de Compras</h1></div>
@@ -6,7 +7,7 @@
 
     <ng-container matColumnDef="codigo">
       <th mat-header-cell *matHeaderCellDef> Codigo </th>
-      <td mat-cell *matCellDef="let element"> {{element.numOrderShopping}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.idShopping}} </td>
     </ng-container>
   
     <ng-container matColumnDef="fecha">
@@ -21,7 +22,19 @@
 
     <ng-container matColumnDef="usuario">
       <th mat-header-cell *matHeaderCellDef> Usuario </th>
-      <td mat-cell *matCellDef="let element"> {{element.user.typeUsers}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.user.username}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="acciones">
+      <th mat-header-cell *matHeaderCellDef> Acciones </th>
+      <td mat-cell *matCellDef="let element">
+            <button mat-icon-button color="primary" [routerLink]="['ediciones',element.idShopping]"> 
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button class="boton" mat-icon-button  (click)="eliminar(element.idShopping)" color="warn"> 
+              <mat-icon>delete</mat-icon>
+            </button>
+      </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -29,4 +42,5 @@
   </table>
   
   </div>
+
   
