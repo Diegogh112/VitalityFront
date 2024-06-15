@@ -1,1 +1,37 @@
-<p>creaeditaanswer works!</p>
+<div class="container">
+    <br/>
+    <div class="title-container"><h1 class="title">Registrar Respuestas</h1></div>
+    <form [formGroup]="form" (submit)="aceptar()">
+        <mat-form-field *ngIf="edicion">
+            <mat-label>Codigo</mat-label>
+            <input matInput readonly formControlName="codigo" />
+          </mat-form-field>
+      
+          <mat-form-field>
+            <mat-label>Respuesta</mat-label>
+            <input matInput formControlName="descripcion" />
+            <mat-error *ngIf="form.get('descripcion')?.hasError('required')"
+              >La respuesta es obligatoria.</mat-error
+            >
+          </mat-form-field>
+      
+          <br />
+            <mat-form-field>
+                <mat-label>Selecciona un usuario</mat-label>
+                <mat-select formControlName="usuario">
+                  <mat-option *ngFor="let user of users"  [value]="user.idUser">
+                    {{ user.username }}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="form.get('categoria')?.hasError('required')"
+                >La categoria es obligatoria.
+              </mat-error>
+              </mat-form-field>
+    
+  <br>
+        <button class="boton" mat-raised-button color="accent">Aceptar</button>
+        <button class="boton" mat-raised-button color="warn" (click)="cancelar()">
+          Cancelar
+        </button>
+    </form>
+</div>  

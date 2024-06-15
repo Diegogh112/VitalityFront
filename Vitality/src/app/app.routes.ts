@@ -25,8 +25,20 @@ import { SpecialityComponent } from './components/speciality/speciality.componen
 import { CreaeditaspecialityComponent } from './components/speciality/creaeditaspeciality/creaeditaspeciality.component';
 import { UsersComponent } from './components/users/users.component';
 import { CreaeditausersComponent } from './components/users/creaeditausers/creaeditausers.component';
+import { HomeComponent } from './components/home/home.component';
+import { segGuard } from './guard/seguridad.guard';
+import { LoginComponent } from './components/login/login.component';
 
 export const routes: Routes = [
+  {
+    path: '',
+    redirectTo: 'login',
+    pathMatch: 'full',
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+  },
   {
     path: 'categorias',
     component: CategoryComponent,
@@ -40,6 +52,7 @@ export const routes: Routes = [
         component: CreaeditacategoryComponent,
       }
     ],
+    canActivate: [segGuard], 
   },
 
     {
@@ -55,6 +68,7 @@ export const routes: Routes = [
           component: CreaeditarecommendationComponent,
         }
       ],
+      canActivate: [segGuard], 
     },
 
     
@@ -71,6 +85,7 @@ export const routes: Routes = [
             component: CreaeditaanswerComponent,
           }
         ],
+        canActivate: [segGuard], 
     },
 
 
@@ -88,6 +103,7 @@ export const routes: Routes = [
             component: CreaeditahealthobjectiveComponent,
           }
         ],
+        canActivate: [segGuard], 
     },
 
 
@@ -105,6 +121,7 @@ export const routes: Routes = [
             component: CreaeditamonitoringComponent,
           }
         ],
+        canActivate: [segGuard], 
     },
 
 
@@ -122,6 +139,7 @@ export const routes: Routes = [
             component: CreaeditaproductComponent,
           }
         ],
+        canActivate: [segGuard], 
     },
 
 
@@ -139,6 +157,7 @@ export const routes: Routes = [
             component: CreaeditaquestionComponent,
           }
         ],
+        canActivate: [segGuard], 
     },
 
 
@@ -156,6 +175,7 @@ export const routes: Routes = [
             component: CreaeditareviewComponent,
           }
         ],
+        canActivate: [segGuard], 
     },
 
 
@@ -173,6 +193,7 @@ export const routes: Routes = [
             component: CreaeditaroleComponent,
           }
         ],
+        canActivate: [segGuard], 
     },
 
 
@@ -190,6 +211,7 @@ export const routes: Routes = [
             component: CreaeditashoppingComponent,
           }
         ],
+        canActivate: [segGuard], 
     },
 
 
@@ -207,6 +229,7 @@ export const routes: Routes = [
             component: CreaeditashoppingdetailComponent,
           }
         ],
+        canActivate: [segGuard], 
     },
 
 
@@ -224,6 +247,7 @@ export const routes: Routes = [
             component: CreaeditaspecialityComponent,
           }
         ],
+        canActivate: [segGuard], 
     },
 
 
@@ -241,6 +265,13 @@ export const routes: Routes = [
             component: CreaeditausersComponent,
           }
         ],
+        canActivate: [segGuard], 
+    },
+
+    {
+      path: 'homes',
+      component: HomeComponent,
+      canActivate: [segGuard],
     },
 
 

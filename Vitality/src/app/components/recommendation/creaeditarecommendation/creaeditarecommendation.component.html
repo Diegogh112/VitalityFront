@@ -20,7 +20,7 @@
 
       <mat-label>Selecciona un usuario</mat-label>
       <mat-select formControlName="usuario">
-        <mat-option *ngFor="let u of users" [value]="u">
+        <mat-option  *ngFor="let u of users" [value]="u.idUser" >
           {{ u.username}}
         </mat-option>
       </mat-select>
@@ -35,5 +35,6 @@
       <button class="boton" mat-raised-button color="warn" (click)="cancelar()">
         Cancelar
       </button>
-      </form>
+
+    </form>
 </div>

@@ -5,11 +5,13 @@ import { RecommendationService } from '../../../services/recommendation.service'
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-listarrecommendation',
   standalone: true,
-  imports: [MatTableModule,MatIconModule,RouterLink,MatButtonModule],
+  imports: [MatTableModule,MatIconModule,RouterLink,MatButtonModule, MatFormFieldModule, CommonModule],
   templateUrl: './listarrecommendation.component.html',
   styleUrl: './listarrecommendation.component.css'
 })
