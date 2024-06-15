@@ -1,77 +1,64 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { CommonModule, NgIf } from '@angular/common';
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators,ReactiveFormsModule } from '@angular/forms';
 import { HealthObjective } from '../../../models/healthobjective';
-import { ActivatedRoute, Params, RouterLink, RouterOutlet } from '@angular/router';
-import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { ReactiveFormsModule } from '@angular/forms';
-import { HealthobjectiveService } from '../../../services/healthobjective.service'; 
-import { Router } from '@angular/router';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { CommonModule } from '@angular/common';
-import { MatButtonModule } from '@angular/material/button';
+import { HealthobjectiveService } from '../../../services/healthobjective.service';
+import { Router,RouterLink } from '@angular/router';
+import { UsersService } from '../../../services/users.service';
 import { Users } from '../../../models/users';
 
 @Component({
   selector: 'app-creaeditahealthobjective',
   standalone: true,
-  imports: [
-    MatButtonModule,
-    RouterOutlet,
-    RouterLink,
-    MatToolbarModule,
-    CommonModule,
-    MatSelectModule,
-    MatInputModule,
-    MatFormFieldModule,
+  imports: [CommonModule,
+    NgIf,
     ReactiveFormsModule,
-  ],
+    MatButtonModule,
+    MatNativeDateModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    RouterLink],
   templateUrl: './creaeditahealthobjective.component.html',
   styleUrl: './creaeditahealthobjective.component.css'
 })
-export class CreaeditahealthobjectiveComponent implements OnInit {
-  form: FormGroup=new FormGroup({});
-  healthObjective:HealthObjective=new HealthObjective();
-  mensaje:string="";
-  id:number=0;
-  edicion:boolean=false;
-  listaUsuario:Users[]=[];
+export class CreaeditahealthobjectiveComponent {
+  form: FormGroup = new FormGroup({});
+  health: HealthObjective = new HealthObjective();
+  listausers: Users[] = [];
 
-  constructor (private formBuilder:FormBuilder, private hS:HealthobjectiveService, private router: Router, private route:ActivatedRoute){}
+
+  constructor(
+    private hS: HealthobjectiveService,
+    private router: Router,
+    private formBuilder: FormBuilder,
+    private uS: UsersService
+  ) {}
   ngOnInit(): void {
-    this.route.params.subscribe((data: Params) => {
-      this.id = data['id'];
-      this.edicion = data['id'] != null;
-      this.init();
+    this.form = this.formBuilder.group({
+      tipo: ['', Validators.required],
+      user: ['', Validators.required],
     });
-    this.form=this.formBuilder.group({
-      codigo:[''],
-      tipo:[''],
-      user:[''],
-    })
+    this.uS.list().subscribe((data) => {
+      this.listausers = data;
+    });
   }
-  aceptar():void{
-    if (this.form.valid){this.healthObjective.idHealthObjective=this.form.value.codigo; this.healthObjective.typeObjective=this.form.value.consulta;
-      if (this.edicion){this.hS.update(this.healthObjective).subscribe(()=>{this.hS.list().subscribe((data)=>{this.hS.setList(data);});});}
-      else {this.hS.insert(this.healthObjective).subscribe((data) => {
+  aceptar(): void {
+    if (this.form.valid ) {
+      this.health.typeObjective = this.form.value.tipo;
+      this.health.user= this.form.value.user;
+      this.hS.insert(this.health).subscribe((data) => {
         this.hS.list().subscribe((data) => {
           this.hS.setList(data);
         });
-      });}
-        this.router.navigate(['Objetivo-de-salud']);
-    }
-  }
-
-  init() {
-    if (this.edicion) {
-      this.hS.listId(this.id).subscribe((data) => {
-        this.form = new FormGroup({
-          codigo: new FormControl(data.idHealthObjective),
-          tipo: new FormControl(data.typeObjective),
-          user: new FormControl(data.user)
-        });
       });
+
+      this.router.navigate(['objetivo-de-salud']);
     }
   }
 }

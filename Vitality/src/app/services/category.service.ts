@@ -27,4 +27,16 @@ export class CategoryService {
   getList(){
     return this.listaCambio.asObservable();
   }
+
+  listid(id:number){
+    return this.http.get<Category>(`${this.url}/${id}`)
+  }
+
+  update(c:Category){
+    return this.http.put(this.url,c)
+  }
+
+  eliminar(id: number) {
+    return this.http.delete(`${this.url}/${id}`);
+  }
 }

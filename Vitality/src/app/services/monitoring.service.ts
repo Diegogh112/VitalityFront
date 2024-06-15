@@ -28,4 +28,15 @@ export class MonitoringService {
   getList(){
     return this.listaCambio.asObservable();
   }
+  listid(id:number){
+    return this.http.get<Monitoring>(`${this.url}/${id}`)
+  }
+
+  update(m:Monitoring){
+    return this.http.put(this.url,m)
+  }
+
+  eliminar(id: number) {
+    return this.http.delete(`${this.url}/${id}`);
+  }
 }

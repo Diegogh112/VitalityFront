@@ -13,7 +13,7 @@ export const appConfig: ApplicationConfig = {
         config: {
           tokenGetter: tokenGetter,
           allowedDomains: ['localhost:8083'],
-          disallowedRoutes: ['http://localhost:8080/login/forget'],
+          disallowedRoutes: ['http://localhost:8083/login/forget'],
         },
       })
     ), provideAnimationsAsync(),

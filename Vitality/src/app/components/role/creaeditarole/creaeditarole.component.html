@@ -1,1 +1,37 @@
-<p>creaeditarole works!</p>
+<div class="title-container"><h1 class="title">Registrar Roles</h1></div>
+<div class="container">
+  <br />
+  <form [formGroup]="form" (submit)="aceptar()">
+    <mat-form-field *ngIf="edicion">
+      <mat-label>Codigo</mat-label>
+      <input matInput readonly formControlName="codigo" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Nombre de Rol</mat-label>
+      <input matInput formControlName="nombre" />
+      <mat-error *ngIf="form.get('nombre')?.hasError('required')"
+        >EL nombre es obligatorio.</mat-error
+      >
+    </mat-form-field>
+    <br />
+    <mat-form-field>
+      <mat-label>Selecciona un usuario</mat-label>
+      <mat-select formControlName="usuario">
+        <mat-option *ngFor="let u of users"  [value]="u">
+          {{ u.username }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.get('usuario')?.hasError('required')"
+      >El usuario es obligatorio.
+    </mat-error>
+    </mat-form-field>
+  
+
+      <br />
+      <button class="boton" mat-raised-button color="accent">Aceptar</button>
+      <button class="boton" mat-raised-button color="warn" (click)="cancelar()">
+        Cancelar
+      </button>
+  </form>
+</div>

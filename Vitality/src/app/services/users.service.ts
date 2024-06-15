@@ -14,11 +14,13 @@ export class UsersService {
   constructor(private http: HttpClient) {}
 
   list() {
-    return this.http.get<Users[]>(this.url);
+    return this.http.get<Users[]>(this.url+"/listarusuarios");
   }
 
-  insert(h:Users){
-    return this.http.post(this.url,h);
+  //para insertar
+
+  insert(u:Users){
+    return this.http.post(this.url,u);
   }
 
   setList(listaNueva:Users[]) {
@@ -27,5 +29,18 @@ export class UsersService {
 
   getList(){
     return this.listaCambio.asObservable();
+  
+  }
+
+  //para modificar
+  listid(id:number){
+    return this.http.get<Users>(`${this.url}/${id}`)
+  }
+
+  update(u:Users){
+    return this.http.put(this.url,u)
+  }
+  delete(id: number) {
+    return this.http.delete(`${this.url}/${id}`);
   }
 }
