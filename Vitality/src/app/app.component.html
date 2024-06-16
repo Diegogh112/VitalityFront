@@ -1,18 +1,32 @@
-<mat-toolbar>
+<mat-toolbar color="primary" *ngIf="verificar()">
   <mat-icon>menu</mat-icon>
-  <button mat-button [matMenuTriggerFor]="menuUsers" > <mat-icon>group</mat-icon>Usuarios</button>
-  <button mat-button [matMenuTriggerFor]="menuCategory"  ><mat-icon>category</mat-icon>Categorias</button>
-  <button mat-button [matMenuTriggerFor]="menuRole"  ><mat-icon>admin_panel_settings</mat-icon>Roles</button>
-  <button mat-button [matMenuTriggerFor]="menuProduct"  ><mat-icon>shopping_bag</mat-icon>Productos</button>
-  <button mat-button [matMenuTriggerFor]="menuSpeciality"  ><mat-icon>medical_services</mat-icon>Especialidades</button>
-  <button mat-button [matMenuTriggerFor]="menuHealthObjective"   ><mat-icon>fitness_center</mat-icon>Objetivos de Salud</button>
-  <button mat-button [matMenuTriggerFor]="menuMonitoring"  ><mat-icon>track_changes</mat-icon>Seguimientos</button>
-  <button mat-button [matMenuTriggerFor]="menuShopping"  ><mat-icon>shopping_cart</mat-icon>Compras</button>
-  <button mat-button [matMenuTriggerFor]="menuShoppingDetail"  ><mat-icon>receipt_long</mat-icon>Detalles de Compras</button>
-  <button mat-button [matMenuTriggerFor]="menuReview"  ><mat-icon>rate_review</mat-icon>Reseñas</button>
-  <button mat-button [matMenuTriggerFor]="menuQuestion"  ><mat-icon>question_answer</mat-icon>Preguntas</button>
-  <button mat-button [matMenuTriggerFor]="menuAnswer"   ><mat-icon>reply</mat-icon>Respuestas</button>
-  <button mat-button [matMenuTriggerFor]="menuRecommendation" ><mat-icon>recommend</mat-icon>Recomendaciones</button>
+  <button mat-button [matMenuTriggerFor]="menuUsers" *ngIf="isAdmin()"> 
+    <mat-icon>group</mat-icon>Usuarios</button>
+  <button mat-button [matMenuTriggerFor]="menuCategory"  *ngIf="isAdmin()">
+    <mat-icon>category</mat-icon>Categorias</button>
+  <button mat-button [matMenuTriggerFor]="menuRole" *ngIf="isAdmin()" >
+    <mat-icon>admin_panel_settings</mat-icon>Roles</button>
+  <button mat-button [matMenuTriggerFor]="menuProduct" *ngIf="isAdmin()" >
+    <mat-icon>shopping_bag</mat-icon>Productos</button>
+  <button mat-button [matMenuTriggerFor]="menuSpeciality" *ngIf="isAdmin()" >
+    <mat-icon>medical_services</mat-icon>Especialidades</button>
+  <button mat-button [matMenuTriggerFor]="menuHealthObjective"  *ngIf="isCliente()" >
+    <mat-icon>fitness_center</mat-icon>Objetivos de Salud</button>
+  <button mat-button [matMenuTriggerFor]="menuMonitoring"  *ngIf="isProfesional()">
+    <mat-icon>track_changes</mat-icon>Seguimientos</button>
+  <button mat-button [matMenuTriggerFor]="menuShopping" *ngIf="isAdmin()" >
+    <mat-icon>shopping_cart</mat-icon>Compras</button>
+  <button mat-button [matMenuTriggerFor]="menuShoppingDetail" *ngIf="isAdmin()" >
+    <mat-icon>receipt_long</mat-icon>Detalles de Compras</button>
+  <button mat-button [matMenuTriggerFor]="menuReview" *ngIf="isCliente()" >
+    <mat-icon>rate_review</mat-icon>Reseñas</button>
+  <button mat-button [matMenuTriggerFor]="menuQuestion"  *ngIf="isAdmin()">
+    <mat-icon>question_answer</mat-icon>Preguntas</button>
+  <button mat-button [matMenuTriggerFor]="menuAnswer"  *ngIf="isCliente()" >
+    <mat-icon>reply</mat-icon>Respuestas</button>
+  <button mat-button [matMenuTriggerFor]="menuRecommendation" *ngIf="isCliente()">
+    <mat-icon>recommend</mat-icon>Recomendaciones</button>
+    <button mat-button [matMenuTriggerFor]="menuSalir">Usuario</button>
 </mat-toolbar>
 <mat-menu #menuUsers="matMenu">
   <button mat-menu-item routerLink="/usuarios">Listar Usuarios </button>
@@ -65,5 +79,16 @@
 <mat-menu #menuAnswer="matMenu">
   <button mat-menu-item routerLink="/Respuesta">Listar Respuestas</button>
   <button mat-menu-item routerLink="/Respuesta/nuevo">Registrar Respuestas</button>
+</mat-menu>
+
+<mat-menu #menuSalir="matMenu">
+  <button mat-menu-item routerLink="/login" (click)="cerrar()">
+    <mat-icon>logout</mat-icon>
+    <span>Cerrar sesión</span>
+  </button>
+  <button mat-menu-item>
+    Rol:
+    <span>{{ role }}</span>
+  </button>
 </mat-menu>
 <router-outlet></router-outlet>
