@@ -1,5 +1,6 @@
 <mat-toolbar color="primary" *ngIf="verificar()">
   <mat-icon>menu</mat-icon>
+  <img src="assets/Vitality.png" alt="Logo de la marca" class="logo">
   <button mat-button [matMenuTriggerFor]="menuUsers" *ngIf="isAdmin()"> 
     <mat-icon>group</mat-icon>Usuarios</button>
   <button mat-button [matMenuTriggerFor]="menuCategory"  *ngIf="isAdmin()">
