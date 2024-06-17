@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
@@ -26,7 +26,7 @@ export class AppComponent {
   title = 'Vitality';
 
   role: string = '';
-  constructor(private loginService: LoginService) {}
+  constructor(private loginService: LoginService,private router:Router) {}
 
   cerrar() {
     sessionStorage.clear();
@@ -46,5 +46,10 @@ export class AppComponent {
 
   isProfesional() {
     return this.role === 'PROFESIONAL';
+  }
+
+  goHome(){
+    this.router.navigate(['homes']);
+
   }
 }

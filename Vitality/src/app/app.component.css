@@ -3,7 +3,17 @@
 }
 
 .logo {
-    width: 50px;
+    width: 100%;
+    height: 100%;
+}
+.custom-icon {
     margin-left: 15px;
     margin-right: 15px;
+    width: 50px; /* Ajusta el tamaño según tus necesidades */
+    height: 50px; /* Ajusta el tamaño según tus necesidades */
+  }
+
+.custom-icon:hover {
+    cursor: pointer;
 }
+  
