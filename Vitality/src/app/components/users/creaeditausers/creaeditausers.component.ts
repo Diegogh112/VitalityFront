@@ -61,7 +61,7 @@ this.route.params.subscribe((data:Params) =>{
   }
   aceptar(): void {
     if (this.form.valid){
-        this.users.idUser=this.form.value.codigo;
+        this.users.id=this.form.value.codigo;
         this.users.username=this.form.value.nombre;
         this.users.email=this.form.value.correo;
         this.users.password=this.form.value.contrasenia;
@@ -98,7 +98,7 @@ this.route.params.subscribe((data:Params) =>{
     if (this.edicion){
       this.uS.listid(this.id).subscribe((data)=>{
         this.form=new FormGroup({
-            codigo:new FormControl(data.idUser),
+            codigo:new FormControl(data.id),
             nombre:new FormControl(data.username),
             correo:new FormControl(data.email),
             contrasenia:new FormControl(data.password),

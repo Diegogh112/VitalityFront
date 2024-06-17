@@ -60,9 +60,9 @@ export class CreaeditaroleComponent implements OnInit {
   }
   aceptar(): void {
     if (this.form.valid){
-        this.role.idRole=this.form.value.codigo;
+        this.role.id=this.form.value.codigo;
         this.role.rol=this.form.value.nombre;
-        this.role.user.idUser=this.form.value.usuario;
+        this.role.user.id=this.form.value.usuario;
 
         if (this.edicion){
           this.rS.update(this.role).subscribe((data)=>{
@@ -89,9 +89,9 @@ export class CreaeditaroleComponent implements OnInit {
     if (this.edicion){
       this.rS.listid(this.id).subscribe((data)=>{
         this.form=new FormGroup({
-            codigo:new FormControl(data.idRole),
+            codigo:new FormControl(data.id),
             nombre:new FormControl(data.rol),
-            usuario:new FormControl(data.user.idUser)
+            usuario:new FormControl(data.user.id)
         })
       })
     }

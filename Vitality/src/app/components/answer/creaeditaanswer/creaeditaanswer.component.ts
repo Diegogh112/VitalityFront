@@ -65,7 +65,7 @@ export class CreaeditaanswerComponent implements OnInit{
     if (this.form.valid){
         this.answer.idAnswer=this.form.value.codigo;
         this.answer.solution=this.form.value.descripcion;
-        this.answer.user.idUser=this.form.value.usuario;
+        this.answer.user.id=this.form.value.usuario;
         
 
         if (this.edicion){
@@ -96,7 +96,7 @@ export class CreaeditaanswerComponent implements OnInit{
         this.form=new FormGroup({
             codigo:new FormControl(data.idAnswer),
             descripcion:new FormControl(data.solution),
-            usuario:new FormControl(data.user.idUser)
+            usuario:new FormControl(data.user.id)
             
           })
           

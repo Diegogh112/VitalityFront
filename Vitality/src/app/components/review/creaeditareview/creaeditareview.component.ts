@@ -66,7 +66,7 @@ this.route.params.subscribe((data:Params) =>{
         this.review.idReview=this.form.value.codigo;
         this.review.punctuation=this.form.value.puntuacion;
         this.review.comment=this.form.value.comentario;
-        this.review.user.idUser=this.form.value.usuario;
+        this.review.user.id=this.form.value.usuario;
 
         if (this.edicion){
           this.rS.update(this.review).subscribe((data)=>{
@@ -98,7 +98,7 @@ this.route.params.subscribe((data:Params) =>{
             codigo:new FormControl(data.idReview),
             puntuacion:new FormControl(data.punctuation),
             comentario:new FormControl(data.comment),
-            usuario:new FormControl(data.user.idUser),
+            usuario:new FormControl(data.user.id),
         })
       })
     }

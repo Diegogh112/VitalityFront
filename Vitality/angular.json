@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Vitality": {
+    "demoFrontendSI61SS": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -28,12 +28,7 @@
               "@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css"
             ],
-            "scripts": [],
-            "server": "src/main.server.ts",
-            "prerender": true,
-            "ssr": {
-              "entry": "server.ts"
-            }
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -63,10 +58,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "Vitality:build:production"
+              "buildTarget": "demoFrontendSI61SS:build:production"
             },
             "development": {
-              "buildTarget": "Vitality:build:development"
+              "buildTarget": "demoFrontendSI61SS:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -74,7 +69,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "Vitality:build"
+            "buildTarget": "demoFrontendSI61SS:build"
           }
         },
         "test": {
@@ -100,6 +95,6 @@
     }
   },
   "cli": {
-    "analytics": "672cbdb6-0317-48e8-b635-dd7267e6727c"
+    "analytics": "542bd24b-5996-4012-9a0b-2310da1effce"
   }
 }
