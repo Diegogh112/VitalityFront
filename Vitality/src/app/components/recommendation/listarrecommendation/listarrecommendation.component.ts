@@ -7,11 +7,22 @@ import { RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { CommonModule } from '@angular/common';
+import { MatCardModule } from '@angular/material/card';
+import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'app-listarrecommendation',
   standalone: true,
-  imports: [MatTableModule,MatIconModule,RouterLink,MatButtonModule, MatFormFieldModule, CommonModule],
+  imports: [MatButtonModule,
+    MatTableModule,
+    MatFormFieldModule,
+    RouterLink,
+    MatPaginatorModule,
+    MatInputModule,
+    MatIconModule,MatSortModule,
+    MatCardModule],
   templateUrl: './listarrecommendation.component.html',
   styleUrl: './listarrecommendation.component.css'
 })

@@ -6,7 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { LoginService } from '../../services/login.service';
 import { Router } from '@angular/router';
-import { JwtRequest } from '../../models/jwtRequest';
+import { JwtRequest } from '../../models/jwt.Request';
 
 @Component({
   selector: 'app-login',

@@ -81,7 +81,7 @@ export class CreaeditahealthobjectiveComponent {
     if (this.form.valid){
         this.healthobjective.idHealthObjective=this.form.value.codigo;
         this.healthobjective.typeObjective=this.form.value.tipo;
-        this.healthobjective.user.idUser=this.form.value.usuario;
+        this.healthobjective.user.id=this.form.value.usuario;
         if (this.edicion){
           this.hoS.update(this.healthobjective).subscribe((data)=>{
             this.hoS.list().subscribe((data)=>{
@@ -110,7 +110,7 @@ export class CreaeditahealthobjectiveComponent {
         this.form=new FormGroup({
             codigo:new FormControl(data.idHealthObjective),
             tipo:new FormControl(data.typeObjective),
-            usuario:new FormControl(data.user.idUser),
+            usuario:new FormControl(data.user.id),
         })
       })
     }

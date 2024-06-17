@@ -71,7 +71,7 @@ export class CreaeditarecommendationComponent implements OnInit{
     if (this.form.valid){
         this.rec.idRecommendation=this.form.value.codigo;
         this.rec.descriptionRecommendation=this.form.value.descripcion;
-        this.rec.user.idUser=this.form.value.usuario;
+        this.rec.user.id=this.form.value.usuario;
         
 
         if (this.edicion){
@@ -102,7 +102,7 @@ export class CreaeditarecommendationComponent implements OnInit{
         this.form=new FormGroup({
             codigo:new FormControl(data.idRecommendation),
             descripcion:new FormControl(data.descriptionRecommendation),
-            usuario:new FormControl(data.user.idUser)
+            usuario:new FormControl(data.user.id)
             
           })
           

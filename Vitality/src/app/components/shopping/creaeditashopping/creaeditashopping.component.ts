@@ -70,7 +70,7 @@ this.route.params.subscribe((data:Params) =>{
         this.shopping.idShopping=this.form.value.codigo;
         this.shopping.dateShopping=this.form.value.fecha;
         this.shopping.totalShopping=this.form.value.total;
-        this.shopping.user.idUser=this.form.value.usuario;
+        this.shopping.user.id=this.form.value.usuario;
 
         if (this.edicion){
           this.sS.update(this.shopping).subscribe((data)=>{
@@ -100,7 +100,7 @@ this.route.params.subscribe((data:Params) =>{
             codigo:new FormControl(data.idShopping),
             fecha:new FormControl(data.dateShopping),
             total:new FormControl(data.totalShopping),
-            usuario:new FormControl(data.user.idUser),
+            usuario:new FormControl(data.user.id),
         })
       })
     }
