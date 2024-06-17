@@ -6,9 +6,10 @@
   
     margin-top: 60px;  /* Add a margin-top to further position it down the page */
 
-    margin-right: 100px;
+    width: 70%;
 
-    margin-left: 100px;
+    margin-left: 30px;
+
 
   
    }
@@ -24,8 +25,6 @@
     font-size: 2em;
   
     color: #333;
-
-    background-color: rgb(229, 113, 67);
 
     
   

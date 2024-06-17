@@ -8,4 +8,5 @@ export class Users {
     height:number=0
     subscription:boolean=false
     healthProfessional:boolean=false
+    enabled:boolean=true
 }

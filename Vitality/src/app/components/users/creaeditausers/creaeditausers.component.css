@@ -8,6 +8,7 @@
     
     width: 70%;
 
+    margin-left: 30px;
 
 
    }
@@ -24,7 +25,8 @@
   
     color: #333;
 
-    background-color: burlywood;
+
+
    }
   
    mat-form-field {

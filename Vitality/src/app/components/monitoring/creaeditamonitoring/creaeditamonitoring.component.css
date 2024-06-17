@@ -5,12 +5,9 @@
     margin-bottom: 40px; /* Increase the margin-bottom to move the title lower */
   
     margin-top: 60px;  /* Add a margin-top to further position it down the page */
+    width: 70%;
 
-    margin-right: 100px;
-
-    margin-left: 100px;
-
-  
+    margin-left: 30px;
    }
   
    
@@ -25,7 +22,6 @@
   
     color: #333;
 
-    background-color: rgb(229, 113, 67);
 
     
   
