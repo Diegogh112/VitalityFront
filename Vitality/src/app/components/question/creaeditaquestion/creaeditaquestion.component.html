@@ -1,8 +1,13 @@
-<div class="title-container"><h1>Registro de preguntas</h1></div>
-<div class="title-container" >
-    
-  <form [formGroup]="form" (submit)="aceptar()">
-    <mat-form-field>
+<div class="container" style="text-align: center;" >
+  <h2>Registro de preguntas</h2>
+  <form [formGroup]="form" (submit)="aceptar()" class="example-form">
+    <mat-form-field class="example-full-width" *ngIf="edicion" >
+      <mat-label>Codigo</mat-label>
+      <input matInput placeholder="Codigo" formControlName="codigo" readonly/>
+      <mat-error *ngIf="form.get('codigo')?.hasError('required')"
+    >El codigo no se modifica.</mat-error>
+</mat-form-field>
+    <mat-form-field >
       <mat-label>Preguntas</mat-label>
       <mat-select formControlName="consulta">
         <mat-option *ngFor="let g of listaPreguntas" [value]="g.value">
@@ -13,7 +18,8 @@
         >La pregunta es obligatoria.</mat-error
       >
     </mat-form-field>
-    
-    <div class="title-container"><button mat-raised-button color="primary">Aceptar</button></div>
+    <br/>
+    <button mat-raised-button color="primary">Aceptar</button>
+    <button mat-raised-button color="warn" routerLink="/preguntas">Cancelar</button>
   </form>
 </div>

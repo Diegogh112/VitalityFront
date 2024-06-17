@@ -1,1 +1,30 @@
-<p>creaeditahealthobjective works!</p>
+<div class="container" style="text-align: center">
+  <h2>Registro de Objetivos</h2>
+  <form [formGroup]="form" (submit)="aceptar()" class="example-form">
+    <mat-form-field class="example-full-width">
+      <mat-label>Tipo</mat-label>
+      <input matInput placeholder="tipo" formControlName="tipo" />
+      <mat-error *ngIf="form.get('tipo')?.hasError('required')"
+        >El tipo es obligatorio.</mat-error>
+    </mat-form-field>
+    <br/>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Usuario</mat-label>
+      <mat-select formControlName="user">
+        <mat-option *ngFor="let u of listausers" [value]="u">
+          {{ u.username }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.get('user')?.hasError('required')"
+        >El Usuario es obligatorio.</mat-error
+      >
+    </mat-form-field>
+    <br />
+
+    <button mat-raised-button color="primary">Aceptar</button>
+    <button mat-raised-button color="warn" routerLink="/objetivo-de-salud">
+      Cancelar
+    </button>
+  </form>
+</div>

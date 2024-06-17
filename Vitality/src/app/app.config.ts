@@ -9,15 +9,13 @@ export function tokenGetter() {
   return sessionStorage.getItem('token');
 }
 export const appConfig: ApplicationConfig = {
-  providers: [
-    provideRouter(routes),
-    provideAnimationsAsync(),
-    provideClientHydration(),
-    provideHttpClient(withInterceptorsFromDi(),withFetch()),
+  providers: [provideRouter(routes),
+    provideHttpClient(withInterceptorsFromDi()),
     importProvidersFrom(
       JwtModule.forRoot({
         config: {
           tokenGetter: tokenGetter,
+
           allowedDomains: ['localhost:8080'],
           disallowedRoutes: ['http://localhost:8080/login/forget'],
         },

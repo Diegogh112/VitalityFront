@@ -21,7 +21,7 @@ export class HealthobjectiveService {
   }
 
   listId(id: number) {
-    return this.httpClient.get<HealthObjective[]>(`${this.url}/${id}`);
+    return this.httpClient.get<HealthObjective>(`${this.url}/${id}`);
   }
 
   update(c: HealthObjective) {
@@ -39,17 +39,5 @@ export class HealthobjectiveService {
 
   getList(){
     return this.listaCambio.asObservable();
-  }
-
-  listid(id:number){
-    return this.http.get<HealthObjective>(`${this.url}/${id}`)
-  }
-
-  update(h:HealthObjective){
-    return this.http.put(this.url,h)
-  }
-
-  eliminar(id: number) {
-    return this.http.delete(`${this.url}/${id}`);
   }
 }

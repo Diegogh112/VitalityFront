@@ -1,6 +1,6 @@
-<<<<<<< HEAD
 <mat-toolbar *ngIf="verificar()">
   <mat-icon>menu</mat-icon>
+
   <button mat-button [matMenuTriggerFor]="menuUsers" *ngIf="isAdmin()"> <mat-icon>group</mat-icon>Usuarios</button>
   <button mat-button [matMenuTriggerFor]="menuCategory" *ngIf="isAdmin()"><mat-icon>category</mat-icon>Categorias</button>
   <button mat-button [matMenuTriggerFor]="menuRole" *ngIf="isAdmin()"><mat-icon>admin_panel_settings</mat-icon>Roles</button>
@@ -16,6 +16,20 @@
   <button mat-button [matMenuTriggerFor]="menuRecommendation" *ngIf="isCliente()"><mat-icon>recommend</mat-icon>Recomendaciones</button>
   <button mat-button [matMenuTriggerFor]="menuSalir"><mat-icon>person</mat-icon>Perfil</button>
 
+  <button mat-button [routerLink]="['/homes']"><mat-icon>home</mat-icon>Home</button>
+  <button mat-button [matMenuTriggerFor]="menuUsers">Usuarios</button>
+  <button mat-button [matMenuTriggerFor]="menuCategory">Categorias</button>
+  <button mat-button [matMenuTriggerFor]="menuRole">Roles</button>
+  <button mat-button [matMenuTriggerFor]="menuProduct">Productos</button>
+  <button mat-button [matMenuTriggerFor]="menuSpeciality">Especialidad</button>
+  <button mat-button [matMenuTriggerFor]="menuHealthObjective" *ngIf="isAdmin()||isProfesional()">Objetivos de Salud</button>
+  <button mat-button [matMenuTriggerFor]="menuMonitoring">Seguimiento</button>
+  <button mat-button [matMenuTriggerFor]="menuShopping">Compras</button>
+  <button mat-button [matMenuTriggerFor]="menuShoppingDetail">Detalles de Compras</button>
+  <button mat-button [matMenuTriggerFor]="menuReview">Reseñas</button>
+  <button mat-button [matMenuTriggerFor]="menuQuestion" *ngIf="isAdmin() ||isProfesional()">Preguntas</button>
+  <button mat-button [matMenuTriggerFor]="menuAnswer">Respuestas</button>
+  <button mat-button [matMenuTriggerFor]="menuRecommendation">Recomendaciones</button>
 </mat-toolbar>
 <mat-menu #menuUsers="matMenu">
   <button mat-menu-item routerLink="/usuarios">Listar Usuarios </button>
@@ -38,8 +52,8 @@
   <button mat-menu-item routerLink="/especialidades/nuevo">Registrar Especialidad</button>
 </mat-menu>
 <mat-menu #menuHealthObjective="matMenu">
-  <button mat-menu-item routerLink="/Objetivo-de-salud">Listar Objetivos de Salud</button>
-  <button mat-menu-item routerLink="/Objetivo-de-salud/nuevo">Registrar Objetivos de Salud</button>
+  <button mat-menu-item routerLink="/objetivo-de-salud">Listar Objetivos de Salud</button>
+  <button mat-menu-item routerLink="/objetivo-de-salud/nuevo">Registrar Objetivos de Salud</button>
 </mat-menu>
 <mat-menu #menuMonitoring="matMenu">
   <button mat-menu-item routerLink="/seguimiento">Listar Seguimiento</button>

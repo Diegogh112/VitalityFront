@@ -14,7 +14,7 @@ export class UsersService {
   constructor(private http: HttpClient) {}
 
   list() {
-    return this.http.get<Users[]>(this.url);
+    return this.http.get<Users[]>(this.url+"/listarusuarios");
   }
 
   //para insertar
