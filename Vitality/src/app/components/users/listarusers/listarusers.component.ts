@@ -1,12 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Users } from '../../../models/users';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { UsersService } from '../../../services/users.service';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterLink } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
-import { MatPaginatorModule } from '@angular/material/paginator';
-
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 @Component({
   selector: 'app-listarusers',
   standalone: true,
@@ -29,13 +28,16 @@ export class ListarusersComponent implements OnInit{
   ];
 
   dataSource:MatTableDataSource<Users>=new MatTableDataSource();
+  @ViewChild(MatPaginator) Paginator!: MatPaginator;
   constructor(private uS:UsersService){}
   ngOnInit(): void {
       this.uS.list().subscribe((data)=>{
         this.dataSource = new MatTableDataSource(data)
+        this.dataSource.paginator = this.Paginator;
       })
       this.uS.getList().subscribe((data)=>{
         this.dataSource = new MatTableDataSource(data)
+        this.dataSource.paginator = this.Paginator;
       })
   }
 

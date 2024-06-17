@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { Recommendation } from '../../../models/recommendation';
 import { RecommendationService } from '../../../services/recommendation.service';
@@ -9,8 +9,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatSortModule } from '@angular/material/sort';
-import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatInputModule } from '@angular/material/input';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-listarrecommendation',
@@ -35,13 +35,16 @@ export class ListarrecommendationComponent implements OnInit{
   ];
 
   dataSource:MatTableDataSource<Recommendation>=new MatTableDataSource();
+  @ViewChild(MatPaginator) Paginator!: MatPaginator;
   constructor(private rS:RecommendationService){}
   ngOnInit(): void {
       this.rS.list().subscribe((data)=>{
         this.dataSource = new MatTableDataSource(data)
+        this.dataSource.paginator = this.Paginator;
       })
       this.rS.getList().subscribe((data)=>{
         this.dataSource = new MatTableDataSource(data)
+        this.dataSource.paginator = this.Paginator;
       })
   }
 
