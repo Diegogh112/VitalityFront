@@ -40,8 +40,4 @@ export class QuestionService {
   getList(){
     return this.listaCambio.asObservable();
   }
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/maria
 }
