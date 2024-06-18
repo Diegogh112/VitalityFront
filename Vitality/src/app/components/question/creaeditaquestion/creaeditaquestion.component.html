@@ -18,7 +18,10 @@
         >La pregunta es obligatoria.</mat-error
       >
     </mat-form-field>
-    
-    <div class="title-container"><button class="boton" mat-raised-button color="primary">Aceptar</button></div>
+    <br>
+    <button class="boton" mat-raised-button color="primary">Aceptar</button>
+    <button class="boton" mat-raised-button color="warn" (click)="cancelar()">
+        Cancelar
+      </button>
   </form>
 </div>

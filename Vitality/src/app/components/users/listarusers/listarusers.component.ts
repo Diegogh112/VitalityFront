@@ -18,7 +18,6 @@ export class ListarusersComponent implements OnInit{
     'codigo',
     'nombre',
     'correo',
-    'contrasenia',
     'direccion',
     'peso',
     'altura',
