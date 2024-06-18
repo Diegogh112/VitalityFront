@@ -45,7 +45,4 @@ export class UsersService {
     return this.http.delete(`${this.url}/${id}`);
   }
 
-  getSumProductsByType():Observable<UserBySumProductsByTypeDTO[]>{
-    return this.http.get<UserBySumProductsByTypeDTO[]>(`${this.url}/Totalproductoscompradosportipo`)
-  }
 }
