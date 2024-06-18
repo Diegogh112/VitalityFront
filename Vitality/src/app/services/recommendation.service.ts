@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { Recommendation } from '../models/recommendation';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { RecommendationByUserDTO } from '../models/recommendationByUserDTO';
 const base_url = environment.base;
 @Injectable({
   providedIn: 'root'
@@ -39,5 +40,8 @@ export class RecommendationService {
 
   eliminar(id: number) {
     return this.http.delete(`${this.url}/${id}`);
+  }
+  getQuantityByUser():Observable<RecommendationByUserDTO[]>{
+    return this.http.get<RecommendationByUserDTO[]>(`${this.url}/cantidadesporUsuario`)
   }
 }

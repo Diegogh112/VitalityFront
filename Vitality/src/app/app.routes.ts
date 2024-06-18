@@ -28,6 +28,8 @@ import { Routes } from '@angular/router';
 import { segGuard } from './guard/seguridad.guard';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
+import { ReportsComponent } from './components/reports/reports.component';
+import { Reportdiego2Component } from './components/reports/reportdiego2/reportdiego2.component';
 
 export const routes: Routes = [
 
@@ -269,6 +271,16 @@ export const routes: Routes = [
           }
         ],
         canActivate: [segGuard],
+    },
+    {
+      path: 'reportes',
+      component: ReportsComponent,
+      children: [
+        {
+          path: 'reportediego2',
+          component: Reportdiego2Component,
+        },
+      ],
     },
 
     {
