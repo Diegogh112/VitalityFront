@@ -33,6 +33,27 @@ import { HealthobjectiveService } from '../../../services/healthobjective.servic
   styleUrl: './creaeditamonitoring.component.css'
 })
 export class CreaeditamonitoringComponent implements OnInit{
+
+  estados: { value: string; viewValue: string }[] = [
+    {
+      value: 'En Proceso',
+      viewValue:
+        'En Proceso'
+    },
+    {
+      value:
+        'Finalizado',
+      viewValue:
+        'Finalizado',
+    },
+    {
+      value:
+        'Cancelado',
+      viewValue:
+        'Cancelado',
+    },
+  ];
+
   form: FormGroup = new FormGroup({});
   monitoring:Monitoring= new Monitoring();
   id:number=0;

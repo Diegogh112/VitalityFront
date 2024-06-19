@@ -17,6 +17,22 @@
         <th mat-header-cell *matHeaderCellDef> Correo electronico </th>
         <td mat-cell *matCellDef="let element"> {{element.email}} </td>
       </ng-container>
+
+      <ng-container matColumnDef="otro">
+        <mat-card appearance="outlined">
+          <mat-card-content mat-header-cell *matHeaderCellDef>
+            <mat-card-content>Usuario</mat-card-content>
+          </mat-card-content>
+          <mat-card-content mat-cell *matCellDef="let element">
+            
+            <div class="user-info">
+              <mat-icon class="user-icon">account_circle</mat-icon>
+              <div class="user-name">{{element.username}}</div>
+              <div class="user-email">{{element.email}}</div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </ng-container>
     
         
         <ng-container matColumnDef="direccion">
