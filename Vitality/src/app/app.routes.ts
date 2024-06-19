@@ -30,12 +30,13 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { ReportsComponent } from './components/reports/reports.component';
 import { Reportdiego2Component } from './components/reports/reportdiego2/reportdiego2.component';
+import { PrincipalComponent } from './components/principal/principal.component';
 
 export const routes: Routes = [
 
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'principal',
     pathMatch: 'full',
   },
   {
@@ -43,7 +44,10 @@ export const routes: Routes = [
     component: LoginComponent,
   },
 
-
+  {
+    path:'principal',
+    component:PrincipalComponent,
+  },
   {
     path: 'categorias',
     component: CategoryComponent,
