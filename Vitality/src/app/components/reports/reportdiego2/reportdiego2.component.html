@@ -2,9 +2,19 @@
 
   <div style="text-align: center" class="title">
 
-              <h1 >Cantidad de recomendaciones por usuario</h1>
+  <h1 >Cantidad de productos comprados por categoria</h1>
 
   </div>
+
+  <mat-form-field>
+    <mat-label>Tipo de Categoria</mat-label>
+    <mat-select (selectionChange)="onCategoryChange($event)">
+      <mat-option *ngFor="let tipo of tipos" [value]="tipo">
+        {{ tipo }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  
 
   <div style="text-align: center" class="chart-container">
 

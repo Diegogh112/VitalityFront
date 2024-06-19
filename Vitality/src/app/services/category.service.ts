@@ -40,7 +40,9 @@ export class CategoryService {
   eliminar(id: number) {
     return this.http.delete(`${this.url}/${id}`);
   }
-  getSumProductsByType():Observable<ProductsByCategoryDTO[]>{
-    return this.http.get<ProductsByCategoryDTO[]>(`${this.url}/Totalproductoscompradosportipo`);
+  getSumProductsByType(type:string):Observable<ProductsByCategoryDTO[]>{
+    return this.http.get<ProductsByCategoryDTO[]>(`${this.url}/Totalproductoscompradosportipo`,{
+      params:{type}
+    })
   }
 }
