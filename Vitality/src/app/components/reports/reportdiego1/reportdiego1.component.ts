@@ -10,7 +10,7 @@ import { RecommendationService } from '../../../services/recommendation.service'
   styleUrl: './reportdiego1.component.css'
 })
 export class Reportdiego1Component implements OnInit{
-  barChartOptions: ChartOptions ={
+   barChartOptions: ChartOptions ={
     responsive:true,
   };
   barChartLabels:string[] = [];

@@ -21,13 +21,17 @@
 
       <br/>
 
-    <mat-form-field>
-      <mat-label>Estado de seguimiento</mat-label>
-      <input matInput formControlName="estado" />
-      <mat-error *ngIf="form.get('estado')?.hasError('required')"
-        >EL estado es obligatorio.</mat-error
-      >
-    </mat-form-field>
+      <mat-form-field>
+        <mat-label>Selecciona el estado de seguimiento</mat-label>
+        <mat-select formControlName="estado">
+          <mat-option *ngFor="let g of estados"  [value]="g.value">
+            {{ g.viewValue }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('estado')?.hasError('required')"
+        >El estado es obligatorio.
+      </mat-error>
+      </mat-form-field>
     <br />
     <mat-form-field>
       <mat-label>Historial</mat-label>

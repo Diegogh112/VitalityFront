@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { Review } from '../models/review';
 import { HttpClient } from '@angular/common/http';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
+import { ReviewByUserDTO } from '../models/reviewByUserDTO';
 const base_url = environment.base;
 @Injectable({
   providedIn: 'root'
@@ -38,5 +39,11 @@ export class ReviewService {
 
   eliminar(id: number) {
     return this.http.delete(`${this.url}/${id}`);
+  }
+
+  getCantidadCriticas(): Observable<ReviewByUserDTO[]> {
+    return this.http.get<ReviewByUserDTO[]>(
+      `${this.url}/cantidades`
+    );
   }
 }

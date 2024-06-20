@@ -1,1 +1,45 @@
-<p>reportdiego2 works!</p>
+<div class="title-container">
+
+  <div style="text-align: center" class="title">
+
+  <h1 >Cantidad de productos comprados por categoria</h1>
+
+  </div>
+
+  <mat-form-field>
+    <mat-label>Tipo de Categoria</mat-label>
+    <mat-select (selectionChange)="onCategoryChange($event)">
+      <mat-option *ngFor="let tipo of tipos" [value]="tipo">
+        {{ tipo }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  
+
+  <div style="text-align: center" class="chart-container">
+
+   <!-- Gráfico de barras -->
+
+   <canvas
+
+    baseChart
+
+    [datasets]="barChartData"
+
+    [labels]="barChartLabels"
+
+    [options]="barChartOptions"
+
+    [legend]="barChartLegend"
+
+    [type]="barChartType"
+
+   >
+
+    <!-- Cambiado de 'chartType' a 'type' -->
+
+   </canvas>
+
+  </div>
+
+ </div>

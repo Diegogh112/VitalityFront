@@ -29,8 +29,10 @@
     <mat-icon>reply</mat-icon>Respuestas</button>
   <button mat-button [matMenuTriggerFor]="menuRecommendation" *ngIf="isCliente()">
     <mat-icon>recommend</mat-icon>Recomendaciones</button>
+
+
     <button mat-button [matMenuTriggerFor]="menuSalir">Perfil</button>
-  <button mat-button [matMenuTriggerFor]="menuReport" *ngIf="isAdmin()"><mat-icon>file_copy</mat-icon>Reportes
+  <button class="report" mat-button [matMenuTriggerFor]="menuReport" *ngIf="isAdmin()"><mat-icon>file_copy</mat-icon>Reportes
   </button>
 
 
@@ -88,6 +90,7 @@
   <button mat-menu-item routerLink="/Respuesta/nuevo">Registrar Respuestas</button>
 </mat-menu>
 <mat-menu #menuReport="matMenu">
+<<<<<<< HEAD
   <button mat-menu-item routerLink="/reportes">Reporte1 Diego</button>
   <button mat-menu-item routerLink="/reportes/reportediego2">Reporte2 Diego</button>
   <button mat-menu-item routerLink="/reportes/reportemaria1">Reporte1 Maria</button>
@@ -95,8 +98,16 @@
 </mat-menu>
 
 
+=======
+  <button mat-menu-item routerLink="/reportes/reportefrank02">Reporte02 Frank</button>
+  <button mat-menu-item routerLink="/reportes/reportefrank01">Reporte01 Frank</button>
+ <button mat-menu-item routerLink="/reportes/reportediego2">Reporte2 Diego</button>
+ <button mat-menu-item routerLink="/reportes">Reporte1 Diego</button>
+</mat-menu>
+
+>>>>>>> 7eb1b8d682f3967fd38d73871cf342d0c3f009fb
 <mat-menu #menuSalir="matMenu">
-  <button mat-menu-item routerLink="/login" (click)="cerrar()">
+  <button mat-menu-item routerLink="/principal" (click)="cerrar()">
     <mat-icon>logout</mat-icon>
     <span>Cerrar sesión</span>
   </button>
