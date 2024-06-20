@@ -31,6 +31,8 @@ import { LoginComponent } from './components/login/login.component';
 import { ReportsComponent } from './components/reports/reports.component';
 import { Reportdiego2Component } from './components/reports/reportdiego2/reportdiego2.component';
 import { PrincipalComponent } from './components/principal/principal.component';
+import { Reportfrank01Component } from './components/reports/reportfrank01/reportfrank01.component';
+import { Reportfrank02Component } from './components/reports/reportfrank02/reportfrank02.component';
 
 export const routes: Routes = [
 
@@ -284,6 +286,17 @@ export const routes: Routes = [
           path: 'reportediego2',
           component: Reportdiego2Component,
         },
+
+        {
+          path: 'reportefrank01',
+          component: Reportfrank01Component,
+        },
+
+        {
+          path: 'reportefrank02',
+          component: Reportfrank02Component,
+        },
+
       ],
     },
 
