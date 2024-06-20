@@ -17,11 +17,7 @@ import { CategoryService } from '../../../services/category.service';
 export class Reportmaria2Component implements OnInit{
   barChartOptions:ChartOptions={responsive:true};
   barChartLabels: string[] = [];
-//barChartType: ChartType = 'pie';
-//barChartType: ChartType = 'doughnut';
-//barChartType: ChartType = 'line';
 barChartType: ChartType = 'bar';
-//barChartType: ChartType = 'polarArea';
 
 barChartLegend = true;
 barChartData: ChartDataset[] = [];
@@ -30,7 +26,7 @@ constructor(private cS: CategoryService) {}
 
 ngOnInit(): void {
   this.cS.findTotalShoppingAmountToDate().subscribe((data) => {
-    this.barChartLabels = data.map((item) => item.dateShopping);
+    this.barChartData = data.map((item) => item.dateShopping);
     this.barChartData = [
       {
         data: data.map((item) => item.count),

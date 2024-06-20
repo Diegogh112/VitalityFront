@@ -2,9 +2,10 @@
 
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Shopping } from '../models/shopping';
+import { ShoppingDTO } from '../models/shoppingDTO';
 const base_url = environment.base;
 @Injectable({
   providedIn: 'root'
@@ -39,5 +40,8 @@ export class ShoppingService {
   }
   eliminar(id: number) {
     return this.http.delete(`${this.url}/${id}`);
+  }
+  getQuantityByShopping():Observable<ShoppingDTO[]>{
+    return this.http.get<ShoppingDTO[]>(`${this.url}/cantidadesdecompras`)
   }
 }

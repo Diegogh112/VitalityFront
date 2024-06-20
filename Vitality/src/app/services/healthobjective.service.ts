@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { HealthObjective } from '../models/healthobjective';
 import { HttpClient } from '@angular/common/http';
+import { HealthObjectiveDTO } from '../models/healthobjectiveDTO';
 const base_url = environment.base;
 @Injectable({
   providedIn: 'root'
@@ -38,5 +39,8 @@ export class HealthobjectiveService {
 
   eliminar(id: number) {
     return this.http.delete(`${this.url}/${id}`);
+  }
+  getHealthObjetiveByUser():Observable<HealthObjectiveDTO[]>{
+    return this.http.get<HealthObjectiveDTO[]>(`${this.url}/cantidadesporUsuario`)
   }
 }
