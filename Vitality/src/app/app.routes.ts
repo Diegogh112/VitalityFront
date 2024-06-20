@@ -30,6 +30,8 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { ReportsComponent } from './components/reports/reports.component';
 import { Reportdiego2Component } from './components/reports/reportdiego2/reportdiego2.component';
+import { Reportmaria1Component } from './components/reports/reportmaria1/reportmaria1.component';
+import { Reportmaria2Component } from './components/reports/reportmaria2/reportmaria2.component';
 
 export const routes: Routes = [
 
@@ -279,6 +281,14 @@ export const routes: Routes = [
         {
           path: 'reportediego2',
           component: Reportdiego2Component,
+        },
+        {
+          path: 'reportemaria1',
+          component: Reportmaria1Component,
+        },
+        {
+          path: 'reportemaria2',
+          component: Reportmaria2Component,
         },
       ],
     },

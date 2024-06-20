@@ -33,6 +33,7 @@
   <button mat-button [matMenuTriggerFor]="menuReport" *ngIf="isAdmin()"><mat-icon>file_copy</mat-icon>Reportes
   </button>
 
+
 </mat-toolbar>
 <mat-menu #menuUsers="matMenu">
   <button mat-menu-item routerLink="/usuarios">Listar Usuarios </button>
@@ -89,7 +90,11 @@
 <mat-menu #menuReport="matMenu">
   <button mat-menu-item routerLink="/reportes">Reporte1 Diego</button>
   <button mat-menu-item routerLink="/reportes/reportediego2">Reporte2 Diego</button>
+  <button mat-menu-item routerLink="/reportes/reportemaria1">Reporte1 Maria</button>
+  <button mat-menu-item routerLink="/reportes/reportemaria2">Reporte2 Maria</button>
 </mat-menu>
+
+
 <mat-menu #menuSalir="matMenu">
   <button mat-menu-item routerLink="/login" (click)="cerrar()">
     <mat-icon>logout</mat-icon>

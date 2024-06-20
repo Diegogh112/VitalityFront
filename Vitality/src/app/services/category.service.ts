@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Category } from '../models/category';
 import { HttpClient } from '@angular/common/http';
+import { CountShoppingDTO } from '../models/countShoppingDTO';
 const base_url = environment.base;
 @Injectable({
   providedIn: 'root'
@@ -38,5 +39,9 @@ export class CategoryService {
 
   eliminar(id: number) {
     return this.http.delete(`${this.url}/${id}`);
+  }
+
+  findTotalShoppingAmountToDate():Observable<CountShoppingDTO[]>{
+    return this.http.get<CountShoppingDTO[]>(`${this.url}/compras_totales`)
   }
 }

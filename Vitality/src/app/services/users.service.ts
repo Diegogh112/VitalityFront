@@ -4,6 +4,7 @@ import { Users } from '../models/users';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import { UserBySumProductsByTypeDTO } from '../models/userBySumProductsByTypeDTO';
+import { PunctuationByUserDTO } from '../models/punctuationByUserDTO';
 const base_url = environment.base;
 @Injectable({
   providedIn: 'root'
@@ -47,5 +48,9 @@ export class UsersService {
 
   getSumProductsByType():Observable<UserBySumProductsByTypeDTO[]>{
     return this.http.get<UserBySumProductsByTypeDTO[]>(`${this.url}/Totalproductoscompradosportipo`)
+  }
+
+  getUsersReviewSummary():Observable<PunctuationByUserDTO[]>{
+    return this.http.get<PunctuationByUserDTO[]>(`${this.url}/resumen_y_promedio_de_reseñas`)
   }
 }
