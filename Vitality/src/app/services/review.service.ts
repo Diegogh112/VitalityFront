@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import { ReviewByUserDTO } from '../models/reviewByUserDTO';
 import { TotalPunctuations } from '../models/TotalPunctuationsDTO';
+import { PunctuationByUserDTO } from '../models/punctuationByUserDTO';
 const base_url = environment.base;
 @Injectable({
   providedIn: 'root'
@@ -52,6 +53,12 @@ export class ReviewService {
     return this.http.get<TotalPunctuations[]>(
       `${this.url}/totales`
     );
+  }
+
+
+  
+  getUsersReviewSummary():Observable<PunctuationByUserDTO[]>{
+    return this.http.get<PunctuationByUserDTO[]>(`${this.url}/resumen_y_promedio_de_resenas`)
   }
 
 }

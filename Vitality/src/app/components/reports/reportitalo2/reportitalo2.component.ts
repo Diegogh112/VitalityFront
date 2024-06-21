@@ -7,8 +7,8 @@ import { BaseChartDirective } from 'ng2-charts';
   selector: 'app-report-italo2',
   standalone: true,
   imports: [BaseChartDirective],
-  templateUrl: './report-italo2.component.html',
-  styleUrl: './report-italo2.component.css'
+  templateUrl: './reportitalo2.component.html',
+  styleUrl: './reportitalo2.component.css'
 })
 export class ReportItalo2Component implements OnInit{
   barChartOptions: ChartOptions ={

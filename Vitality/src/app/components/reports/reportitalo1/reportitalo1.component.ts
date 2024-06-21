@@ -7,8 +7,8 @@ import { ChartDataset, ChartOptions, ChartType } from 'chart.js';
   selector: 'app-report-italo1',
   standalone: true,
   imports: [BaseChartDirective],
-  templateUrl: './report-italo1.component.html',
-  styleUrl: './report-italo1.component.css'
+  templateUrl: './reportitalo1.component.html',
+  styleUrl: './reportitalo1.component.css'
 })
 export class ReportItalo1Component implements OnInit{
   barChartOptions: ChartOptions ={

@@ -4,7 +4,7 @@ import { Observable, Subject } from 'rxjs';
 import { Category } from '../models/category';
 import { HttpClient } from '@angular/common/http';
 
-import { CountShoppingDTO } from '../models/shoppingToDateDTO';
+import { shoppingToDateDTO } from '../models/shoppingToDateDTO';
 import { ProductsByCategoryDTO } from '../models/productsByCategoryDTO';
 const base_url = environment.base;
 @Injectable({
@@ -43,11 +43,11 @@ export class CategoryService {
     return this.http.delete(`${this.url}/${id}`);
   }
 
-  findTotalShoppingAmountToDate():Observable<CountShoppingDTO[]>{
+  findTotalShoppingAmountToDate():Observable<shoppingToDateDTO[]>{
 
-    return this.http.get<CountShoppingDTO[]>(`${this.url}/compras_totales`)}
+    return this.http.get<shoppingToDateDTO[]>(`${this.url}/compras_totales`)}
 
-    getSumProductsByType(type:string):Observable<ProductsByCategoryDTO[]>{
+  getSumProductsByType(type:string):Observable<ProductsByCategoryDTO[]>{
       return this.http.get<ProductsByCategoryDTO[]>(`${this.url}/Totalproductoscompradosportipo`,{
         params:{type}
       })

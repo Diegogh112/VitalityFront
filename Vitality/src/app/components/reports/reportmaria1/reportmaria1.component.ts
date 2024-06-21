@@ -3,6 +3,7 @@ import { ChartOptions, ChartType, ChartDataset } from 'chart.js';
 import { UsersService } from '../../../services/users.service';
 import { PunctuationByUserDTO } from '../../../models/punctuationByUserDTO';
 import { BaseChartDirective } from 'ng2-charts';
+import { ReviewService } from '../../../services/review.service';
 
 @Component({
   selector: 'app-reportmaria1',
@@ -20,10 +21,10 @@ export class Reportmaria1Component implements OnInit {
   barChartLegend = true;
   barChartData: ChartDataset[] = [];
 
-  constructor(private uS: UsersService) {}
+  constructor(private rS: ReviewService) {}
 
   ngOnInit(): void {
-    this.uS.getUsersReviewSummary().subscribe((data: PunctuationByUserDTO[]) => {
+    this.rS.getUsersReviewSummary().subscribe((data: PunctuationByUserDTO[]) => {
       if (data) {
         this.barChartLabels = data.map(item => item.username);
         this.barChartData = [
