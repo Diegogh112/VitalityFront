@@ -1,4 +1,4 @@
 export class CountShoppingDTO{
-    dateShopping:Date = new Date(0,0,0)
+    dateShopping:String="";
     count:number=0;
 }

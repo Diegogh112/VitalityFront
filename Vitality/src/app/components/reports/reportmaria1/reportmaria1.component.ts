@@ -2,11 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { ChartOptions, ChartType, ChartDataset } from 'chart.js';
 import { UsersService } from '../../../services/users.service';
 import { PunctuationByUserDTO } from '../../../models/punctuationByUserDTO';
+import { BaseChartDirective } from 'ng2-charts';
 
 @Component({
   selector: 'app-reportmaria1',
   templateUrl: './reportmaria1.component.html',
   styleUrls: ['./reportmaria1.component.css']
+  , standalone:true,
+  imports:[BaseChartDirective]
 })
 export class Reportmaria1Component implements OnInit {
   barChartOptions: ChartOptions = {
@@ -21,7 +24,6 @@ export class Reportmaria1Component implements OnInit {
 
   ngOnInit(): void {
     this.uS.getUsersReviewSummary().subscribe((data: PunctuationByUserDTO[]) => {
-      console.log(data);
       if (data) {
         this.barChartLabels = data.map(item => item.username);
         this.barChartData = [

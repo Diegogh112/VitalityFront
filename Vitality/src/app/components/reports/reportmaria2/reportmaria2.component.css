@@ -1,0 +1,8 @@
+.chart-container {
+    display: flex;
+    justify-content: center;
+  }
+  .chart-wrapper {
+    width: 60%; /* Ajusta el tamaño según sea necesario */
+    max-width: 900px; /* Tamaño máximo opcional */
+  }

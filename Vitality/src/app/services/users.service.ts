@@ -3,11 +3,8 @@ import { environment } from '../../environments/environment';
 import { Users } from '../models/users';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
-<<<<<<< HEAD
 import { UserBySumProductsByTypeDTO } from '../models/userBySumProductsByTypeDTO';
 import { PunctuationByUserDTO } from '../models/punctuationByUserDTO';
-=======
->>>>>>> 7eb1b8d682f3967fd38d73871cf342d0c3f009fb
 const base_url = environment.base;
 @Injectable({
   providedIn: 'root'
@@ -49,14 +46,13 @@ export class UsersService {
     return this.http.delete(`${this.url}/${id}`);
   }
 
-<<<<<<< HEAD
+
   getSumProductsByType():Observable<UserBySumProductsByTypeDTO[]>{
     return this.http.get<UserBySumProductsByTypeDTO[]>(`${this.url}/Totalproductoscompradosportipo`)
   }
 
   getUsersReviewSummary():Observable<PunctuationByUserDTO[]>{
-    return this.http.get<PunctuationByUserDTO[]>(`${this.url}/resumen_y_promedio_de_reseñas`)
+    return this.http.get<PunctuationByUserDTO[]>(`${this.url}/resumen_y_promedio_de_resenas`)
   }
-=======
->>>>>>> 7eb1b8d682f3967fd38d73871cf342d0c3f009fb
+
 }
