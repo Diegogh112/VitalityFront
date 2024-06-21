@@ -31,10 +31,21 @@ import { LoginComponent } from './components/login/login.component';
 import { ReportsComponent } from './components/reports/reports.component';
 import { Reportdiego2Component } from './components/reports/reportdiego2/reportdiego2.component';
 import { Reportmaria1Component } from './components/reports/reportmaria1/reportmaria1.component';
+<<<<<<< HEAD
 import { Reportmaria2Component } from './components/reports/reportmaria2/reportmaria2.component';
 import { PrincipalComponent } from './components/principal/principal.component';
 import { Reportfrank01Component } from './components/reports/reportfrank01/reportfrank01.component';
 import { Reportfrank02Component } from './components/reports/reportfrank02/reportfrank02.component';
+=======
+import { Reportmaria2Component } from './components/reports/reportmaria2/reportmaria2.component'
+import { PrincipalComponent } from './components/principal/principal.component';
+import { Reportfrank01Component } from './components/reports/reportfrank01/reportfrank01.component';
+import { Reportfrank02Component } from './components/reports/reportfrank02/reportfrank02.component';
+import { Reportmichel1Component } from './components/reports/reportmichel1/reportmichel1/reportmichel1.component';
+import { Reportmichel2Component } from './components/reports/reportmichel2/reportmichel2/reportmichel2.component';
+import { ReportItalo1Component } from './components/reports/reportitalo1/reportitalo1.component';
+import { ReportItalo2Component } from './components/reports/reportitalo2/reportitalo2.component';
+>>>>>>> 945130fff5867eefcf9f815b2bb9aad033c85692
 
 export const routes: Routes = [
 
@@ -307,6 +318,25 @@ export const routes: Routes = [
           path: 'reportefrank02',
           component: Reportfrank02Component,
         },
+
+
+        /*{
+          path: 'reportemichel1',
+          component: Reportmichel1Component,
+        },
+        {
+          path: 'reportemichel2',
+          component: Reportmichel2Component,
+        },
+         {
+          path: 'reporteItalo1',
+          component: ReportItalo1Component,
+        },
+        {
+          path: 'reporteItalo2',
+          component: ReportItalo2Component,
+        },*/
+
 
       ],
     },

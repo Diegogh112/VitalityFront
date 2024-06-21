@@ -3,7 +3,6 @@ import { environment } from '../../environments/environment';
 import { Users } from '../models/users';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
-
 import { UserBySumProductsByTypeDTO } from '../models/userBySumProductsByTypeDTO';
 import { PunctuationByUserDTO } from '../models/punctuationByUserDTO';
 const base_url = environment.base;

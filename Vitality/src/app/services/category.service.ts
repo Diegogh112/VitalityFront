@@ -44,11 +44,13 @@ export class CategoryService {
   }
 
   findTotalShoppingAmountToDate():Observable<CountShoppingDTO[]>{
+
     return this.http.get<CountShoppingDTO[]>(`${this.url}/compras_totales`)}
-    
-  getSumProductsByType(type:string):Observable<ProductsByCategoryDTO[]>{
-    return this.http.get<ProductsByCategoryDTO[]>(`${this.url}/Totalproductoscompradosportipo`,{
-      params:{type}
-    })
+
+    getSumProductsByType(type:string):Observable<ProductsByCategoryDTO[]>{
+      return this.http.get<ProductsByCategoryDTO[]>(`${this.url}/Totalproductoscompradosportipo`,{
+        params:{type}
+      })
+    }
   }
-}
+
