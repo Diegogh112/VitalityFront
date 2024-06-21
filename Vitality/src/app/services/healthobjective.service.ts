@@ -4,6 +4,7 @@ import { Observable, Subject } from 'rxjs';
 import { HealthObjective } from '../models/healthobjective';
 import { HttpClient } from '@angular/common/http';
 import { HealthObjectiveDTO } from '../models/healthobjectiveDTO';
+import { ObjectiveByUsersDTO } from '../models/objectiveByUsersDTO';
 const base_url = environment.base;
 @Injectable({
   providedIn: 'root'
@@ -42,5 +43,11 @@ export class HealthobjectiveService {
   }
   getHealthObjetiveByUser():Observable<HealthObjectiveDTO[]>{
     return this.http.get<HealthObjectiveDTO[]>(`${this.url}/cantidadesporUsuario`)
+  }
+  getObjectiveByUsers():Observable<ObjectiveByUsersDTO[]>{
+    return this.http.get<ObjectiveByUsersDTO[]>(`${this.url}/Mostrar_Objetivo_Usuario`)
+  }
+  getHealthObjectiveBySuscribedUsers():Observable<ObjectiveByUsersDTO[]>{
+    return this.http.get<ObjectiveByUsersDTO[]>(`${this.url}/Usuarios_suscritos`)
   }
 }

@@ -37,6 +37,8 @@ import { Reportfrank01Component } from './components/reports/reportfrank01/repor
 import { Reportfrank02Component } from './components/reports/reportfrank02/reportfrank02.component';
 import { Reportmichel1Component } from './components/reports/reportmichel1/reportmichel1/reportmichel1.component';
 import { Reportmichel2Component } from './components/reports/reportmichel2/reportmichel2/reportmichel2.component';
+import { ReportItalo1Component } from './components/reports/reportitalo1/reportitalo1.component';
+import { ReportItalo2Component } from './components/reports/reportitalo2/reportitalo2.component';
 
 export const routes: Routes = [
 
@@ -317,6 +319,14 @@ export const routes: Routes = [
         {
           path: 'reportemichel2',
           component: Reportmichel2Component,
+        },
+         {
+          path: 'reporteItalo1',
+          component: ReportItalo1Component,
+        },
+        {
+          path: 'reporteItalo2',
+          component: ReportItalo2Component,
         },
 
       ],
