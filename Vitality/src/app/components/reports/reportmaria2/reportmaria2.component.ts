@@ -16,7 +16,7 @@ import { CategoryService } from '../../../services/category.service';
 })
 export class Reportmaria2Component implements OnInit{
   barChartOptions:ChartOptions={responsive:true};
-  barChartLabels: string[] = [];
+  barChartLabels: any[] = [];
 //barChartType: ChartType = 'pie';
 //barChartType: ChartType = 'doughnut';
 //barChartType: ChartType = 'line';
@@ -53,3 +53,4 @@ ngOnInit(): void {
   });
 }
 }
+

@@ -30,14 +30,11 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { ReportsComponent } from './components/reports/reports.component';
 import { Reportdiego2Component } from './components/reports/reportdiego2/reportdiego2.component';
-<<<<<<< HEAD
 import { Reportmaria1Component } from './components/reports/reportmaria1/reportmaria1.component';
 import { Reportmaria2Component } from './components/reports/reportmaria2/reportmaria2.component';
-=======
 import { PrincipalComponent } from './components/principal/principal.component';
 import { Reportfrank01Component } from './components/reports/reportfrank01/reportfrank01.component';
 import { Reportfrank02Component } from './components/reports/reportfrank02/reportfrank02.component';
->>>>>>> 7eb1b8d682f3967fd38d73871cf342d0c3f009fb
 
 export const routes: Routes = [
 
@@ -291,7 +288,7 @@ export const routes: Routes = [
           path: 'reportediego2',
           component: Reportdiego2Component,
         },
-<<<<<<< HEAD
+
         {
           path: 'reportemaria1',
           component: Reportmaria1Component,
@@ -300,7 +297,6 @@ export const routes: Routes = [
           path: 'reportemaria2',
           component: Reportmaria2Component,
         },
-=======
 
         {
           path: 'reportefrank01',
@@ -312,7 +308,6 @@ export const routes: Routes = [
           component: Reportfrank02Component,
         },
 
->>>>>>> 7eb1b8d682f3967fd38d73871cf342d0c3f009fb
       ],
     },
 

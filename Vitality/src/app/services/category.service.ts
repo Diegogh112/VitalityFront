@@ -3,11 +3,9 @@ import { environment } from '../../environments/environment';
 import { Observable, Subject } from 'rxjs';
 import { Category } from '../models/category';
 import { HttpClient } from '@angular/common/http';
-<<<<<<< HEAD
-import { CountShoppingDTO } from '../models/countShoppingDTO';
-=======
+
+import { CountShoppingDTO } from '../models/shoppingToDateDTO';
 import { ProductsByCategoryDTO } from '../models/productsByCategoryDTO';
->>>>>>> 7eb1b8d682f3967fd38d73871cf342d0c3f009fb
 const base_url = environment.base;
 @Injectable({
   providedIn: 'root'
@@ -44,15 +42,13 @@ export class CategoryService {
   eliminar(id: number) {
     return this.http.delete(`${this.url}/${id}`);
   }
-<<<<<<< HEAD
 
   findTotalShoppingAmountToDate():Observable<CountShoppingDTO[]>{
-    return this.http.get<CountShoppingDTO[]>(`${this.url}/compras_totales`)
-=======
+    return this.http.get<CountShoppingDTO[]>(`${this.url}/compras_totales`)}
+    
   getSumProductsByType(type:string):Observable<ProductsByCategoryDTO[]>{
     return this.http.get<ProductsByCategoryDTO[]>(`${this.url}/Totalproductoscompradosportipo`,{
       params:{type}
     })
->>>>>>> 7eb1b8d682f3967fd38d73871cf342d0c3f009fb
   }
 }

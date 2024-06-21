@@ -1,18 +1,17 @@
 <div class="title-container">
-    <div style="text-align: center" class="title">
-      <h1>Promedio de puntuacion por usuario</h1>
-    </div>
-    <div style="text-align: center" class="chart-container">
-      <!-- Gráfico de barras -->
-      <canvas>
-        baseChart
+  <div class="title" style="text-align: center">
+    <h1>Promedio de puntuacion por usuario</h1>
+  </div>
+  <div class="chart-container">
+    <!-- Gráfico de barras -->
+    <div class="chart-wrapper">
+      <canvas baseChart
         [datasets]="barChartData"
         [labels]="barChartLabels"
         [options]="barChartOptions"
         [legend]="barChartLegend"
-        [type]="barChartType"
-      
-        <!-- Cambiado de 'chartType' a 'type' -->
+        [type]="barChartType">
       </canvas>
     </div>
   </div>
+</div>
