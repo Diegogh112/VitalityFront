@@ -31,7 +31,31 @@ export class CreaeditaroleComponent implements OnInit {
   id:number=0;
   edicion:boolean=false;
   users:Users[]=[];
+  roles: { value: string; viewValue: string }[] = [
+    {
+      value:
+        'ADMIN',
+      viewValue:
+        'ADMIN',
+    },
+    {
+      value:
+      'PROFESIONAL',
 
+      viewValue:
+      'PROFESIONAL',
+
+    },
+    {
+      value:
+      'CLIENTE',
+
+      viewValue:
+      'CLIENTE',
+
+    },
+ 
+  ];
   constructor(
     private formBuilder: FormBuilder,
     private rS:RoleService,
