@@ -23,11 +23,11 @@ export class Reportmichel2Component implements OnInit{
   constructor(private rS:HealthobjectiveService){}
   ngOnInit(): void {
     this.rS.getHealthObjetiveByUser().subscribe(data=>{
-      this.barChartLabels=data.map(item =>item.tipoObjetivo)
+      this.barChartLabels=data.map(item =>item.typeObjetive)
       this.barChartData=[
       {
-        data:data.map(item=>item.idHealthObjective),
-        label:'Recomendaciones',
+        data:data.map(item=>item.username.length),
+        label:'Cantidad de usuarios',
         backgroundColor:['blue','red','green','white','#30B81A',],
         borderColor:'rgba(173,216,230,1)',
         borderWidth:1,

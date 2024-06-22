@@ -22,11 +22,11 @@ export class Reportmichel1Component implements OnInit{
   constructor(private sS:ShoppingService){}
   ngOnInit(): void {
     this.sS.getQuantityByShopping().subscribe(data=>{
-      this.barChartLabels=data.map(item =>item.numOrderShopping)
+      this.barChartLabels=data.map(item =>item.username)
       this.barChartData=[
       {
-        data:data.map(item=>item.totalShopping),
-        label:'Recomendaciones',
+        data:data.map(item=>item.count),
+        label:'Cantidad de compras',
         backgroundColor:['blue','red','green','white','#30B81A',],
         borderColor:'rgba(173,216,230,1)',
         borderWidth:1,
