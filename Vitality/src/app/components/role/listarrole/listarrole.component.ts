@@ -6,6 +6,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSortModule } from '@angular/material/sort';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-listarrole',
@@ -13,7 +17,15 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
   imports: [MatTableModule,
     MatIconModule,
     RouterLink,
-    MatButtonModule,MatPaginatorModule
+    MatButtonModule,MatPaginatorModule,
+    MatButtonModule,
+    MatTableModule,
+    MatFormFieldModule,
+    RouterLink,
+    MatPaginatorModule,
+    MatInputModule,
+    MatIconModule,MatSortModule,
+    MatCardModule
   ],
   templateUrl: './listarrole.component.html',
   styleUrl: './listarrole.component.css'
