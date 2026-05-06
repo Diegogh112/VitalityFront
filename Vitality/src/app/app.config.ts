@@ -16,8 +16,8 @@ export const appConfig: ApplicationConfig = {
         config: {
           tokenGetter: tokenGetter,
 
-          allowedDomains: ['localhost:8080'],
-          disallowedRoutes: ['http://localhost:8080/login/forget'],
+          allowedDomains: ['vitality-arquitectura-web.onrender.com'],
+          disallowedRoutes: ['https://vitality-arquitectura-web.onrender.com/login/forget'],
         },
       })
     ), provideAnimationsAsync(),
