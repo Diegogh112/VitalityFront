@@ -1,5 +1,5 @@
 export const environment={
-    production: false,
-    base:"http://localhost:8083"
+    production: true,
+    base:"https://vitality-arquitectura-web.onrender.com"
 
 }
