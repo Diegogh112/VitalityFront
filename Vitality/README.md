@@ -59,3 +59,7 @@ src/
 │   └── app.routes.ts   # Rutas de la aplicación
 └── environments/       # Configuración por entorno
 ```
+## Usuario administrador
+
+Usuario: Diegogh10
+Contraseña: password
