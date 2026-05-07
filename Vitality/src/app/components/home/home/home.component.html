@@ -1,1 +1,186 @@
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-content">
+    <div class="hero-text">
+      <h1>La App te permitirá crear dietas y rutinas nutricionales para mejorar tu salud en tu vida diaria</h1>
+      <p>Mejora tu vida descargando la app</p>
+      <div class="hero-buttons">
+        <a href="https://www.figma.com/proto/kuuq1HwLkxScm7BqgqgFvU/Cosmo-Nutrition-%22Vitality%22" target="_blank" class="btn-primary">Descargar</a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img src="assets/pantalla.jpg" alt="Pantalla de la App" onerror="this.style.display='none'">
+    </div>
+  </div>
+</section>
 
+<!-- SEGMENTOS -->
+<section id="about">
+  <div class="section-container">
+    <h1 class="section-title">SEGMENTOS</h1>
+    <div class="cards-row">
+      <div class="abou">
+        <mat-icon class="segment-icon">person</mat-icon>
+        <h2>Jóvenes adultos</h2>
+        <p>Jóvenes activos de 18-30 años buscando nutrición equilibrada y práctica para mejorar su rendimiento físico.</p>
+      </div>
+      <div class="abou">
+        <mat-icon class="segment-icon">medical_services</mat-icon>
+        <h2>Experto en nutrición</h2>
+        <p>Profesionales de la nutrición actualizados y colaborativos, promoviendo alimentación saludable.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUIENES SOMOS -->
+<section id="meals">
+  <div class="container3">
+    <h1>Quienes somos — COSMO NUTRITION</h1>
+    <p>
+      Cosmos Nutrition se dedica a la nutrición personalizada y ha creado la aplicación móvil Vitality.
+      Esta app ofrece soluciones nutricionales adaptadas a las necesidades individuales, con acceso a alimentos
+      y complementos de calidad, información detallada y seguimiento del progreso en los objetivos de salud y bienestar.
+    </p>
+    <h2>Características</h2>
+  </div>
+  <div class="contenedor-principal">
+    <div class="contenedors3">
+      <figure>
+        <img src="https://www.galileo.edu/fabiq/files/2021/07/Maestr%C3%ADa-Nutricion-1.jpg" alt="Información personalizada">
+        <div class="capa">
+          <h3><b>Información personalizada</b></h3>
+          <p>Obtén acceso a información nutricional personalizada basada en tus necesidades y objetivos específicos.</p>
+        </div>
+      </figure>
+    </div>
+    <div class="contenedors3">
+      <figure>
+        <img src="https://eu-central-1.linodeobjects.com/tecnohotelnews/2022/12/siete-claves-para-ofrecer-platos-saludables-atractivos-a-los-comensales.jpg" alt="Recetas saludables">
+        <div class="capa">
+          <h3><b>Recetas saludables</b></h3>
+          <p>Descubre recetas saludables y prácticas que se adapten a tu estilo de vida ocupado.</p>
+        </div>
+      </figure>
+    </div>
+    <div class="contenedors3">
+      <figure>
+        <img src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/happy-coach-cheering-for-athletic-man-on-stationary-royalty-free-image-1626768872.jpg" alt="Plan de ejercicios">
+        <div class="capa">
+          <h3><b>Plan de ejercicios</b></h3>
+          <p>Accede a planes de ejercicios diseñados para complementar tu alimentación y mejorar tu condición física.</p>
+        </div>
+      </figure>
+    </div>
+    <div class="contenedors3">
+      <figure>
+        <img src="https://www.unir.net/wp-content/uploads/2017/06/NOTEC.jpg" alt="Seguimiento">
+        <div class="capa">
+          <h3><b>Seguimiento y recordatorios</b></h3>
+          <p>Recibe seguimiento y recordatorios para ayudarte a mantener un estilo de vida saludable de manera consistente.</p>
+        </div>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- PLANES -->
+<section id="plan">
+  <div class="section-container">
+    <h1 class="section-title">PLANES</h1>
+    <div class="cards-row">
+      <div class="plan-card">
+        <h3>Gratis</h3>
+        <mat-icon class="plan-icon">star_border</mat-icon>
+        <p>Acceso básico a la aplicación e información nutricional personalizada.</p>
+        <a href="https://www.figma.com/proto/kuuq1HwLkxScm7BqgqgFvU" target="_blank" class="btn-primary">Obtener Gratis</a>
+      </div>
+      <div class="plan-card featured">
+        <h3>Pro</h3>
+        <mat-icon class="plan-icon">star</mat-icon>
+        <p>Acceso completo a todas las funcionalidades de Vitality.</p>
+        <a href="https://www.figma.com/proto/kuuq1HwLkxScm7BqgqgFvU" target="_blank" class="btn-primary">Obtener S/ 9.90</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GRÁFICOS -->
+<section id="graficos">
+  <div class="section-container">
+    <h1 class="section-title">ESTADÍSTICAS</h1>
+    <div class="charts-row">
+      <div class="chart-card">
+        <h3>Descargas de la App</h3>
+        <apx-chart
+          [series]="donutSeries"
+          [chart]="donutChart"
+          [labels]="donutLabels"
+          [colors]="donutColors"
+          [legend]="chartLegend"
+          [responsive]="chartResponsive">
+        </apx-chart>
+      </div>
+      <div class="chart-card">
+        <h3>Usuarios por Rol</h3>
+        <apx-chart
+          [series]="barSeries"
+          [chart]="barChart"
+          [xaxis]="barXaxis"
+          [colors]="barColors"
+          [plotOptions]="barPlotOptions">
+        </apx-chart>
+      </div>
+      <div class="chart-card">
+        <h3>Compras por Mes</h3>
+        <apx-chart
+          [series]="lineSeries"
+          [chart]="lineChart"
+          [xaxis]="lineXaxis"
+          [colors]="lineColors"
+          [stroke]="lineStroke">
+        </apx-chart>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <span>Conéctese con nosotros en las redes sociales:</span>
+    <div class="social-links">
+      <a href="https://www.facebook.com/" target="_blank" aria-label="Facebook"><mat-icon>facebook</mat-icon></a>
+      <a href="https://www.instagram.com/" target="_blank" aria-label="Instagram"><mat-icon>photo_camera</mat-icon></a>
+      <a href="https://pe.linkedin.com/" target="_blank" aria-label="LinkedIn"><mat-icon>work</mat-icon></a>
+      <a href="https://github.com/" target="_blank" aria-label="GitHub"><mat-icon>code</mat-icon></a>
+    </div>
+  </div>
+  <div class="footer-body">
+    <div class="footer-col">
+      <h6>VITALITY</h6>
+      <p>Nuestra aplicación móvil Vitality ofrece información nutricional personalizada y seguimiento de objetivos de salud.</p>
+    </div>
+    <div class="footer-col">
+      <h6>PRODUCTOS</h6>
+      <p>Vitaminas</p>
+      <p>Proteínas</p>
+      <p>Alimentos</p>
+      <p>Recetas</p>
+    </div>
+    <div class="footer-col">
+      <h6>SALUD Y BIENESTAR</h6>
+      <p>Planes</p>
+      <p>Información Personalizada</p>
+      <p>Recetas Saludables</p>
+      <p>Plan de Ejercicios</p>
+    </div>
+    <div class="footer-col">
+      <h6>CONTACTO</h6>
+      <p><mat-icon class="footer-icon">location_on</mat-icon> San Isidro, Lima, PE</p>
+      <p><mat-icon class="footer-icon">email</mat-icon> vitality&#64;example.com</p>
+      <p><mat-icon class="footer-icon">phone</mat-icon> +51 965 263 568</p>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2024 Vitality.com</div>
+</footer>
