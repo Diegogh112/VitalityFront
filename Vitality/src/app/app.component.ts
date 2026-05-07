@@ -6,6 +6,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { LoginService } from './services/login.service';
 import { CommonModule, NgIf } from '@angular/common';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-root',
@@ -26,7 +27,14 @@ import { CommonModule, NgIf } from '@angular/common';
 export class AppComponent {
   title = 'Vitality';
   role: string = '';
-  constructor(private loginService: LoginService) {}
+  isMobile = false;
+
+  constructor(private loginService: LoginService, private breakpointObserver: BreakpointObserver) {
+    this.breakpointObserver.observe([Breakpoints.Handset, Breakpoints.TabletPortrait])
+      .subscribe(result => {
+        this.isMobile = result.matches;
+      });
+  }
 
   cerrar() {
     sessionStorage.clear();

@@ -1,12 +1,40 @@
 .mat-toolbar {
   background-color: greenyellow;
   gap: 4px;
+  flex-wrap: nowrap;
+  overflow: hidden;
 }
 
 .mat-toolbar button {
   margin: 0 2px;
+  white-space: nowrap;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.brand-name {
+  font-weight: 700;
 }
 
 .spacer {
   flex: 1 1 auto;
+}
+
+/* En tablets medianos, ocultar texto de botones y mostrar solo íconos */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .mat-toolbar button span:not(.brand-name) {
+    display: none;
+  }
+
+  .mat-toolbar button {
+    min-width: unset;
+    padding: 0 8px;
+  }
 }
