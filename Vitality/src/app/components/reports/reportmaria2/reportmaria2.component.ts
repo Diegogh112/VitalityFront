@@ -3,7 +3,7 @@ import {
   ChartDataset,
   ChartOptions,
   ChartType,
-} from './../../../../../node_modules/chart.js/dist/types/index.d';
+} from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 import { CategoryService } from '../../../services/category.service';
 
