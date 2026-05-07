@@ -1,27 +1,61 @@
 # Vitality
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.7.
+Aplicación web desarrollada con Angular 17 para la gestión de salud y bienestar. Permite administrar usuarios, productos, categorías, objetivos de salud, seguimientos, compras y más.
 
-## Development server
+## 🌐 Demo en producción
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- **Frontend:** https://vitalityfront.netlify.app
+- **Backend:** https://vitality-arquitectura-web.onrender.com
 
-## Code scaffolding
+> El backend está alojado en Render con plan gratuito. Si no responde de inmediato, espera unos segundos mientras despierta.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## 🔐 Credenciales de acceso
 
-## Build
+| Rol | Usuario | Contraseña |
+|-----|---------|------------|
+| Administrador | `Diegogh10` | `password` |
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## 🚀 Ejecutar en local
 
-## Running unit tests
+### Requisitos
+- Node.js 18+
+- Angular CLI 17
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Instalación
 
-## Running end-to-end tests
+```bash
+cd Vitality
+npm install
+ng serve
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+La aplicación estará disponible en `http://localhost:4200`.
 
-## Further help
+> En modo desarrollo, el backend apunta a `https://vitality-arquitectura-web.onrender.com`.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## 🏗️ Build para producción
+
+```bash
+ng build
+```
+
+Los archivos generados se guardan en `dist/vitality/browser`.
+
+## 🧪 Pruebas unitarias
+
+```bash
+ng test
+```
+
+## 📁 Estructura del proyecto
+
+```
+src/
+├── app/
+│   ├── components/     # Componentes por módulo (CRUD)
+│   ├── services/       # Servicios HTTP
+│   ├── models/         # Interfaces y modelos
+│   ├── guard/          # Guards de autenticación
+│   └── app.routes.ts   # Rutas de la aplicación
+└── environments/       # Configuración por entorno
+```

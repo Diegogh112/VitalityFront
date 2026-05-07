@@ -1,3 +1,12 @@
-.mat-toolbar{
-    background-color: greenyellow;
+.mat-toolbar {
+  background-color: greenyellow;
+  gap: 4px;
+}
+
+.mat-toolbar button {
+  margin: 0 2px;
+}
+
+.spacer {
+  flex: 1 1 auto;
 }
