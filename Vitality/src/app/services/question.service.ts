@@ -11,26 +11,14 @@ export class QuestionService {
 
   private url = `${base_url}/preguntas`
   private listaCambio = new Subject<Question[]>();
-  constructor(private httpClient: HttpClient) {}
+  constructor(private http: HttpClient) {}
 
   list() {
-    return this.httpClient.get<Question[]>(this.url);
+    return this.http.get<Question[]>(this.url);
   }
 
   insert(q:Question){
-    return this.httpClient.post(this.url,q);
-  }
-
-  listId(id: number) {
-    return this.httpClient.get<Question>(`${this.url}/${id}`);
-  }
-
-  update(c: Question) {
-    return this.httpClient.put(this.url, c);
-  }
-
-  eliminar(id: number) {
-    return this.httpClient.delete(`${this.url}/${id}`);
+    return this.http.post(this.url,q);
   }
 
   setList(listaNueva:Question[]) {
@@ -39,5 +27,16 @@ export class QuestionService {
 
   getList(){
     return this.listaCambio.asObservable();
+  }
+  listid(id:number){
+    return this.http.get<Question>(`${this.url}/${id}`)
+  }
+
+  update(q:Question){
+    return this.http.put(this.url,q)
+  }
+
+  eliminar(id: number) {
+    return this.http.delete(`${this.url}/${id}`);
   }
 }

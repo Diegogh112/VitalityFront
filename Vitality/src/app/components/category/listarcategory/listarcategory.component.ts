@@ -6,7 +6,7 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { RouterLink } from '@angular/router';
-import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSortModule } from '@angular/material/sort';
@@ -27,7 +27,7 @@ import {MatCardModule} from '@angular/material/card';
 })
 export class ListarcategoryComponent implements OnInit{
   sortedData:Category[]=[];
-
+  dataSource: MatTableDataSource<Category> = new MatTableDataSource();
 
   displayedColumns: string[] = [
     'codigo',
@@ -36,14 +36,17 @@ export class ListarcategoryComponent implements OnInit{
     'acciones'
   ];
 
-  dataSource:MatTableDataSource<Category>=new MatTableDataSource();
+  @ViewChild(MatPaginator) Paginator!: MatPaginator;
+
   constructor(private cS:CategoryService){}
   ngOnInit(): void {
       this.cS.list().subscribe((data)=>{
         this.dataSource = new MatTableDataSource(data)
+        this.dataSource.paginator = this.Paginator;
       })
       this.cS.getList().subscribe((data)=>{
         this.dataSource = new MatTableDataSource(data)
+        this.dataSource.paginator = this.Paginator;
       })
   }
 

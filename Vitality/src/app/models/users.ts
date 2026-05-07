@@ -1,14 +1,12 @@
-import { Role } from "./role";
 export class Users {
-    idUser?:number=0
-    username:string=''
-    email:string=''
-    password:string=''
-    enabled:boolean=false
-    //roles:Role=new Role()
-    address:string=''
+    id:number=0
+    username:string=""
+    email:string=""
+    password:string=""
+    address:string=""
     weight:number=0
     height:number=0
-    subscription:string=''
-    healthProfessional:string=''
+    subscription:boolean=false
+    healthProfessional:boolean=false
+    enabled:boolean=true
 }

@@ -1,44 +1,57 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatTableDataSource, MatTableModule} from '@angular/material/table';
+import { Component, ViewChild } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { HealthObjective } from '../../../models/healthobjective';
-import { MatInputModule } from '@angular/material/input';
-import { HealthobjectiveService } from '../../../services/healthobjective.service';
-import { MatPaginator } from '@angular/material/paginator';
 import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { RouterLink } from '@angular/router';
+import { HealthObjective } from '../../../models/healthobjective';
+import { HealthobjectiveService } from '../../../services/healthobjective.service';
+
 @Component({
   selector: 'app-listarhealthobjective',
   standalone: true,
-  imports: [MatTableModule,
-    MatIconModule,
-    RouterLink,
-    MatButtonModule,
+  imports: [MatButtonModule,
+    MatTableModule,
     MatFormFieldModule,
-    MatInputModule],
+    RouterLink,
+    MatPaginatorModule,
+    MatInputModule,
+    MatIconModule,MatSortModule,
+    MatCardModule],
   templateUrl: './listarhealthobjective.component.html',
   styleUrl: './listarhealthobjective.component.css'
 })
-export class ListarhealthobjectiveComponent implements OnInit {
-  displayedColumns:string[]=['codigo','tipo','user','accion01','accion02',];
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  dataSource: MatTableDataSource<HealthObjective> = new MatTableDataSource();
-  constructor(private hS:HealthobjectiveService) {}
-   ngOnInit(): void {
-    this.hS.list().subscribe((data)=>{
-      this.dataSource=new MatTableDataSource(data)
-      this.dataSource.paginator = this.paginator;
-    })
-    this.hS.getList().subscribe((data) => {
-      this.dataSource = new MatTableDataSource(data);
-      this.dataSource.paginator = this.paginator;
-    });
-   }
-   eliminar(id: number) {
-    this.hS.eliminar(id).subscribe((data) => {
-      this.hS.list().subscribe((data) => {
-        this.hS.setList(data);
+export class ListarhealthobjectiveComponent {
+  displayedColumns: string[] = [
+    'codigo',
+    'tipo',
+    'usuario',
+    'acciones',
+  ];
+
+
+  dataSource:MatTableDataSource<HealthObjective>=new MatTableDataSource();
+  @ViewChild(MatPaginator) Paginator!: MatPaginator;
+  constructor(private hoS:HealthobjectiveService){}
+  ngOnInit(): void {
+      this.hoS.list().subscribe((data)=>{
+        this.dataSource = new MatTableDataSource(data)
+        this.dataSource.paginator = this.Paginator;
+      })
+      this.hoS.getList().subscribe((data)=>{
+        this.dataSource = new MatTableDataSource(data)
+        this.dataSource.paginator = this.Paginator;
+      })
+  }
+
+  deletes(id: number) {
+    this.hoS.eliminar(id).subscribe((data) => {
+      this.hoS.list().subscribe((data) => {
+        this.hoS.setList(data);
       });
     });
   }

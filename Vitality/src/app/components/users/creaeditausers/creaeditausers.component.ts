@@ -1,15 +1,15 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatOptionModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { UsersService } from '../../../services/users.service';
-import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Users } from '../../../models/users';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 @Component({
   selector: 'app-creaeditausers',
@@ -61,7 +61,7 @@ this.route.params.subscribe((data:Params) =>{
   }
   aceptar(): void {
     if (this.form.valid){
-        this.users.idUser=this.form.value.codigo;
+        this.users.id=this.form.value.codigo;
         this.users.username=this.form.value.nombre;
         this.users.email=this.form.value.correo;
         this.users.password=this.form.value.contrasenia;
@@ -90,11 +90,15 @@ this.route.params.subscribe((data:Params) =>{
     }
   }
 
+  cancelar():void {
+    this.router.navigate(['usuarios']);
+  }
+
   init(){
     if (this.edicion){
       this.uS.listid(this.id).subscribe((data)=>{
         this.form=new FormGroup({
-            codigo:new FormControl(data.idUser),
+            codigo:new FormControl(data.id),
             nombre:new FormControl(data.username),
             correo:new FormControl(data.email),
             contrasenia:new FormControl(data.password),

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute, RouterOutlet } from '@angular/router';
 import { ListarshoppingdetailComponent } from './listarshoppingdetail/listarshoppingdetail.component';
+import { ActivatedRoute, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-shoppingdetail',

@@ -2,7 +2,10 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { Review } from '../models/review';
 import { HttpClient } from '@angular/common/http';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
+import { ReviewByUserDTO } from '../models/reviewByUserDTO';
+import { TotalPunctuations } from '../models/TotalPunctuationsDTO';
+import { PunctuationByUserDTO } from '../models/punctuationByUserDTO';
 const base_url = environment.base;
 @Injectable({
   providedIn: 'root'
@@ -39,4 +42,23 @@ export class ReviewService {
   eliminar(id: number) {
     return this.http.delete(`${this.url}/${id}`);
   }
+
+  getCantidadCriticas(): Observable<ReviewByUserDTO[]> {
+    return this.http.get<ReviewByUserDTO[]>(
+      `${this.url}/cantidades`
+    );
+  }
+
+  getotalPuntuation(): Observable<TotalPunctuations[]> {
+    return this.http.get<TotalPunctuations[]>(
+      `${this.url}/totales`
+    );
+  }
+
+
+  
+  getUsersReviewSummary():Observable<PunctuationByUserDTO[]>{
+    return this.http.get<PunctuationByUserDTO[]>(`${this.url}/resumen_y_promedio_de_resenas`)
+  }
+
 }

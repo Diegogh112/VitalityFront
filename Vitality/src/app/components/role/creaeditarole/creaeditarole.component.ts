@@ -31,7 +31,31 @@ export class CreaeditaroleComponent implements OnInit {
   id:number=0;
   edicion:boolean=false;
   users:Users[]=[];
+  roles: { value: string; viewValue: string }[] = [
+    {
+      value:
+        'ADMIN',
+      viewValue:
+        'ADMIN',
+    },
+    {
+      value:
+      'PROFESIONAL',
 
+      viewValue:
+      'PROFESIONAL',
+
+    },
+    {
+      value:
+      'CLIENTE',
+
+      viewValue:
+      'CLIENTE',
+
+    },
+ 
+  ];
   constructor(
     private formBuilder: FormBuilder,
     private rS:RoleService,
@@ -60,9 +84,9 @@ export class CreaeditaroleComponent implements OnInit {
   }
   aceptar(): void {
     if (this.form.valid){
-        this.role.idRole=this.form.value.codigo;
+        this.role.id=this.form.value.codigo;
         this.role.rol=this.form.value.nombre;
-        this.role.user.idUser=this.form.value.usuario;
+        this.role.user.id=this.form.value.usuario;
 
         if (this.edicion){
           this.rS.update(this.role).subscribe((data)=>{
@@ -89,9 +113,9 @@ export class CreaeditaroleComponent implements OnInit {
     if (this.edicion){
       this.rS.listid(this.id).subscribe((data)=>{
         this.form=new FormGroup({
-            codigo:new FormControl(data.idRole),
+            codigo:new FormControl(data.id),
             nombre:new FormControl(data.rol),
-            usuario:new FormControl(data.user.idUser)
+            usuario:new FormControl(data.user.id)
         })
       })
     }

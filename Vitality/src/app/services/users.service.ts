@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { Users } from '../models/users';
 import { HttpClient } from '@angular/common/http';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
+import { UserBySumProductsByTypeDTO } from '../models/userBySumProductsByTypeDTO';
+import { PunctuationByUserDTO } from '../models/punctuationByUserDTO';
 const base_url = environment.base;
 @Injectable({
   providedIn: 'root'
@@ -14,7 +16,7 @@ export class UsersService {
   constructor(private http: HttpClient) {}
 
   list() {
-    return this.http.get<Users[]>(this.url+"/listarusuarios");
+    return this.http.get<Users[]>(this.url);
   }
 
   //para insertar
@@ -43,4 +45,14 @@ export class UsersService {
   delete(id: number) {
     return this.http.delete(`${this.url}/${id}`);
   }
+
+
+  getSumProductsByType():Observable<UserBySumProductsByTypeDTO[]>{
+    return this.http.get<UserBySumProductsByTypeDTO[]>(`${this.url}/Totalproductoscompradosportipo`)
+  }
+
+  getUsersReviewSummary():Observable<PunctuationByUserDTO[]>{
+    return this.http.get<PunctuationByUserDTO[]>(`${this.url}/resumen_y_promedio_de_resenas`)
+  }
+
 }

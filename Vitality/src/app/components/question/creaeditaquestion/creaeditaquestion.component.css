@@ -5,7 +5,9 @@
     margin-bottom: 40px; /* Increase the margin-bottom to move the title lower */
 
     margin-top: 60px;  /* Add a margin-top to further position it down the page */
+    width: 70%;
 
+    margin-left: 30px;
    }
 
 
@@ -19,6 +21,7 @@
     font-size: 2em;
 
     color: #333;
+    
 
    }
 
@@ -26,4 +29,7 @@
 
     width: 70%;
 
-   }
+   }  
+.boton {
+    margin-left: 200px;
+}

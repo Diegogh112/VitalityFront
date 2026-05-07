@@ -11,6 +11,8 @@ import { RecommendationService } from '../../../services/recommendation.service'
 import { Recommendation } from '../../../models/recommendation';
 import { UsersService } from '../../../services/users.service';
 import { Users } from '../../../models/users';
+import { CategoryService } from '../../../services/category.service';
+import { Category } from '../../../models/category';
 
 
 @Component({
@@ -36,14 +38,17 @@ export class CreaeditarecommendationComponent implements OnInit{
   users:Users[]=[];
   edicion:boolean=false;
   id:number=0;
+  categories!:Category[];
   constructor(private formBuilder: FormBuilder,
     private rS:RecommendationService,
     private router:Router,
     private uS:UsersService,
-    private route:ActivatedRoute
+    private route:ActivatedRoute,
+    private cS:CategoryService,
   ) {}
 
   ngOnInit(): void {
+
 
     this.route.params.subscribe((data:Params) =>{
       this.id=data['id'];
@@ -57,17 +62,16 @@ export class CreaeditarecommendationComponent implements OnInit{
       usuario: ['', Validators.required],
       
     });
-
-    this.uS.list().subscribe((data) =>{
-      this.users=data;
-    });
+    this.uS.list().subscribe(users=>{
+      this.users=users;
+    })
   }
 
   aceptar(): void {
     if (this.form.valid){
         this.rec.idRecommendation=this.form.value.codigo;
         this.rec.descriptionRecommendation=this.form.value.descripcion;
-        this.rec.user.idUser=this.form.value.usuario;
+        this.rec.user.id=this.form.value.usuario;
         
 
         if (this.edicion){
@@ -98,7 +102,7 @@ export class CreaeditarecommendationComponent implements OnInit{
         this.form=new FormGroup({
             codigo:new FormControl(data.idRecommendation),
             descripcion:new FormControl(data.descriptionRecommendation),
-            usuario:new FormControl(data.user.idUser)
+            usuario:new FormControl(data.user.id)
             
           })
           

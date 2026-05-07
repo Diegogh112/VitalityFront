@@ -6,16 +6,16 @@ import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { LoginService } from '../../services/login.service';
 import { Router } from '@angular/router';
-import { JwtRequest } from '../../models/jwtRequest';
+import { JwtRequest } from '../../models/jwt.Request';
 
 @Component({
   selector: 'app-login',
   standalone: true,
   imports: [FormsModule, MatFormFieldModule, MatButtonModule, MatInputModule],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css',
+  styleUrl: './login.component.css'
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit{
   constructor(
     private loginService: LoginService,
     private router: Router,
@@ -26,6 +26,7 @@ export class LoginComponent implements OnInit {
   mensaje: string = '';
   ngOnInit(): void {}
   login() {
+    
     let request = new JwtRequest();
     request.username = this.username;
     request.password = this.password;

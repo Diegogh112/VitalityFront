@@ -6,19 +6,23 @@
       <mat-label>Codigo</mat-label>
       <input matInput readonly formControlName="codigo" />
     </mat-form-field>
-
+    <br />
     <mat-form-field>
-      <mat-label>Nombre de Rol</mat-label>
-      <input matInput formControlName="nombre" />
+      <mat-label>Selecciona un rol</mat-label>
+      <mat-select formControlName="nombre">
+        <mat-option *ngFor="let r of roles"  [value]="r.value">
+          {{ r.viewValue }}
+        </mat-option>
+      </mat-select>
       <mat-error *ngIf="form.get('nombre')?.hasError('required')"
-        >EL nombre es obligatorio.</mat-error
-      >
+      >El rol es obligatorio.
+    </mat-error>
     </mat-form-field>
     <br />
     <mat-form-field>
       <mat-label>Selecciona un usuario</mat-label>
       <mat-select formControlName="usuario">
-        <mat-option *ngFor="let u of users"  [value]="u.idUser">
+        <mat-option *ngFor="let u of users"  [value]="u.id">
           {{ u.username }}
         </mat-option>
       </mat-select>
@@ -29,7 +33,7 @@
   
 
       <br />
-      <button class="boton" mat-raised-button color="accent">Aceptar</button>
+      <button class="boton" mat-raised-button color="primary">Aceptar</button>
       <button class="boton" mat-raised-button color="warn" (click)="cancelar()">
         Cancelar
       </button>

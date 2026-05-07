@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { HealthObjective } from '../models/healthobjective';
 import { HttpClient } from '@angular/common/http';
+import { ObjectiveByUsersDTO } from '../models/objectiveByUsersDTO';
+import { statusHealthobjectiveDTO } from '../models/statusHealthobjectiveDTO';
 const base_url = environment.base;
 @Injectable({
   providedIn: 'root'
@@ -10,28 +12,15 @@ const base_url = environment.base;
 export class HealthobjectiveService {
   private url = `${base_url}/Objetivo-de-salud`
   private listaCambio = new Subject<HealthObjective[]>();
-  constructor(private httpClient: HttpClient) {}
+  constructor(private http: HttpClient) {}
 
   list() {
-    return this.httpClient.get<HealthObjective[]>(this.url);
+    return this.http.get<HealthObjective[]>(this.url);
   }
 
   insert(h:HealthObjective){
-    return this.httpClient.post(this.url,h);
+    return this.http.post(this.url,h);
   }
-
-  listId(id: number) {
-    return this.httpClient.get<HealthObjective>(`${this.url}/${id}`);
-  }
-
-  update(c: HealthObjective) {
-    return this.httpClient.put(this.url, c);
-  }
-
-  eliminar(id: number) {
-    return this.httpClient.delete(`${this.url}/${id}`);
-  }
-
 
   setList(listaNueva:HealthObjective[]) {
     this.listaCambio.next(listaNueva);
@@ -39,5 +28,26 @@ export class HealthobjectiveService {
 
   getList(){
     return this.listaCambio.asObservable();
+  }
+
+  listid(id:number){
+    return this.http.get<HealthObjective>(`${this.url}/${id}`)
+  }
+
+  update(h:HealthObjective){
+    return this.http.put(this.url,h)
+  }
+
+  eliminar(id: number) {
+    return this.http.delete(`${this.url}/${id}`);
+  }
+  getHealthObjetiveByUser():Observable<statusHealthobjectiveDTO[]>{
+    return this.http.get<statusHealthobjectiveDTO[]>(`${this.url}/ObjetivosCompletados`)
+  }
+  getObjectiveByUsers():Observable<ObjectiveByUsersDTO[]>{
+    return this.http.get<ObjectiveByUsersDTO[]>(`${this.url}/Mostrar_Objetivo_Usuario`)
+  }
+  getHealthObjectiveBySuscribedUsers():Observable<ObjectiveByUsersDTO[]>{
+    return this.http.get<ObjectiveByUsersDTO[]>(`${this.url}/Usuarios_suscritos`)
   }
 }

@@ -31,19 +31,22 @@ import { UsersService } from '../../../services/users.service';
 export class CreaeditareviewComponent {
   form: FormGroup = new FormGroup({});
   review:Review= new Review();
-  users!:Users[]
   id:number=0;
-  edicion:boolean=false
+  edicion:boolean=false;
+  users:Users[]=[];
 
   constructor(
     private formBuilder: FormBuilder,
-    private router:Router,
     private rS:ReviewService,
-    private uS:UsersService,
-    private route:ActivatedRoute
+    private router:Router,
+    private route:ActivatedRoute,
+    private uS:UsersService
   ) {}
-
   ngOnInit(): void {
+
+    this.uS.list().subscribe(users=>{
+      this.users=users;
+    })
 
 this.route.params.subscribe((data:Params) =>{
   this.id=data['id'];
@@ -53,22 +56,17 @@ this.route.params.subscribe((data:Params) =>{
 
     this.form = this.formBuilder.group({
       codigo:[''],
-      puntuacion: ['', Validators.required],
-      comentario: ['', Validators.required],
-      usuario: ['', Validators.required],
-    });
-
-    this.uS.list().subscribe(a => {
-      this.users = a;
+      puntuacion:['',[Validators.required,Validators.pattern('^[0-9]*$')]],
+      comentario: ['',Validators.required],
+      usuario: ['',Validators.required],
     });
   }
-
   aceptar(): void {
     if (this.form.valid){
         this.review.idReview=this.form.value.codigo;
         this.review.punctuation=this.form.value.puntuacion;
         this.review.comment=this.form.value.comentario;
-        this.review.user=this.form.value.usuario;
+        this.review.user.id=this.form.value.usuario;
 
         if (this.edicion){
           this.rS.update(this.review).subscribe((data)=>{
@@ -87,7 +85,9 @@ this.route.params.subscribe((data:Params) =>{
       }
     }
   }
-  cancelar():void {
+
+
+  cancelar():void{
     this.router.navigate(['resenias']);
   }
 
@@ -98,7 +98,7 @@ this.route.params.subscribe((data:Params) =>{
             codigo:new FormControl(data.idReview),
             puntuacion:new FormControl(data.punctuation),
             comentario:new FormControl(data.comment),
-            usuario:new FormControl(data.user),
+            usuario:new FormControl(data.user.id),
         })
       })
     }
