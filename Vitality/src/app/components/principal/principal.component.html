@@ -82,28 +82,28 @@
     <h3 class="features-title">Características</h3>
     <div class="features-grid">
       <div class="feature-card">
-        <img src="https://www.galileo.edu/fabiq/files/2021/07/Maestr%C3%ADa-Nutricion-1.jpg" alt="Información personalizada">
+        <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=600&q=80" alt="Información personalizada">
         <div class="feature-overlay">
           <h4>Información Personalizada</h4>
           <p>Obtén acceso a información nutricional personalizada basada en tus necesidades y objetivos.</p>
         </div>
       </div>
       <div class="feature-card">
-        <img src="https://eu-central-1.linodeobjects.com/tecnohotelnews/2022/12/siete-claves-para-ofrecer-platos-saludables-atractivos-a-los-comensales.jpg" alt="Recetas saludables">
+        <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600&q=80" alt="Recetas saludables">
         <div class="feature-overlay">
           <h4>Recetas Saludables</h4>
           <p>Descubre recetas saludables y prácticas que se adapten a tu estilo de vida.</p>
         </div>
       </div>
       <div class="feature-card">
-        <img src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/happy-coach-cheering-for-athletic-man-on-stationary-royalty-free-image-1626768872.jpg" alt="Plan de ejercicios">
+        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80" alt="Plan de ejercicios">
         <div class="feature-overlay">
           <h4>Plan de Ejercicios</h4>
           <p>Accede a planes de ejercicios diseñados para complementar tu alimentación.</p>
         </div>
       </div>
       <div class="feature-card">
-        <img src="https://www.unir.net/wp-content/uploads/2017/06/NOTEC.jpg" alt="Seguimiento">
+        <img src="https://images.unsplash.com/photo-1505576399279-565b52d4ac71?w=600&q=80" alt="Seguimiento">
         <div class="feature-overlay">
           <h4>Seguimiento y Recordatorios</h4>
           <p>Recibe seguimiento y recordatorios para mantener un estilo de vida saludable.</p>
@@ -117,50 +117,50 @@
 <section id="categorias">
   <div class="section-container">
     <h2 class="section-title">Categorías</h2>
-    <div class="carousel-wrapper">
-      <div class="carousel" id="mainCarousel">
-        <div class="carousel-track" id="carouselTrack">
-          <div class="carousel-slide">
+    <div class="cat-carousel-wrapper">
+      <button class="cat-btn prev" onclick="moveCat(-1)">&#8249;</button>
+      <div class="cat-viewport">
+        <div class="cat-track" id="catTrack">
+          <div class="cat-card">
             <img src="assets/Comida-rapida.jpg" alt="Comida rápida">
-            <div class="slide-caption">
+            <div class="cat-info">
               <h4>Comida Rápida</h4>
-              <p>Práctica y de preparación rápida, pero alta en grasas saturadas. Consúmela con moderación.</p>
+              <p>Práctica y de preparación rápida. Consúmela con moderación para mantener una dieta equilibrada.</p>
             </div>
           </div>
-          <div class="carousel-slide">
+          <div class="cat-card">
             <img src="assets/Recetas.jpg" alt="Recetas">
-            <div class="slide-caption">
+            <div class="cat-info">
               <h4>Recetas</h4>
-              <p>Instrucciones detalladas para preparar platos específicos con ingredientes y técnicas culinarias.</p>
+              <p>Instrucciones detalladas para preparar platos saludables con ingredientes frescos y técnicas culinarias.</p>
             </div>
           </div>
-          <div class="carousel-slide">
+          <div class="cat-card">
             <img src="assets/Proteínas.jpg" alt="Proteínas">
-            <div class="slide-caption">
+            <div class="cat-info">
               <h4>Proteínas</h4>
-              <p>Nutrientes esenciales para el crecimiento y mantenimiento de tejidos. Clave para el desarrollo muscular.</p>
+              <p>Nutrientes esenciales para el crecimiento muscular y el mantenimiento de tejidos del cuerpo.</p>
             </div>
           </div>
-          <div class="carousel-slide">
+          <div class="cat-card">
             <img src="assets/Vitaminas.jpg" alt="Vitaminas">
-            <div class="slide-caption">
+            <div class="cat-info">
               <h4>Vitaminas</h4>
-              <p>Compuestos orgánicos necesarios para el funcionamiento adecuado del cuerpo y el sistema inmune.</p>
+              <p>Compuestos orgánicos necesarios para el sistema inmune, la energía y la salud general.</p>
             </div>
           </div>
-          <div class="carousel-slide">
+          <div class="cat-card">
             <img src="assets/Alimento.jpg" alt="Alimentos">
-            <div class="slide-caption">
+            <div class="cat-info">
               <h4>Alimentos</h4>
-              <p>Sustancias consumidas para obtener nutrientes y energía. Una dieta variada es clave para la salud.</p>
+              <p>Una dieta variada y equilibrada es fundamental para mantener una buena salud y bienestar.</p>
             </div>
           </div>
         </div>
       </div>
-      <button class="carousel-btn prev" onclick="moveCarousel(-1)">&#8249;</button>
-      <button class="carousel-btn next" onclick="moveCarousel(1)">&#8250;</button>
-      <div class="carousel-dots" id="carouselDots"></div>
+      <button class="cat-btn next" onclick="moveCat(1)">&#8250;</button>
     </div>
+    <div class="cat-dots" id="catDots"></div>
   </div>
 </section>
 
@@ -255,43 +255,64 @@
     menu.classList.toggle('open');
   }
 
-  // Carousel
-  let currentSlide = 0;
-  const totalSlides = 5;
+  // Categorías carousel (card-based, shows 3 on desktop, 1 on mobile)
+  let catIndex = 0;
+  const catTotal = 5;
 
-  function buildDots() {
-    const dots = document.getElementById('carouselDots');
+  function getVisible() {
+    return window.innerWidth >= 900 ? 3 : window.innerWidth >= 600 ? 2 : 1;
+  }
+
+  function buildCatDots() {
+    const dots = document.getElementById('catDots');
     if (!dots) return;
     dots.innerHTML = '';
-    for (let i = 0; i < totalSlides; i++) {
+    const visible = getVisible();
+    const pages = Math.ceil(catTotal / visible);
+    for (let i = 0; i < pages; i++) {
       const d = document.createElement('button');
       d.className = 'dot' + (i === 0 ? ' active' : '');
-      d.onclick = () => goToSlide(i);
+      d.onclick = () => goToCat(i * visible);
       dots.appendChild(d);
     }
   }
 
-  function updateCarousel() {
-    const track = document.getElementById('carouselTrack');
+  function updateCat() {
+    const track = document.getElementById('catTrack');
     if (!track) return;
-    track.style.transform = `translateX(-${currentSlide * 100}%)`;
-    document.querySelectorAll('.dot').forEach((d, i) => {
-      d.classList.toggle('active', i === currentSlide);
-    });
+    const visible = getVisible();
+    const cardWidth = 100 / visible;
+    track.style.transform = `translateX(-${catIndex * cardWidth}%)`;
+    const dots = document.querySelectorAll('.dot');
+    const activePage = Math.floor(catIndex / visible);
+    dots.forEach((d, i) => d.classList.toggle('active', i === activePage));
   }
 
-  function moveCarousel(dir) {
-    currentSlide = (currentSlide + dir + totalSlides) % totalSlides;
-    updateCarousel();
+  function moveCat(dir) {
+    const visible = getVisible();
+    const maxIndex = catTotal - visible;
+    catIndex = Math.max(0, Math.min(catIndex + dir, maxIndex));
+    updateCat();
   }
 
-  function goToSlide(index) {
-    currentSlide = index;
-    updateCarousel();
+  function goToCat(index) {
+    catIndex = index;
+    updateCat();
   }
 
   document.addEventListener('DOMContentLoaded', () => {
-    buildDots();
-    setInterval(() => moveCarousel(1), 5000);
+    buildCatDots();
+    updateCat();
+    setInterval(() => {
+      const visible = getVisible();
+      const maxIndex = catTotal - visible;
+      catIndex = catIndex >= maxIndex ? 0 : catIndex + 1;
+      updateCat();
+    }, 4000);
+    window.addEventListener('resize', () => {
+      catIndex = 0;
+      buildCatDots();
+      updateCat();
+    });
   });
 </script>
