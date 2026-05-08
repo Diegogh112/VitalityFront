@@ -113,54 +113,56 @@
   </div>
 </section>
 
-<!-- CATEGORÍAS (CAROUSEL) -->
+<!-- CATEGORÍAS (TICKER) -->
 <section id="categorias">
   <div class="section-container">
     <h2 class="section-title">Categorías</h2>
-    <div class="cat-carousel-wrapper" id="catWrapper">
-      <div class="cat-viewport">
-        <div class="cat-track" id="catTrack">
-          <div class="cat-slide">
-            <img src="assets/Comida-rapida.jpg" alt="Comida rápida">
-            <div class="cat-caption">
-              <h4>Comida Rápida</h4>
-              <p>Práctica y de preparación rápida. Consúmela con moderación para mantener una dieta equilibrada.</p>
-            </div>
-          </div>
-          <div class="cat-slide">
-            <img src="assets/Recetas.jpg" alt="Recetas">
-            <div class="cat-caption">
-              <h4>Recetas</h4>
-              <p>Instrucciones detalladas para preparar platos saludables con ingredientes frescos y técnicas culinarias.</p>
-            </div>
-          </div>
-          <div class="cat-slide">
-            <img src="assets/Proteínas.jpg" alt="Proteínas">
-            <div class="cat-caption">
-              <h4>Proteínas</h4>
-              <p>Nutrientes esenciales para el crecimiento muscular y el mantenimiento de tejidos del cuerpo.</p>
-            </div>
-          </div>
-          <div class="cat-slide">
-            <img src="assets/Vitaminas.jpg" alt="Vitaminas">
-            <div class="cat-caption">
-              <h4>Vitaminas</h4>
-              <p>Compuestos orgánicos necesarios para el sistema inmune, la energía y la salud general.</p>
-            </div>
-          </div>
-          <div class="cat-slide">
-            <img src="assets/Alimento.jpg" alt="Alimentos">
-            <div class="cat-caption">
-              <h4>Alimentos</h4>
-              <p>Una dieta variada y equilibrada es fundamental para mantener una buena salud y bienestar.</p>
-            </div>
-          </div>
-        </div>
+  </div>
+  <div class="ticker-outer">
+    <div class="ticker-track" id="tickerTrack">
+      <!-- Las tarjetas se duplican para el loop infinito -->
+      <div class="ticker-card">
+        <img src="assets/Comida-rapida.jpg" alt="Comida rápida">
+        <span>Comida Rápida</span>
       </div>
-      <button class="cat-btn prev" onclick="moveCat(-1)">&#8249;</button>
-      <button class="cat-btn next" onclick="moveCat(1)">&#8250;</button>
+      <div class="ticker-card">
+        <img src="assets/Recetas.jpg" alt="Recetas">
+        <span>Recetas</span>
+      </div>
+      <div class="ticker-card">
+        <img src="assets/Proteínas.jpg" alt="Proteínas">
+        <span>Proteínas</span>
+      </div>
+      <div class="ticker-card">
+        <img src="assets/Vitaminas.jpg" alt="Vitaminas">
+        <span>Vitaminas</span>
+      </div>
+      <div class="ticker-card">
+        <img src="assets/Alimento.jpg" alt="Alimentos">
+        <span>Alimentos</span>
+      </div>
+      <!-- Duplicado para loop continuo -->
+      <div class="ticker-card">
+        <img src="assets/Comida-rapida.jpg" alt="Comida rápida">
+        <span>Comida Rápida</span>
+      </div>
+      <div class="ticker-card">
+        <img src="assets/Recetas.jpg" alt="Recetas">
+        <span>Recetas</span>
+      </div>
+      <div class="ticker-card">
+        <img src="assets/Proteínas.jpg" alt="Proteínas">
+        <span>Proteínas</span>
+      </div>
+      <div class="ticker-card">
+        <img src="assets/Vitaminas.jpg" alt="Vitaminas">
+        <span>Vitaminas</span>
+      </div>
+      <div class="ticker-card">
+        <img src="assets/Alimento.jpg" alt="Alimentos">
+        <span>Alimentos</span>
+      </div>
     </div>
-    <div class="cat-dots" id="catDots"></div>
   </div>
 </section>
 
@@ -249,60 +251,8 @@
 </footer>
 
 <script>
-  // Mobile menu
   function toggleMenu() {
     const menu = document.getElementById('mobile-menu');
     menu.classList.toggle('open');
   }
-
-  // Categorías carousel — full image, autoplay, pause on hover
-  let catIndex = 0;
-  const catTotal = 5;
-  let catTimer = null;
-  let catPaused = false;
-
-  function buildCatDots() {
-    const dots = document.getElementById('catDots');
-    if (!dots) return;
-    dots.innerHTML = '';
-    for (let i = 0; i < catTotal; i++) {
-      const d = document.createElement('button');
-      d.className = 'dot' + (i === 0 ? ' active' : '');
-      d.setAttribute('aria-label', 'Ir a slide ' + (i + 1));
-      d.onclick = () => { catIndex = i; updateCat(); };
-      dots.appendChild(d);
-    }
-  }
-
-  function updateCat() {
-    const track = document.getElementById('catTrack');
-    if (!track) return;
-    track.style.transform = `translateX(-${catIndex * 100}%)`;
-    document.querySelectorAll('.dot').forEach((d, i) =>
-      d.classList.toggle('active', i === catIndex)
-    );
-  }
-
-  function moveCat(dir) {
-    catIndex = (catIndex + dir + catTotal) % catTotal;
-    updateCat();
-  }
-
-  function startAutoplay() {
-    catTimer = setInterval(() => {
-      if (!catPaused) moveCat(1);
-    }, 3500);
-  }
-
-  document.addEventListener('DOMContentLoaded', () => {
-    buildCatDots();
-    updateCat();
-    startAutoplay();
-
-    const wrapper = document.getElementById('catWrapper');
-    if (wrapper) {
-      wrapper.addEventListener('mouseenter', () => { catPaused = true; });
-      wrapper.addEventListener('mouseleave', () => { catPaused = false; });
-    }
-  });
 </script>
