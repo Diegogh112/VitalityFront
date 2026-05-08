@@ -117,47 +117,47 @@
 <section id="categorias">
   <div class="section-container">
     <h2 class="section-title">Categorías</h2>
-    <div class="cat-carousel-wrapper">
-      <button class="cat-btn prev" onclick="moveCat(-1)">&#8249;</button>
+    <div class="cat-carousel-wrapper" id="catWrapper">
       <div class="cat-viewport">
         <div class="cat-track" id="catTrack">
-          <div class="cat-card">
+          <div class="cat-slide">
             <img src="assets/Comida-rapida.jpg" alt="Comida rápida">
-            <div class="cat-info">
+            <div class="cat-caption">
               <h4>Comida Rápida</h4>
               <p>Práctica y de preparación rápida. Consúmela con moderación para mantener una dieta equilibrada.</p>
             </div>
           </div>
-          <div class="cat-card">
+          <div class="cat-slide">
             <img src="assets/Recetas.jpg" alt="Recetas">
-            <div class="cat-info">
+            <div class="cat-caption">
               <h4>Recetas</h4>
               <p>Instrucciones detalladas para preparar platos saludables con ingredientes frescos y técnicas culinarias.</p>
             </div>
           </div>
-          <div class="cat-card">
+          <div class="cat-slide">
             <img src="assets/Proteínas.jpg" alt="Proteínas">
-            <div class="cat-info">
+            <div class="cat-caption">
               <h4>Proteínas</h4>
               <p>Nutrientes esenciales para el crecimiento muscular y el mantenimiento de tejidos del cuerpo.</p>
             </div>
           </div>
-          <div class="cat-card">
+          <div class="cat-slide">
             <img src="assets/Vitaminas.jpg" alt="Vitaminas">
-            <div class="cat-info">
+            <div class="cat-caption">
               <h4>Vitaminas</h4>
               <p>Compuestos orgánicos necesarios para el sistema inmune, la energía y la salud general.</p>
             </div>
           </div>
-          <div class="cat-card">
+          <div class="cat-slide">
             <img src="assets/Alimento.jpg" alt="Alimentos">
-            <div class="cat-info">
+            <div class="cat-caption">
               <h4>Alimentos</h4>
               <p>Una dieta variada y equilibrada es fundamental para mantener una buena salud y bienestar.</p>
             </div>
           </div>
         </div>
       </div>
+      <button class="cat-btn prev" onclick="moveCat(-1)">&#8249;</button>
       <button class="cat-btn next" onclick="moveCat(1)">&#8250;</button>
     </div>
     <div class="cat-dots" id="catDots"></div>
@@ -255,24 +255,21 @@
     menu.classList.toggle('open');
   }
 
-  // Categorías carousel (card-based, shows 3 on desktop, 1 on mobile)
+  // Categorías carousel — full image, autoplay, pause on hover
   let catIndex = 0;
   const catTotal = 5;
-
-  function getVisible() {
-    return window.innerWidth >= 900 ? 3 : window.innerWidth >= 600 ? 2 : 1;
-  }
+  let catTimer = null;
+  let catPaused = false;
 
   function buildCatDots() {
     const dots = document.getElementById('catDots');
     if (!dots) return;
     dots.innerHTML = '';
-    const visible = getVisible();
-    const pages = Math.ceil(catTotal / visible);
-    for (let i = 0; i < pages; i++) {
+    for (let i = 0; i < catTotal; i++) {
       const d = document.createElement('button');
       d.className = 'dot' + (i === 0 ? ' active' : '');
-      d.onclick = () => goToCat(i * visible);
+      d.setAttribute('aria-label', 'Ir a slide ' + (i + 1));
+      d.onclick = () => { catIndex = i; updateCat(); };
       dots.appendChild(d);
     }
   }
@@ -280,39 +277,32 @@
   function updateCat() {
     const track = document.getElementById('catTrack');
     if (!track) return;
-    const visible = getVisible();
-    const cardWidth = 100 / visible;
-    track.style.transform = `translateX(-${catIndex * cardWidth}%)`;
-    const dots = document.querySelectorAll('.dot');
-    const activePage = Math.floor(catIndex / visible);
-    dots.forEach((d, i) => d.classList.toggle('active', i === activePage));
+    track.style.transform = `translateX(-${catIndex * 100}%)`;
+    document.querySelectorAll('.dot').forEach((d, i) =>
+      d.classList.toggle('active', i === catIndex)
+    );
   }
 
   function moveCat(dir) {
-    const visible = getVisible();
-    const maxIndex = catTotal - visible;
-    catIndex = Math.max(0, Math.min(catIndex + dir, maxIndex));
+    catIndex = (catIndex + dir + catTotal) % catTotal;
     updateCat();
   }
 
-  function goToCat(index) {
-    catIndex = index;
-    updateCat();
+  function startAutoplay() {
+    catTimer = setInterval(() => {
+      if (!catPaused) moveCat(1);
+    }, 3500);
   }
 
   document.addEventListener('DOMContentLoaded', () => {
     buildCatDots();
     updateCat();
-    setInterval(() => {
-      const visible = getVisible();
-      const maxIndex = catTotal - visible;
-      catIndex = catIndex >= maxIndex ? 0 : catIndex + 1;
-      updateCat();
-    }, 4000);
-    window.addEventListener('resize', () => {
-      catIndex = 0;
-      buildCatDots();
-      updateCat();
-    });
+    startAutoplay();
+
+    const wrapper = document.getElementById('catWrapper');
+    if (wrapper) {
+      wrapper.addEventListener('mouseenter', () => { catPaused = true; });
+      wrapper.addEventListener('mouseleave', () => { catPaused = false; });
+    }
   });
 </script>
