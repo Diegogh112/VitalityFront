@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ChartDataset, ChartOptions, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 import { ReviewService } from '../../../services/review.service';
+import { TotalPunctuations } from '../../../models/TotalPunctuationsDTO';
 @Component({
   selector: 'app-reportfrank02',
   standalone: true,
@@ -26,12 +27,12 @@ export class Reportfrank02Component implements OnInit{
   constructor(private rS: ReviewService) {}
 
   ngOnInit(): void {
-    this.rS.getCantidadCriticas().subscribe((data) => {
+    this.rS.getotalPuntuation().subscribe((data) => {
       this.barChartLabels = data.map((item) => item.username);
       this.barChartData = [
         {
-          data: data.map((item) => item.quantityReview),
-          label: 'Cantidad críticas',
+          data: data.map((item) => item.totalPunctuations),
+          label: 'Puntuación total',
           backgroundColor: [
             '#0094d3',
             '#4169c7',
