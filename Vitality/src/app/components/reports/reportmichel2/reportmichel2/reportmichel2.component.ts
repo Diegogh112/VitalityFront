@@ -22,18 +22,23 @@ export class Reportmichel2Component implements OnInit{
 
   constructor(private rS:HealthobjectiveService){}
   ngOnInit(): void {
-    this.rS.getHealthObjetiveByUser().subscribe(data=>{
-      this.barChartLabels = data.map(item => item.username)
-      this.barChartData=[
-      {
-        data:data.map(item=>item.typeObjetive.length),
-        label:'Cantidad de objetivos logrados',
-        backgroundColor:['blue','red','green','white','#30B81A',],
-        borderColor:'rgba(173,216,230,1)',
-        borderWidth:1,
-      }
-    ]
-    
-  })
-}
+    this.rS.getHealthObjetiveByUser().subscribe(data => {
+      // Agrupar por username y contar objetivos por usuario
+      const conteo = data.reduce((acc, item) => {
+        acc[item.username] = (acc[item.username] || 0) + 1;
+        return acc;
+      }, {} as Record<string, number>);
+
+      this.barChartLabels = Object.keys(conteo);
+      this.barChartData = [
+        {
+          data: Object.values(conteo),
+          label: 'Cantidad de objetivos logrados',
+          backgroundColor: ['blue', 'red', 'green', '#FFA500', '#30B81A', '#8064A2', '#4BACC6', '#C0504D'],
+          borderColor: 'rgba(173,216,230,1)',
+          borderWidth: 1,
+        }
+      ];
+    });
+  }
 }
